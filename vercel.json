@@ -1,0 +1,18 @@
+{
+    "name": "backend-sistema-dpq",
+    "version":2,
+    "public": true,
+    "build": {
+        
+        
+    },
+    "routes":[
+        {
+            "src": "/(.*)",
+            "dest": "api/server.js"
+        }
+    ]
+
+   
+
+}

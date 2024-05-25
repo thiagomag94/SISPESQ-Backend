@@ -4,6 +4,8 @@ const app = express()
 const router = express.Router();
 const checkToken = require('../controllers/Auth');
 const {professoresdb} = require('../db')
+const fs = require('fs');
+const csv = require('csv-parser');
 
 
 //permitir o uso do req.body
@@ -28,6 +30,9 @@ router.get('/', async(req, res)=>{
    
     
 })
+
+
+
     
 router.post('/professor', async(req, res)=>{
     try{

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>DataPesq - Update Database</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="w-screen h-screen flex flex-col justify-center items-center bg-neutral-100">
+   <main class="w-2/5 flex flex-col justify-start items-center border border-neutral-400 h-96 rounded-lg">
+        <form action="/uploadDb" id="uploadForm" method="post" enctype="multipart/form-data" class="flex flex-col justify-start items-center gap-4 mt-16">
+            <h2 class="text-xl font-bold mb-8">Atualizar banco de dados</h2>
+            <div class="flex justify-center items-center gap-4 mt-4">
+                <label for="file" class="border border-neutral-800 px-4 py-2 rounded-lg cursor-pointer">Selecione um arquivo:</label>
+                <input type="file" id="file" name="file" class="hidden">
+                <button type="submit" class="bg-neutral-800 text-white px-4 py-2 rounded-lg">Enviar</button>
+            </div>
+            <p id="fileNameDisplay" class="mt-4 text-slate-800"></p>
+        </form>
+   </main>
+</body>
+<script>
+    document.getElementById('uploadForm').addEventListener('change', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const fileInput = document.getElementById('file');
+        const fileName = fileInput.files[0].name;
+
+        // Exibe o nome do arquivo em um elemento <p>
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        fileNameDisplay.textContent = fileName;
+        console.log(fileName)
+    });
+</script>
+</html>

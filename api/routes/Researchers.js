@@ -77,10 +77,10 @@ router.post('/addProfessor', async(req, res)=>{
                     }) 
                     //inclui efetivamente o professor se já não estiver no banco
                     await novoProfessor.save((err, result)=>{
-                    if (err){
-                        console.log(err)
-                    }
-                    res.status(201).json({message:"inserido no banco", result:result})
+                        if (err){
+                            console.log(err)
+                        }
+                        res.status(201).json({message:"inserido no banco", result:result})
                     })
                 
                 }catch(error){

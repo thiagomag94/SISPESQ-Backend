@@ -122,8 +122,8 @@ app.get('/pesquisadores', async(req, res)=>{
 
 app.post('/pesquisadores', async(req, res)=>{
     try{
-        const {name} = req.body
-        if(name){
+        const {professor} = req.body
+        if(professor){
             const regex = new RegExp(name, 'i');
             const resultado_query = await Datapesqdb.find(regex)
             if (resultado_query) {

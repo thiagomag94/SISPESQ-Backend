@@ -128,9 +128,13 @@ app.post('/pesquisadores', async(req, res)=>{
             const resultado_query = await Datapesqdb.find(regex)
             if (resultado_query) {
                 console.log("consulta feita")
-
+                res.status(200).json({professores:resultado_query})
+            }else{
+                res.send("ERRO NA PESQUISA")
             }
-             res.status(200).json({professores:resultado_query})
+            
+        }else{
+            res.send("PROFESSOR NÃO ENVIADO")
         }
         
             

@@ -1,5 +1,5 @@
 {
-    "name": "backend-sistema-dpq",
+    "name": "sispesq-backend",
     "version":2,
     "public": true,
     "build": {

@@ -123,9 +123,11 @@ app.get('/pesquisadores', async(req, res)=>{
 app.post('/pesquisadores', async(req, res)=>{
     try{
         const {professor} = req.body
+        console.log(professor)
         if(professor){
             const regex = new RegExp(professor, 'i');
-            const resultado_query = await Datapesqdb.find(regex)
+            const resultado_query = await Datapesqdb.find({PESQUISADOR:regex})
+            console.log(resultado_query)
             if (resultado_query) {
                 console.log("consulta feita")
                 res.status(200).json({professores:resultado_query})
@@ -139,6 +141,7 @@ app.post('/pesquisadores', async(req, res)=>{
         
             
     }catch(error){
+        console.log(error)
         res.status(500).json({ error: error})
     }
    

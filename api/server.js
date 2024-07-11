@@ -103,7 +103,7 @@ app.get('/updateDb', async (req, res)=>{
     }
 })
 
-app.get('/pesquisadores', async(req, res)=>{
+app.get('/all', async(req, res)=>{
     try{
         
         const resultado_query = await Datapesqdb.find()
@@ -120,33 +120,38 @@ app.get('/pesquisadores', async(req, res)=>{
     
 })
 
-app.post('/pesquisadores', async(req, res)=>{
-    try{
-        const {professor} = req.body
-        console.log(professor)
-        if(professor){
-            const regex = new RegExp(professor, 'i');
-            const resultado_query = await Datapesqdb.find({PESQUISADOR:regex})
-            console.log(resultado_query)
-            if (resultado_query) {
-                console.log("consulta feita")
-                res.status(200).json({professores:resultado_query})
-            }else{
-                res.send("ERRO NA PESQUISA")
-            }
-            
-        }else{
-            res.send("PROFESSOR NÃO ENVIADO")
-        }
+
+
+app.get('/pesquisadores', async(req, res) => {
+    try {
+        const { professor } = req.query;
         
-            
-    }catch(error){
-        console.log(error)
-        res.status(500).json({ error: error})
+        console.log(professor);
+
+        if (professor!='' || professor!=' ') {
+            const palavras = professor.split(' ').filter(Boolean);
+            const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i'));
+            const query = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };
+
+            const resultado_query = await Datapesqdb.find(query);
+            console.log(resultado_query);
+
+            if (resultado_query.length > 0) {
+                console.log("consulta feita");
+                res.status(200).json({ professores: resultado_query });
+                console.log("Enviamos o professor")
+            } else  {
+                res.status(200).json({ professores: resultado_query });
+                console.log("ENCONTRAMOS NADA")
+            }
+        } else {
+            res.send("PROFESSOR NÃO ENVIADO");
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error });
     }
-   
-    
-})
+});
 
 
 

@@ -128,7 +128,7 @@ app.get('/pesquisadores', async(req, res) => {
         
         console.log(professor);
 
-        if (professor!='' || professor!=' ') {
+        if (professor) {
             const palavras = professor.split(' ').filter(Boolean);
             const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i'));
             const query = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };
@@ -136,13 +136,11 @@ app.get('/pesquisadores', async(req, res) => {
             const resultado_query = await Datapesqdb.find(query);
             console.log(resultado_query);
 
-            if (resultado_query.length > 0) {
+            if (resultado_query) {
                 console.log("consulta feita");
                 res.status(200).json({ professores: resultado_query });
                 console.log("Enviamos o professor")
-            } else  {
-                res.status(200).json({ professores: resultado_query });
-                console.log("ENCONTRAMOS NADA")
+           
             }
         } else {
             res.send("PROFESSOR NÃO ENVIADO");

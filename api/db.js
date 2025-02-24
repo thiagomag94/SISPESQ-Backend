@@ -32,6 +32,17 @@ const userSchema = new mongoose.Schema({
       }
   });
 
+  // Antes de salvar, criptografar a senha com hash bcrypt
+userSchema.pre('save', async function (next) {
+    const user = this;
+    if (user.isModified('password')) {
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(user.password, salt);
+      user.password = hash;
+    }
+    next();
+  });
+
   const DataPesqSchema = new Schema({
     aleatorio:String,
     id:{type:Number, unique:true},
@@ -85,16 +96,7 @@ const userSchema = new mongoose.Schema({
 )
 
 
-// Antes de salvar, criptografar a senha com hash bcrypt
-userSchema.pre('save', async function (next) {
-    const user = this;
-    if (user.isModified('password')) {
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(user.password, salt);
-      user.password = hash;
-    }
-    next();
-  });
+
 
 const professoresdb = mongoose.model('Professores', professoresSchema)
 const usersdb = mongoose.model('Users', userSchema)

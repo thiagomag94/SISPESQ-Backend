@@ -99,6 +99,7 @@ app.get('/updateDb', async (req, res)=>{
         })
         
     }catch(error){
+        
         res.status(500).send("Internal server error")
     }
 })
@@ -152,7 +153,52 @@ app.get('/pesquisadores', async(req, res) => {
 });
 
 
+app.get('/departamentos', async (req, res) => {
+    console.log("fui chamado")
+    const { departamento } = req.query;
+    console.log(departamento);
 
+    try {
+        const array_departamentos = await Datapesqdb.distinct('UORG_LOTACAO');
+
+        if (departamento) {
+            //transforma a string em um array de palavras e remove as palavras vazias
+            const palavras = departamento.split(' ').filter(Boolean);
+           
+            //faz um regex e o ^ indica que a palavra deve começar com a palavra do array
+            const resultado_query = await Datapesqdb.find({
+                UORG_LOTACAO: { $regex: `${departamento}$`, $options: 'i' }
+            });
+            
+            
+            console.log(resultado_query);
+            //se o resultado da query for maior que 0, retorna os professores encontrados
+            if (resultado_query.length > 0) {
+                console.log("Consulta feita");
+                return res.status(200).json({ professores_por_departamento: resultado_query, departamentos: array_departamentos });
+            } else {
+                return res.status(200).json({ professores_por_departamento:[] , departamentos: array_departamentos });
+                
+            }
+        } else {
+            return res.status(400).json({ message: "Parâmetro 'departamento' não fornecido" });
+        }
+    } catch (error) {
+        console.error('Erro ao buscar departamentos:', error);
+        return res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+});
+
+
+app.get('/centros', async (req, res) => {
+    try {
+        const centros = await Datapesqdb.distinct('SIGLA_CENTRO');
+        res.json(centros);
+    } catch (error) {
+        console.error('Erro ao buscar departamentos:', error);
+        res.status(500).json({ error: 'Erro interno do servidor' });
+    }
+});
 
 
 app.use('/Professores', Routes)

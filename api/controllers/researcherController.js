@@ -30,42 +30,57 @@ const updateDatabase = async (req, res) => {
 const getResearchers = async (req, res) => {
   try {
     // Extrai os parâmetros de busca e filtro da query string
-    const { professor='', centro='', departamento='' } = req.query ;
+    const { professor, centro, departamento } = req.query;
 
-   //controle
-   console.log(professor, centro, departamento)
-    
-    // Construindo a consulta com base nos parâmetros
+    // Controle para debug
+    console.log("Parâmetros recebidos:", { professor, centro, departamento });
+
+    // Construindo a consulta
     let query = {};
-    const professortrim = professor.trim()
-    // Filtro por professor com a lógica de dividir e buscar por cada palavra do nome
-    if (professortrim) {
-      const palavras = professortrim.split(' ').filter(Boolean); // Divide o nome em palavras
-      console.log(palavras)
+
+    // Filtro por professor (busca pelo nome)
+    
+    
+    if (professor) {
+      const palavras = professor.trim().split(' ').filter(Boolean); // Divide o nome em palavras
+      console.log("Palavras extraídas:", palavras);
+
       const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
-      query.PESQUISADOR = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };  // Aplica o regex para cada palavra no campo PESQUISADOR
-    } 
+      
+      // Se houver múltiplas palavras, usa `$and` para que todas sejam encontradas no nome
+      if (regexPalavras.length > 1) {
+        query.$and = regexPalavras.map(regex => ({ PESQUISADOR: regex }));
+      } else {
+        query.PESQUISADOR = regexPalavras[0]; // Apenas uma palavra, busca diretamente
+      }
+    }
 
     // Filtro por centro (SIG_CENTRO), se informado
     if (centro) {
-      query.SIGLA_CENTRO= centro;
+      query.SIGLA_CENTRO = centro;
     }
 
     // Filtro por departamento (URG_LOTACAO), se informado
     if (departamento) {
+      console.log("departamento", departamento)
       query.UORG_LOTACAO = departamento;
     }
-    console.log("antes de buscar", query)
-    // Consultando os dados no banco de dados com os filtros aplicados
+
+    // Exibe a query final para depuração
+    console.log("Query final:", JSON.stringify(query, null, 2));
+
+    // Consultando os dados no banco de dados
     const resultado_query = await Datapesqdb.find(query);
-    console.log("Depois da busca", resultado_query)
+    console.log("Resultado da busca:", resultado_query);
+
     // Retornando os resultados
-    res.status(200).json({ professores: resultado_query, total_professores:resultado_query.length });
+    res.status(200).json({ professores: resultado_query, total_professores: resultado_query.length });
 
   } catch (error) {
-    res.status(500).json({ error: "muito estranho", details: error });
+    console.error("Erro na consulta:", error);
+    res.status(500).json({ error: "Erro interno no servidor", details: error.message });
   }
-}
+};
 
 
 //------------------------CREATE--------------------------------------------------------------

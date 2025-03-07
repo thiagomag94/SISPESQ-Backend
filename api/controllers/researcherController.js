@@ -25,40 +25,119 @@ const updateDatabase = async (req, res) => {
   }
 }
 
-const getAll = async (req, res) => {
-  try {
-    const resultado_query = await Datapesqdb.find();
-    res.json(resultado_query);
-  } catch (error) {
-    res.status(500).json({ error: error });
-  }
-}
+//---------------------------GET --------------------------------------
 
 const getResearchers = async (req, res) => {
   try {
-    const { professor } = req.query;
-    if (professor.trim() !=='') {
-      const palavras = professor.split(' ').filter(Boolean);
-      const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i'));
-      const query = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };
-      const resultado_query = await Datapesqdb.find(query);
-      res.status(200).json({ professores: resultado_query });
-    } else if(professor.trim()===''){
-      const resultado_query = await Datapesqdb.find();
-      res.status(200).json({ professores: resultado_query });
-     
-    }else {
-      res.status(400).json({ message: "Parâmetro 'professor' não fornecido" });
+    // Extrai os parâmetros de busca e filtro da query string
+    const { professor='', centro='', departamento='' } = req.query ;
+
+   //controle
+   console.log(professor, centro, departamento)
+    
+    // Construindo a consulta com base nos parâmetros
+    let query = {};
+    const professortrim = professor.trim()
+    // Filtro por professor com a lógica de dividir e buscar por cada palavra do nome
+    if (professortrim) {
+      const palavras = professortrim.split(' ').filter(Boolean); // Divide o nome em palavras
+      console.log(palavras)
+      const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
+      query.PESQUISADOR = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };  // Aplica o regex para cada palavra no campo PESQUISADOR
+    } 
+
+    // Filtro por centro (SIG_CENTRO), se informado
+    if (centro) {
+      query.SIGLA_CENTRO= centro;
     }
+
+    // Filtro por departamento (URG_LOTACAO), se informado
+    if (departamento) {
+      query.UORG_LOTACAO = departamento;
+    }
+    console.log("antes de buscar", query)
+    // Consultando os dados no banco de dados com os filtros aplicados
+    const resultado_query = await Datapesqdb.find(query);
+    console.log("Depois da busca", resultado_query)
+    // Retornando os resultados
+    res.status(200).json({ professores: resultado_query, total_professores:resultado_query.length });
+
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: "muito estranho", details: error });
   }
 }
 
 
+//------------------------CREATE--------------------------------------------------------------
+
+async function createResearchers(req, res) {
+  try {
+    const dataPesq = new Datapesqdb(req.body);
+    await dataPesq.save();
+    res.status(201).json(dataPesq);
+  } catch (err) {
+    res.status(400).json({ error: 'Erro ao criar documento', details: err });
+  }
+}
+
+//------------------------UPDATE----------------------------------------------------------------
+
+async function updateResearchers(req, res) {
+  try {
+    const { id } = req.params;
+    const updatedDataPesq = await Datapesqdb.findByIdAndUpdate(id, req.body, { new: true });
+    
+    if (!updatedDataPesq) {
+      return res.status(404).json({ error: 'Documento não encontrado' });
+    }
+
+    res.status(200).json(updatedDataPesq);
+  } catch (err) {
+    res.status(400).json({ error: 'Erro ao atualizar documento', details: err });
+  }
+}
+
+
+//------------------------------DELETE-----------------------------------------
+
+async function deleteResearchers(req, res) {
+  try {
+    const { id } = req.params;
+    const deletedDataPesq = await Datapesqdb.findByIdAndDelete(id);
+    
+    if (!deletedDataPesq) {
+      return res.status(404).json({ error: 'Documento não encontrado' });
+    }
+
+    res.status(200).json({ message: 'Documento excluído com sucesso' });
+  } catch (err) {
+    res.status(400).json({ error: 'Erro ao excluir documento', details: err });
+  }
+}
+
+//---------------------------DELETEALL---------------------------------------------
+
+async function deleteAllResearchers(req, res) {
+  try {
+    
+    const deleteResearchers = await Departamentodb.deleteMany({});
+    
+    if (!deleteResearchers) {
+      return res.status(404).json({ error: 'Documento não encontrado' });
+    }
+
+    res.status(200).json({ message: 'Documento excluído com sucesso' });
+  } catch (err) {
+    res.status(400).json({ error: 'Erro ao excluir documento', details: err });
+  }
+}
+
 module.exports = {
  getResearchers,
-  getAll,
-  updateDatabase
-
+  updateDatabase,
+  updateResearchers,
+  createResearchers,
+  deleteResearchers,
+  deleteAllResearchers
 }
+

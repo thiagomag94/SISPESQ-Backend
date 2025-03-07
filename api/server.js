@@ -1,6 +1,8 @@
 
 const Routes = require('./routes/Professores(old)');
-const RouterRegister = require("./routes/RegisterController");
+const RouterRegister = require("./routes/Authorize");
+const RouterDepartment = require('./routes/Departments')
+const RouterResearcher = require('./routes/Researchers')
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -13,8 +15,8 @@ const csv = require('csv-parser');
 const path = require('path');
 const corsMiddleware = require('./middleware/cors');
 const publicRoutesController = require('./controllers/publicRoutesController');
-const researcherController = require('./controllers/researcherController');
-const departmentController = require('./controllers/departmentController');
+const researcherController = require('./controllers/ResearcherController')
+
 
 
 
@@ -40,14 +42,16 @@ mongoose.connect(config.databaseUrl)
 // Routes
 app.use('/Professores', Routes);
 app.use('/Users', RouterRegister);
+app.use('/Departments', RouterDepartment)
+//app.use('/Articles')
+//app.use('/Centers')
+app.use('/Researchers',RouterResearcher )
+
 
 // Public routes
+app.get('/updateDb', researcherController.updateDatabase);
 app.get('/', publicRoutesController.getIndex);
 app.get('/teste', publicRoutesController.getUpload);
-app.get('/updateDb', researcherController.updateDatabase);
-app.get('/all', researcherController.getAll);
-app.get('/pesquisadores', researcherController.getResearchers);
-app.get('/departamentos', departmentController.getDepartments);
 
 
 // Start server

@@ -123,16 +123,14 @@ userSchema.pre('save', async function (next) {
 )
 
 const DepartamentoSchema = new Schema({
-    aleatorio:String,
-    id:mongoose.Schema.Types.ObjectId,
-    NOME_DEPARTAMENTO: {type:String, unique:true, required:true},
-    SIGLA_CENTRO: {type:String, unique:true, required:true},
+    NOME_DEPARTAMENTO: {type:String, unique:true ,required:true},
+    SIGLA_CENTRO: {type:String, required:true},
     NUM_DOCENTES: String,
     NUM_DOCENTES_LATTES: String,
     NUM_DOCENTES_ORCID: String,
     NUM_DOCENTES_SCOPUS: String,
     NUM_DOCENTES_SCHOLAR: String,
-    ID_DOCENTES: [mongoose.Schema.Types.ObjectId],
+    ID_DOCENTES: [{type:mongoose.Schema.Types.ObjectId, ref:'Datapesq'}],
     PRODUCAO: {
         2024: {
             BIBLIOGRAFICA: { type: Number, default: 0 },

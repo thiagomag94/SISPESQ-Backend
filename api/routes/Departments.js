@@ -9,8 +9,10 @@ app.use(express.json())
 
 
 router.get('/', departmentController.getDepartments)
+router.get('/createFromResearchers', departmentController.createDepartmentsFromResearchers)
 
 router.post('/create', departmentController.createDepartments)
+
 
 router.put('/update', departmentController.updateDepartments)
 

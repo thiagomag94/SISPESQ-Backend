@@ -1,5 +1,6 @@
 const {Departamentodb} = require('../db')
 const {Datapesqdb} = require('../db')
+const { v4: uuidv4 } = require('uuid'); 
 
 //const getDepartments = async (req, res) => {
  // const { departamento } = req.query;
@@ -30,7 +31,7 @@ const {Datapesqdb} = require('../db')
 const getDepartments = async (req, res) => {
   try {
     // Extrai os parâmetros de busca e filtro da query string
-    const { departamento, centro } = req.query;
+    const { departamento, centro, id } = req.query;
     
     // Construindo a consulta com base nos parâmetros
     let query = {};
@@ -74,45 +75,70 @@ async function createDepartments(req, res) {
 
 async function createDepartmentsFromResearchers(req, res) {
   try {
-    const departments = await Datapesqdb.aggregate([
-        {
-          $group:{
-            _id: "$UORG_LOTACAO",
-            SIGLA_CENTRO: {$first: "$SIGLA_CENTRO"},
-            ID_DOCENTES:{$push:"$_id"},
-            NOME_DEPARTAMENTO:{$first:"$UORG_LOTACAO"}
+    await Departamentodb.deleteMany({});
+    // Agrupar docentes por UORG_LOTACAO e coletar seus IDs
+    const docentesAgrupados = await Datapesqdb.aggregate([
+      {
+        $match: { UORG_LOTACAO: { $exists: true, $ne: null } } // Filtra docentes com UORG_LOTACAO válido
+      },
+      {
+          $group: {
+              _id: "$UORG_LOTACAO", // Agrupa por UORG_LOTACAO
+              docentesIds: { $push: "$_id" }, // Coleta os IDs dos docentes
+              centro:  { $first: "$SIGLA_CENTRO" },
+              count: { $sum: 1 } // Conta o número de docentes por grupo
           }
-        },
-        {
-          $project:{
-            _id: 0, //exclui o campo _id
-            ID_DEPARTAMENTO: {$concat: ["$_id", "_dep"]},
-            NOME_DEPARTAMENTO:1,
-            SIGLA_CENTRO:1,
-            ID_DOCENTES:1,
-            NUM_DOCENTES: 1,
-            NUM_DOCENTES_LATTES: 1,
-            NUM_DOCENTES_ORCID: 1,
-            NUM_DOCENTES_SCOPUS: 1,
-            NUM_DOCENTES_SCHOLAR: 1,
-            PRODUCAO:1
+      }
+  ]);
 
+  // Criar documentos dos departamentos
+  for (const grupo of docentesAgrupados) {
+      const uorgLotacao = grupo._id;
+      const docentesIds = grupo.docentesIds;
+      const centro = grupo.centro
 
-          }
-        }
+      // Verificar se o departamento já existe
+      const departamentoExistente = await Departamentodb.findOne({ NOME_DEPARTAMENTO: uorgLotacao });
+      if (!departamentoExistente) {
+          // Criar novo departamento
+          const novoDepartamento = new Departamentodb({
+              NOME_DEPARTAMENTO: uorgLotacao, // Preencha com o nome correto
+              SIGLA_CENTRO: centro, // Se necessário, ajuste conforme a lógica do seu sistema
+              NUM_DOCENTES: grupo.count,
+              NUM_DOCENTES_LATTES: 0, // Preencha com o valor correto
+              NUM_DOCENTES_ORCID: 0, // Preencha com o valor correto
+              NUM_DOCENTES_SCOPUS: 0, // Preencha com o valor correto
+              NUM_DOCENTES_SCHOLAR: 0, // Preencha com o valor correto
+              ID_DOCENTES: docentesIds,
+              PRODUCAO: {
+                  2024: { BIBLIOGRAFICA: 0, TECNICA: 0, ARTISTICA: 0 },
+                  2023: { BIBLIOGRAFICA: 0, TECNICA: 0, ARTISTICA: 0 },
+                  2022: { BIBLIOGRAFICA: 0, TECNICA: 0, ARTISTICA: 0 },
+                  2021: { BIBLIOGRAFICA: 0, TECNICA: 0, ARTISTICA: 0 },
+                  2020: { BIBLIOGRAFICA: 0, TECNICA: 0, ARTISTICA: 0 }
+              }
+          });
 
-    ])
-    departments.forEach(async (departamentos) => {
-      const newDepartment = new Departamentodb(departamentos)
-      await newDepartment.save()
-    })
-    //const newDepartment = new Departamentodb(req.body);
-    //await newDepartment.save();
-    res.status(201).json({message:"Departamento criado com sucesso"});
-  } catch (err) {
-    res.status(400).json({ error: 'Erro ao criar departamento', details: err });
+          // Salvar o novo departamento no banco de dados
+          await novoDepartamento.save();
+          console.log(`Departamento ${uorgLotacao} criado com sucesso.`);
+
+      } else {
+          console.log(`Departamento ${uorgLotacao} já existe.`);
+      }
   }
+
+  console.log('Processo de criação de departamentos concluído.');
+ 
+ 
+  res.status(201).json({message:"Departamentos criados"})
+} catch (error) {
+  console.error('Erro ao criar departamentos:', error);
+} 
 }
+
+
+
 
 //------------------------UPDATE----------------------------------------------------------------
 

@@ -124,14 +124,15 @@ userSchema.pre('save', async function (next) {
 
 const DepartamentoSchema = new Schema({
     aleatorio:String,
-    id:{type:Number, unique:true},
-    NOME: {type:String, unique:true, required:true},
+    id:mongoose.Schema.Types.ObjectId,
+    NOME_DEPARTAMENTO: {type:String, unique:true, required:true},
     SIGLA_CENTRO: {type:String, unique:true, required:true},
     NUM_DOCENTES: String,
     NUM_DOCENTES_LATTES: String,
     NUM_DOCENTES_ORCID: String,
     NUM_DOCENTES_SCOPUS: String,
     NUM_DOCENTES_SCHOLAR: String,
+    ID_DOCENTES: [mongoose.Schema.Types.ObjectId],
     PRODUCAO: {
         2024: {
             BIBLIOGRAFICA: { type: Number, default: 0 },

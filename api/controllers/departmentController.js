@@ -1,4 +1,5 @@
 const {Departamentodb} = require('../db')
+const {Datapesqdb} = require('../db')
 
 //const getDepartments = async (req, res) => {
  // const { departamento } = req.query;
@@ -60,14 +61,56 @@ const getDepartments = async (req, res) => {
 
 
 //------------------------CREATE--------------------------------------------------------------
-
 async function createDepartments(req, res) {
   try {
+    
     const newDepartment = new Departamentodb(req.body);
     await newDepartment.save();
-    res.status(201).json(newDepartment);
+    res.status(201).json({message:"Departamento criado com sucesso"});
   } catch (err) {
-    res.status(400).json({ error: 'Erro ao criar documento', details: err });
+    res.status(400).json({ error: 'Erro ao criar departamento', details: err });
+  }
+}
+
+async function createDepartmentsFromResearchers(req, res) {
+  try {
+    const departments = await Datapesqdb.aggregate([
+        {
+          $group:{
+            _id: "$UORG_LOTACAO",
+            SIGLA_CENTRO: {$first: "$SIGLA_CENTRO"},
+            ID_DOCENTES:{$push:"$_id"},
+            NOME_DEPARTAMENTO:{$first:"$UORG_LOTACAO"}
+          }
+        },
+        {
+          $project:{
+            _id: 0, //exclui o campo _id
+            ID_DEPARTAMENTO: {$concat: ["$_id", "_dep"]},
+            NOME_DEPARTAMENTO:1,
+            SIGLA_CENTRO:1,
+            ID_DOCENTES:1,
+            NUM_DOCENTES: 1,
+            NUM_DOCENTES_LATTES: 1,
+            NUM_DOCENTES_ORCID: 1,
+            NUM_DOCENTES_SCOPUS: 1,
+            NUM_DOCENTES_SCHOLAR: 1,
+            PRODUCAO:1
+
+
+          }
+        }
+
+    ])
+    departments.forEach(async (departamentos) => {
+      const newDepartment = new Departamentodb(departamentos)
+      await newDepartment.save()
+    })
+    //const newDepartment = new Departamentodb(req.body);
+    //await newDepartment.save();
+    res.status(201).json({message:"Departamento criado com sucesso"});
+  } catch (err) {
+    res.status(400).json({ error: 'Erro ao criar departamento', details: err });
   }
 }
 
@@ -123,6 +166,7 @@ module.exports ={
   getDepartments,
   updateDepartments,
   createDepartments,
+  createDepartmentsFromResearchers,
   deleteDepartments,
   deleteAllDepartments
 

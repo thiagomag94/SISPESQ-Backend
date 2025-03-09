@@ -58,7 +58,7 @@ app.get('/teste', publicRoutesController.getUpload);
 
 
 // Start server
-app.listen(config.port, () => {
+app.listen(config.port, '0.0.0.0', () => {
   console.log(`Server running, PORT ${config.port}`);
 });
 

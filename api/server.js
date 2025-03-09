@@ -15,7 +15,7 @@ const csv = require('csv-parser');
 const path = require('path');
 const corsMiddleware = require('./middleware/cors');
 const publicRoutesController = require('./controllers/publicRoutesController');
-const researcherController = require('./controllers/researcherController')
+const researcherController = require('./controllers/ResearcherController')
 
 
 

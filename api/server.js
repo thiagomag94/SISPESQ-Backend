@@ -7,7 +7,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config  = require('./config'); // Caminho relativo para o arquivo config.js
-const { usersdb, Datapesqdb } = require('./db');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const fs = require('fs');

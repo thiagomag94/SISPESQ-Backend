@@ -41,7 +41,7 @@ mongoose.connect(config.databaseUrl, {
 })
   .then(() => console.log('Mongo DB connected!',mongoose.connections.length))
   .catch(err => console.log('Connection failed', err));
-
+  mongoose.set('strictQuery', false);
 // Routes
 app.use('/Professores', Routes);
 app.use('/Users', RouterRegister);

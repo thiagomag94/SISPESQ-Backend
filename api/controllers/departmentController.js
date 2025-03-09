@@ -32,28 +32,44 @@ const getDepartments = async (req, res) => {
   try {
     // Extrai os parâmetros de busca e filtro da query string
     const { departamento, centro, id } = req.query;
-    
+    console.log(departamento)
+    console.log(id)
+
     // Construindo a consulta com base nos parâmetros
-    let query = {};
+    let query = {}
 
-    // Filtro por professor com a lógica de dividir e buscar por cada palavra do nome
-    if (departamento) {
-      const palavras = departamento.split(' ').filter(Boolean); // Divide o nome em palavras
-      const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
-      query.PESQUISADOR = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };  // Aplica o regex para cada palavra no campo PESQUISADOR
+
+    if(!id){
+       // Filtro por professor com a lógica de dividir e buscar por cada palavra do nome
+      if (departamento) {
+        const palavras = departamento.split(' ').filter(Boolean); // Divide o nome em palavras
+        const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
+        query.PESQUISADOR = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };  // Aplica o regex para cada palavra no campo PESQUISADOR
+      }
+
+      // Filtro por centro (SIG_CENTRO), se informado
+      if (centro) {
+        query.SIGLA_CENTRO= centro;
+      }
+      // Consultando os dados no banco de dados com os filtros aplicados
+      const departamentos = await Departamentodb.find(query);
+       // Retornando os resultados
+       console.log(query)
+       res.status(200).json({ departamentos:departamentos, total_departamentos:departamentos.length });
+       
+    } else{
+      query._id=id;
+      console.log(query)
+      try{
+        const departamentos = await Departamentodb.findOne(query).populate('ID_DOCENTES');
+        console.log(departamentos)
+        res.status(200).json({ departamentos:departamentos });
+      }catch(error){res.status(500).json({ error: error, message:"id inválido ou inexistente" });}
+        
+
     }
 
-    // Filtro por centro (SIG_CENTRO), se informado
-    if (centro) {
-      query.SIGLA_CENTRO= centro;
-    }
-
-
-    // Consultando os dados no banco de dados com os filtros aplicados
-    const departamentos = await Departamentodb.find(query);
-
-    // Retornando os resultados
-      res.status(200).json({ departamentos: departamentos, total_departamentos:departamentos.length });
+   
 
   } catch (error) {
     res.status(500).json({ error: error });

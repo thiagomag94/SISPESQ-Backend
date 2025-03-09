@@ -35,8 +35,12 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database connection
-mongoose.connect(config.databaseUrl)
-  .then(() => console.log('Mongo DB connected!'))
+mongoose.connect(config.databaseUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  maxPoolSize:10  // Limite de conexões simultâneas
+})
+  .then(() => console.log('Mongo DB connected!',mongoose.connections.length))
   .catch(err => console.log('Connection failed', err));
 
 // Routes

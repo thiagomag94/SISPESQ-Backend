@@ -130,7 +130,7 @@ const DepartamentoSchema = new Schema({
     NUM_DOCENTES_ORCID: String,
     NUM_DOCENTES_SCOPUS: String,
     NUM_DOCENTES_SCHOLAR: String,
-    ID_DOCENTES: [{type:mongoose.Schema.Types.ObjectId, ref:'Datapesq'}],
+    ID_DOCENTES: [{type:mongoose.Schema.Types.ObjectId, ref:'DataPesq'}],
     PRODUCAO: {
         2024: {
             BIBLIOGRAFICA: { type: Number, default: 0 },

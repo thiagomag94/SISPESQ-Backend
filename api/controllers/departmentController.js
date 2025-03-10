@@ -161,13 +161,15 @@ async function createDepartmentsFromResearchers(req, res) {
 async function updateDepartments(req, res) {
   try {
     const { id } = req.params;
-    const udpdateDepartment = await Departamentodb.findByIdAndUpdate(id, req.body, { new: true });
+    console.log(id)
+    console.log(req.body)
+    const udpdatedDepartment = await Departamentodb.findByIdAndUpdate(id, req.body, { new: true });
     
-    if (!udpdateDepartment) {
+    if (!udpdatedDepartment) {
       return res.status(404).json({ error: 'Documento não encontrado' });
     }
 
-    res.status(200).json(updatedDataPesq);
+    res.status(200).json(udpdatedDepartment);
   } catch (err) {
     res.status(400).json({ error: 'Erro ao atualizar documento', details: err });
   }

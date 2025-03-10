@@ -14,7 +14,7 @@ router.get('/createFromResearchers', departmentController.createDepartmentsFromR
 router.post('/create', departmentController.createDepartments)
 
 
-router.put('/update', departmentController.updateDepartments)
+router.put('/update/:id', departmentController.updateDepartments)
 
 router.delete('/delete', departmentController.deleteDepartments)
 

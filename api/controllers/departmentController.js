@@ -32,8 +32,7 @@ const getDepartments = async (req, res) => {
   try {
     // Extrai os parâmetros de busca e filtro da query string
     const { departamento, centro, id } = req.query;
-    console.log(departamento)
-    console.log(id)
+   
 
     // Construindo a consulta com base nos parâmetros
     let query = {}
@@ -54,15 +53,15 @@ const getDepartments = async (req, res) => {
       // Consultando os dados no banco de dados com os filtros aplicados
       const departamentos = await Departamentodb.find(query);
        // Retornando os resultados
-       console.log(query)
+       //console.log(query)
        res.status(200).json({ departamentos:departamentos, total_departamentos:departamentos.length });
        
     } else{
       query._id=id;
-      console.log(query)
+      //console.log(query)
       try{
         const departamentos = await Departamentodb.findOne(query).populate('ID_DOCENTES');
-        console.log(departamentos)
+        //console.log(departamentos)
         res.status(200).json({ departamentos:departamentos });
       }catch(error){res.status(500).json({ error: error, message:"id inválido ou inexistente" });}
         
@@ -137,19 +136,19 @@ async function createDepartmentsFromResearchers(req, res) {
 
           // Salvar o novo departamento no banco de dados
           await novoDepartamento.save();
-          console.log(`Departamento ${uorgLotacao} criado com sucesso.`);
+          //console.log(`Departamento ${uorgLotacao} criado com sucesso.`);
 
       } else {
-          console.log(`Departamento ${uorgLotacao} já existe.`);
+          //console.log(`Departamento ${uorgLotacao} já existe.`);
       }
   }
 
-  console.log('Processo de criação de departamentos concluído.');
+  
  
  
   res.status(201).json({message:"Departamentos criados"})
 } catch (error) {
-  console.error('Erro ao criar departamentos:', error);
+ //console.error('Erro ao criar departamentos:', error);
 } 
 }
 
@@ -161,8 +160,7 @@ async function createDepartmentsFromResearchers(req, res) {
 async function updateDepartments(req, res) {
   try {
     const { id } = req.params;
-    console.log(id)
-    console.log(req.body)
+   
     const udpdatedDepartment = await Departamentodb.findByIdAndUpdate(id, req.body, { new: true });
     
     if (!udpdatedDepartment) {

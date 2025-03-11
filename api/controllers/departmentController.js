@@ -53,12 +53,12 @@ const getDepartments = async (req, res) => {
       // Consultando os dados no banco de dados com os filtros aplicados
       const departamentos = await Departamentodb.find(query);
        // Retornando os resultados
-       //console.log(query)
+    
        res.status(200).json({ departamentos:departamentos, total_departamentos:departamentos.length });
        
     } else{
       query._id=id;
-      //console.log(query)
+     
       try{
         const departamentos = await Departamentodb.findOne(query).populate('ID_DOCENTES');
         //console.log(departamentos)
@@ -136,10 +136,10 @@ async function createDepartmentsFromResearchers(req, res) {
 
           // Salvar o novo departamento no banco de dados
           await novoDepartamento.save();
-          //console.log(`Departamento ${uorgLotacao} criado com sucesso.`);
+      
 
       } else {
-          //console.log(`Departamento ${uorgLotacao} já existe.`);
+      
       }
   }
 

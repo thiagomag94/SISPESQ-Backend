@@ -13,9 +13,9 @@ const updateDatabase = async (req, res) => {
       }).on('end', async () => {
         const deletedATAPESQ = await Datapesqdb.deleteMany({});
         if (deletedATAPESQ) {
-          //console.log("Banco anterior apagado");
+         
           Datapesqdb.insertMany(DataPesq).then(() => {
-            //console.log("Banco novo criado!!!");
+           
             res.status(200).json(DataPesq);
           }).catch((err) => console.log(err));
         }
@@ -32,8 +32,7 @@ const getResearchers = async (req, res) => {
     // Extrai os parâmetros de busca e filtro da query string
     const { professor, centro, departamento } = req.query;
 
-    // Controle para debug
-    //console.log("Parâmetros recebidos:", { professor, centro, departamento });
+   
 
     // Construindo a consulta
     let query = {};
@@ -43,7 +42,7 @@ const getResearchers = async (req, res) => {
     
     if (professor) {
       const palavras = professor.trim().split(' ').filter(Boolean); // Divide o nome em palavras
-      //console.log("Palavras extraídas:", palavras);
+     
 
       const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
       
@@ -62,16 +61,16 @@ const getResearchers = async (req, res) => {
 
     // Filtro por departamento (URG_LOTACAO), se informado
     if (departamento) {
-      //console.log("departamento", departamento)
+     
       query.UORG_LOTACAO = departamento;
     }
 
     // Exibe a query final para depuração
-    //console.log("Query final:", JSON.stringify(query, null, 2));
+ 
 
     // Consultando os dados no banco de dados
     const resultado_query = await Datapesqdb.find(query);
-    //console.log("Resultado da busca:", resultado_query);
+    
 
     // Retornando os resultados
     res.status(200).json({ professores: resultado_query, total_professores: resultado_query.length });

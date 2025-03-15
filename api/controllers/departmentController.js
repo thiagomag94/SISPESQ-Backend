@@ -32,27 +32,31 @@ const getDepartments = async (req, res) => {
   try {
     // Extrai os parâmetros de busca e filtro da query string
     const { departamento, centro, id } = req.query;
-   
+    
 
     // Construindo a consulta com base nos parâmetros
     let query = {}
 
 
     if(!id){
-       // Filtro por professor com a lógica de dividir e buscar por cada palavra do nome
       if (departamento) {
-        const palavras = departamento.split(' ').filter(Boolean); // Divide o nome em palavras
+        const palavras = departamento.trim().split(' ').filter(Boolean); // Divide o nome em palavras
+       
+  
         const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
-        query.PESQUISADOR = { $and: regexPalavras.map(regex => ({ PESQUISADOR: regex })) };  // Aplica o regex para cada palavra no campo PESQUISADOR
-      }
-
-      // Filtro por centro (SIG_CENTRO), se informado
-      if (centro) {
-        query.SIGLA_CENTRO= centro;
+        
+        // Se houver múltiplas palavras, usa `$and` para que todas sejam encontradas no nome
+        if (regexPalavras.length > 1) {
+          query.$and = regexPalavras.map(regex => ({ NOME_DEPARTAMENTO: regex }));
+        } else {
+          query.NOME_DEPARTAMENTO = regexPalavras[0]; // Apenas uma palavra, busca diretamente
+        }
       }
       // Consultando os dados no banco de dados com os filtros aplicados
+      console.log(query)
       const departamentos = await Departamentodb.find(query);
        // Retornando os resultados
+       console.log(departamentos)
     
        res.status(200).json({ departamentos:departamentos, total_departamentos:departamentos.length });
        

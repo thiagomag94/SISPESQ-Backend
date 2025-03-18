@@ -6,8 +6,9 @@ const jwt = require('jsonwebtoken');
 
 function checkToken(req, res, next){
     const authHeader = req.headers['authorization']
+    console.log("Header", authHeader)
     const token = authHeader && authHeader.split(' ')[1]
-
+    console.log("token", token)
     
 
     if(!token){
@@ -21,7 +22,7 @@ function checkToken(req, res, next){
         next()
 
     }catch(error){
-        res.status(400).json({message:"token invalid"})
+        res.status(400).json({message:"token invalid", error})
     }
 }
 

@@ -14,16 +14,8 @@ const cors = require('cors')
 app.use(express.json())
 
 
-//Permitir requisições cruzadas//
 
-//Permitir requisições cruzadas//
-// Middleware de CORS
-
-
-// rotas de cadastro e login
-
-
-
+//-------------------------------rotas de login e registro-------------------------------------------------
 register.post('/signup', async(req, res) =>{
     const {name, email, password, confirmPassword, isAdmin} = req.body
     
@@ -128,11 +120,42 @@ register.post('/login', async(req,res)=>{
     }
 })
 
-//private routes
-register.delete('delete/:id', checkToken,  async(req, res)=>{
+//-------------------------------private routes---------------------------------------------------
+
+
+//-------------------------------rotas de CRUD USER-------------------------------------------------
+
+register.put('/update/:id', checkToken, async(req, res)=>{
+    const userId = req.params.id
+   
+    const updatedUser = req.body
+
+    try{
+        if(isAdmin){
+            usersdb.findByIdAndUpdate(userId, updatedUser, {new:true}, (err, result) =>{
+                if (err){
+                    res.status(500).json({ msg: 'Internal server error', error:err})
+                }
+                else{
+                    res.status(200).json({message:"usuário atualizado", result:result})
+                }
+            } )
+        }
+        else{
+            res.status(401).json({message:"user doesn't have access right to update other user"})
+        }
+    }catch(error){
+        res.status(500).json({ error: 'Internal server error'})
+    }
+})
+
+
+register.delete('/delete/:id', checkToken,  async(req, res)=>{
     
-    userId = req.params.id
-    isAdmin = req.body.isAdmin
+    const userId = req.params.id
+    const isAdmin = req.body.isAdmin
+
+    console.log("USER ID", userId)
     
     try{
         
@@ -147,7 +170,7 @@ register.delete('delete/:id', checkToken,  async(req, res)=>{
             } )
         }
         else{
-            res.status(401).json({msg:"user doesn't have access right to delete other user"})
+            res.status(401).json({message:"user doesn't have access right to delete other user"})
         }
         
 
@@ -188,6 +211,10 @@ register.get('/:id', checkToken,  async(req, res) =>{
     }
     
 })
+
+
+
+
 
 
 

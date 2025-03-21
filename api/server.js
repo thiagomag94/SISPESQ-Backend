@@ -26,12 +26,14 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(corsMiddleware);
+// Responder às requisições OPTIONS manualmente, caso necessário
+app.options('*', cors());  // Responde a todas as requisições OPTIONS com CORS
 
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 // Database connection
 mongoose.connect(config.databaseUrl, {

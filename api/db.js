@@ -121,6 +121,27 @@ userSchema.pre('save', async function (next) {
     }
     
 )
+const ResearcherSchema = new Schema({
+    aleatorio:String,
+    PESQUISADOR: {type:String},
+    ID_Lattes: {type:String},
+    SEXO: String,
+    REGIME_DE_TRABALHO: String,
+    DATA_NASCIMENTO: String,
+    SIAPE: String,
+    SIGLA_CENTRO: String,
+    UORG_LOTACAO: String,
+    DATA_INGRESSO_UFPE: String,
+    DATA_EXCLUSAO_UFPE: String,
+    TITULACAO: String,
+    CARGO: String,
+    C: String,
+    NV: String,
+    SITUACAO_FUNCIONAL: String,
+})
+
+
+
 
 const DepartamentoSchema = new Schema({
     NOME_DEPARTAMENTO: {type:String, unique:true ,required:true},
@@ -170,7 +191,7 @@ const DepartamentoSchema = new Schema({
 const usersdb = mongoose.model('Users', userSchema)
 const Datapesqdb = mongoose.model('DataPesq', DataPesqSchema)
 
-
+const Researcherdb = mongoose.model('Researcher', ResearcherSchema)
 const Departamentodb = mongoose.model('Departamento', DepartamentoSchema);
 
-module.exports = {usersdb, Datapesqdb, Departamentodb}
+module.exports = {usersdb, Datapesqdb, Departamentodb, Researcherdb}

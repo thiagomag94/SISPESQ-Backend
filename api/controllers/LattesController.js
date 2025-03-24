@@ -1,33 +1,294 @@
-
 const fs = require('fs');
 const path = require('path');
 const xml2js = require('xml2js');
+const jschardet = require('jschardet'); // Usando jschardet para detectar codificação
+const iconv = require('iconv-lite'); // Importando o iconv-lite para conversão de codificação
+const { lattesdb } = require('../models/Lattes');
 
+const emptyCurriculo = {
+    CURRICULO_VITAE: {
+        ID_Lattes: "",
+        DATA_ATUALIZACAO: "",
+        DADOS_GERAIS: {
+            NOME_COMPLETO: "",
+            NOME_EM_CITACOES_BIBLIOGRAFICAS: "",
+            NACIONALIDADE: "",
+            PAIS_DE_NASCIMENTO: "",
+            UF_NASCIMENTO: "",
+            CIDADE_NASCIMENTO: "",
+            DATA_FALECIMENTO: "",
+            TEXTO_RESUMO_CV_RH_EN: "",
+            ORCID_ID:""
+        },
+        FORMACAO_ACADEMICA_TITULACAO: {
+            GRADUACAO: [],
+            MESTRADO: {
+                CURSO: "",
+                NOME_INSTITUICAO: "",
+                ANO_DE_CONCLUSAO: "",
+                ANO_DE_INICIO: "",
+                ANO_DE_OBTENCAO_DO_TITULO: "",
+                PALAVRAS_CHAVE: {
+                    PALAVRA_CHAVE_1: "",
+                    PALAVRA_CHAVE_2: "",
+                    PALAVRA_CHAVE_3: "",
+                    PALAVRA_CHAVE_4: "",
+                    PALAVRA_CHAVE_5: "",
+                    PALAVRA_CHAVE_6: "",
+                },
+            },
+            DOUTORADO: {
+                CURSO: "",
+                TITULO_DA_DISSERTACAO_TESE: "",
+                NOME_INSTITUICAO: "",
+                ANO_DE_CONCLUSAO: "",
+                ANO_DE_INICIO: "",
+                ANO_DE_OBTENCAO_DO_TITULO: "",
+                PALAVRAS_CHAVE: {
+                    PALAVRA_CHAVE_1: "",
+                    PALAVRA_CHAVE_2: "",
+                    PALAVRA_CHAVE_3: "",
+                    PALAVRA_CHAVE_4: "",
+                    PALAVRA_CHAVE_5: "",
+                    PALAVRA_CHAVE_6: "",
+                },
+            },
+            POS_DOUTORADO: {
+                NOME_INSTITUICAO: "",
+                ANO_DE_CONCLUSAO: "",
+                ANO_DE_INICIO: "",
+                ANO_DE_OBTENCAO_DO_TITULO: "",
+            },
+        },
+        PRODUCAO_BIBLIOGRAFICA: {
+            ARTIGOS_PUBLICADOS: [],
+            LIVROS_E_CAPITULOS: [],
+        },
+        PRODUCAO_TECNICA: {
+            SOFTWARE: [],
+            PATENTE: [],
+        },
+        ORIENTACOES_CONCLUIDAS: {
+            ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO: [],
+            ORIENTACOES_CONCLUIDAS_PARA_MESTRADO: [],
+            ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO: [],
+        },
+    },
+};
 
-//------------------------------lê os xmls upados na pasta xml_files e retorna um json com os dados do curriculo----------------------
 
 const getLattes = async (req, res) => {
-    
     const parser = new xml2js.Parser();
     const dir = path.join(__dirname, '../../xml_files');
-    const files = fs.readdirSync(dir);
+    const folders = fs.readdirSync(dir); // Lista as pastas dentro de xml_files
     const lattes = [];
+    const lattesSimplificado = [];
 
-    files.forEach(file => {
-        const xml = fs.readFileSync(path.join(dir, file));
-        parser.parseString(xml, (err, result) => {
-            if (err) {
-                console.log(err);
-            } else {
-                lattes.push(result);
+    // Percorre todas as pastas dentro de xml_files
+    for (let folder of folders) {
+        const folderPath = path.join(dir, folder);
+        const stat = fs.statSync(folderPath);
+
+        // Verifica se é uma pasta (não um arquivo)
+        if (stat.isDirectory()) {
+            const xmlPath = path.join(folderPath, 'curriculo.xml'); // Caminho para o arquivo curriculo.xml dentro da pasta
+
+            // Verifica se o arquivo curriculo.xml existe e é um arquivo
+            if (fs.existsSync(xmlPath) && fs.statSync(xmlPath).isFile()) {
+                const fileBuffer = fs.readFileSync(xmlPath); // Lê o arquivo como buffer
+
+                // Detecta a codificação do arquivo usando jschardet
+                const encoding = jschardet.detect(fileBuffer).encoding;
+                //console.log(`Codificação detectada para o arquivo ${xmlPath}: ${encoding}`);
+
+                // Converte o arquivo para utf-8 (independente da codificação detectada)
+                let xml;
+                try {
+                    xml = iconv.decode(fileBuffer, encoding || 'utf-8'); // Se não detectar, assume utf-8
+                } catch (e) {
+                    console.warn(`Erro ao decodificar com ${encoding}, tentando UTF-8 como fallback...`);
+                    xml = fileBuffer.toString('utf-8');
+                }
+
+
+                try {
+                    const result = await parser.parseStringPromise(xml); // Usa parseStringPromise para evitar callback
+                    
+                    lattes.push(result);
+                } catch (err) {
+                    console.error(`Erro ao processar o arquivo ${xmlPath}:`, err);
+                }
             }
-        });
-    });
+        }
+    }
 
-    res.json(lattes);
-}
+    for(let cv of lattes){
+        const indexof = lattes.indexOf(cv);
+        console.log(indexof);
+        //parte que deve ser implementada
+        const curriculo = JSON.parse(JSON.stringify(emptyCurriculo)); // Faz uma cópia do objeto base
+        const cvData = cv['CURRICULO-VITAE']; // Pega o objeto CURRICULO-VITAE do XML
+        // Pega ID Lattes e Data Atualização
+        curriculo.CURRICULO_VITAE.ID_Lattes = cvData['$']['NUMERO-IDENTIFICADOR'] || "";
+        curriculo.CURRICULO_VITAE.DATA_ATUALIZACAO = cvData['$']['DATA-ATUALIZACAO'] || "";
+        // DADOS GERAIS
+        if (cvData['DADOS-GERAIS'] && cvData['DADOS-GERAIS'][0]) {
+            const dadosGerais = cvData['DADOS-GERAIS'][0]['$'];
+            const resumo_cv = cvData['DADOS-GERAIS'][0]['RESUMO-CV'][0]['$'];
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.NOME_COMPLETO = dadosGerais['NOME-COMPLETO'] || "";
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.NOME_EM_CITACOES_BIBLIOGRAFICAS = dadosGerais['NOME-EM-CITACOES-BIBLIOGRAFICAS'] || "";
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.NACIONALIDADE = dadosGerais['NACIONALIDADE'] || "";
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.PAIS_DE_NASCIMENTO = dadosGerais['PAIS-DE-NASCIMENTO'] || "";
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.UF_NASCIMENTO = dadosGerais['UF-NASCIMENTO'] || "";
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.CIDADE_NASCIMENTO = dadosGerais['CIDADE-NASCIMENTO'] || "";
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.TEXTO_RESUMO_CV_RH_EN = resumo_cv['TEXTO-RESUMO-CV-RH-EN'] || ""
+            curriculo.CURRICULO_VITAE.DADOS_GERAIS.ORCID_ID = dadosGerais['ORCID-ID'] || "";
+            
+        }
+       
+        // Produção Bibliográfica - ARTIGOS PUBLICADOS (exemplo básico)
+        if (cvData['PRODUCAO-BIBLIOGRAFICA'] && cvData['PRODUCAO-BIBLIOGRAFICA'][0]['ARTIGOS-PUBLICADOS']) {
+            const artigos = cvData['PRODUCAO-BIBLIOGRAFICA'][0]['ARTIGOS-PUBLICADOS'][0]['ARTIGO-PUBLICADO'] || [];
+            for (let artigo of artigos) {
+                let dadosBasicos = artigo['DADOS-BASICOS-DO-ARTIGO'][0]['$'];
+                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.ARTIGOS_PUBLICADOS.push({
+                    TITULO_DO_ARTIGO: dadosBasicos['TITULO-DO-ARTIGO'] || "",
+                    TITULO_DO_ARTIGO_INGLES: dadosBasicos['TITULO-DO-ARTIGO-INGLES'] || "",
+                    ANO_DO_ARTIGO: dadosBasicos['ANO-DO-ARTIGO'] || "",
+                    AUTORES: [], // Preencher abaixo
+                    TITULO_DO_PERIODICO_OU_REVISTA: artigo['DETALHAMENTO-DO-ARTIGO'][0]['$']['TITULO-DO-PERIODICO-OU-REVISTA'] || "",
+                    VOLUME: artigo['DETALHAMENTO-DO-ARTIGO'][0]['$']['VOLUME'] || "",
+                    PAGINA_INICIAL: artigo['DETALHAMENTO-DO-ARTIGO'][0]['$']['PAGINA-INICIAL'] || "",
+                    PAGINA_FINAL: artigo['DETALHAMENTO-DO-ARTIGO'][0]['$']['PAGINA-FINAL'] || "",
+                    DOI: dadosBasicos['DOI'] || "",
+                    ISSN: artigo['DETALHAMENTO-DO-ARTIGO'][0]['$']['ISSN'] || "",
+                    IDIOMA: dadosBasicos['IDIOMA'] || "",
+                    PALAVRAS_CHAVE: {
+                        PALAVRA_CHAVE_1: "",
+                        PALAVRA_CHAVE_2: "",  
+                        PALAVRA_CHAVE_3: "",
+                        PALAVRA_CHAVE_4: "",    
+                        PALAVRA_CHAVE_5: "",
+                        PALAVRA_CHAVE_6: ""},
+                    HOME_PAGE_DO_TRABALHO: dadosBasicos['HOME-PAGE-DO-TRABALHO'] || "",
+               
+                });
 
+                // Preencher autores
+                if (artigo['AUTORES']) {
+                    for (let autor of artigo['AUTORES']) {
+                        curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.ARTIGOS_PUBLICADOS.at(-1).AUTORES.push({
+                            NOME_COMPLETO_DO_AUTOR: autor['$']['NOME-COMPLETO-DO-AUTOR'] || "",
+                            ORDEM_DE_AUTORIA: autor['$']['ORDEM-DE-AUTORIA'] || "",
+                            ID_Lattes: autor['$']['NRO-ID-CNPQ'] || "",
+                        });
+                    }
+                }
+                if (artigo['PALAVRAS-CHAVE'] && artigo['PALAVRAS-CHAVE'][0]) {
+                    const palavrasChave = artigo['PALAVRAS-CHAVE'][0]['$'];
+                    const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.ARTIGOS_PUBLICADOS.at(-1).PALAVRAS_CHAVE;
+                
+                    palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                }
+                
+                
+            }
+        }
+     
+        if (cvData['OUTRA-PRODUCAO'] && cvData['OUTRA-PRODUCAO'][0]['ORIENTACOES-CONCLUIDAS']) {
+            console.log('ENTROU NO IF OUTRAS PRODUCOES')
+            const orientacoes = cvData['OUTRA-PRODUCAO'][0]['ORIENTACOES-CONCLUIDAS'] || [];
+            
+            const orientacoes_mestrado = orientacoes[0]['ORIENTACOES-CONCLUIDAS-PARA-MESTRADO'] || [];
+            const orientacoes_doutorado = orientacoes[0]['ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO'] || [];
+            const orientacoes_pos_doutorado = orientacoes[0]['ORIENTACOES-CONCLUIDAS-PARA-POS-DOUTORADO'] || [];
+            for (let orientacao of orientacoes_mestrado) {
+                
+                const dadosBasicos = orientacao['DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO'][0]['$'];
+                const detalhamento = orientacao['DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO'][0]['$'];
+                curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO.push({
+                    NOME_DO_ORIENTADO: detalhamento['NOME-DO-ORIENTADO'] || "",
+                    TITULO: dadosBasicos['TITULO'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    NOME_DA_INSTITUICAO: detalhamento['NOME-DA-INSTITUICAO'] || "",
+                    NOME_DO_CURSO: detalhamento['NOME-DO-CURSO'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
+                });
+
+            }
+            for (let orientacao of orientacoes_doutorado) {
+                const dadosBasicos = orientacao['DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO'][0]['$'];
+                const detalhamento = orientacao['DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO'][0]['$'];
+                curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO.push({
+                    NOME_DO_ORIENTADO: detalhamento['NOME-DO-ORIENTADO'] || "",
+                    TITULO: dadosBasicos['TITULO'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    NOME_DA_INSTITUICAO: detalhamento['NOME-DA-INSTITUICAO'] || "",
+                    NOME_DO_CURSO: detalhamento['NOME-DO-CURSO'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
+                });
+            }
+            for (let orientacao of orientacoes_pos_doutorado) {
+                const dadosBasicos = orientacao['DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-POS-DOUTORADO'][0]['$'];
+                const detalhamento = orientacao['DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-POS-DOUTORADO'][0]['$'];
+                curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO.push({
+                    NOME_DO_ORIENTADO: detalhamento['NOME-DO-ORIENTADO'] || "",
+                    TITULO: dadosBasicos['TITULO'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    NOME_DA_INSTITUICAO: detalhamento['NOME-DA-INSTITUICAO'] || "",
+                    NOME_DO_CURSO: detalhamento['NOME-DO-CURSO'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
+                });
+            }
+            
+            
+        }
+        
+        
+ 
+        lattesSimplificado.push(curriculo);
+
+        
+
+
+
+
+        //console.log(result['CURRICULO-VITAE']['DADOS-GERAIS'][0]['$']['NOME-COMPLETO']);
+        //console.log('-------------------------------------------------------------------------------------------')
+
+        //console.log(result['CURRICULO-VITAE']['PRODUCAO-BIBLIOGRAFICA'][0]['ARTIGOS-PUBLICADOS'][0]['ARTIGO-PUBLICADO'][0]['DADOS-BASICOS-DO-ARTIGO'][0]['$']['TITULO-DO-ARTIGO']);
+        //console.log('-------------------------------------------------------------------------------------------')
+        //console.log(result['CURRICULO-VITAE']['PRODUCAO-BIBLIOGRAFICA'][0]['ARTIGOS-PUBLICADOS'][0]['ARTIGO-PUBLICADO'][0]['DADOS-BASICOS-DO-ARTIGO'][0]['$']['ANO-DO-ARTIGO']);
+        //console.log('-------------------------------------------------------------------------------------------\n')
+    }
+    try{
+        const delete_last = await lattesdb.deleteMany({});
+        if(delete_last){
+            console.log('Deletado com sucesso');
+            const resultado_banco = await lattesdb.insertMany(lattesSimplificado);
+            if(resultado_banco){
+                console.log('Cadastrado com sucesso');
+            }
+        }
+        
+    }catch(err){
+        console.log('Erro ao cadastrar no banco de dados', err);
+    }
+    
+    res.json({lattesSimplificado, lattes});
+};
 
 module.exports = {
     getLattes
-}
+};
+
+
+

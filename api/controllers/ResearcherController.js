@@ -1,20 +1,21 @@
 const fs = require('fs');
 const csv = require('csv-parser');
-const { Datapesqdb } = require('../db');
+const { Datapesqdb, Researcherdb } = require('../db');
 
 
 const updateDatabase = async (req, res) => {
   try {
     const DataPesq = [];
-    fs.createReadStream('ATUALIZADA_INDICADORES_UFPE_13_05_2024_Thiago.csv')
-      .pipe(csv({ separator: ';', from_line: 3 }))
+    fs.createReadStream('researchers.csv')
+      .pipe(csv({ separator: ';', mapHeaders: ({ header }) => header.trim() // remove espaços em branco}))
+      }))
       .on('data', (rows) => {
         DataPesq.push(rows);
       }).on('end', async () => {
-        const deletedATAPESQ = await Datapesqdb.deleteMany({});
+        const deletedATAPESQ = await Researcherdb.deleteMany({});
         if (deletedATAPESQ) {
          
-          Datapesqdb.insertMany(DataPesq).then(() => {
+          Researcherdb.insertMany(DataPesq).then(() => {
            
             res.status(200).json(DataPesq);
           }).catch((err) => console.log(err));
@@ -69,7 +70,9 @@ const getResearchers = async (req, res) => {
  
 
     // Consultando os dados no banco de dados
-    const resultado_query = await Datapesqdb.find(query);
+    console.log("Query:", query);
+    const resultado_query = await Researcherdb.find(query);
+    console.log("Resultado:", resultado_query);
     
 
     // Retornando os resultados
@@ -86,7 +89,7 @@ const getResearchers = async (req, res) => {
 
 async function createResearchers(req, res) {
   try {
-    const dataPesq = new Datapesqdb(req.body);
+    const dataPesq = new Researcherdb(req.body);
     await dataPesq.save();
     res.status(201).json(dataPesq);
   } catch (err) {
@@ -99,7 +102,7 @@ async function createResearchers(req, res) {
 async function updateResearchers(req, res) {
   try {
     const { id } = req.params;
-    const updatedDataPesq = await Datapesqdb.findByIdAndUpdate(id, req.body, { new: true });
+    const updatedDataPesq = await Researcherdb.findByIdAndUpdate(id, req.body, { new: true });
     
     if (!updatedDataPesq) {
       return res.status(404).json({ error: 'Documento não encontrado' });
@@ -117,7 +120,7 @@ async function updateResearchers(req, res) {
 async function deleteResearchers(req, res) {
   try {
     const { id } = req.params;
-    const deletedDataPesq = await Datapesqdb.findByIdAndDelete(id);
+    const deletedDataPesq = await Researcherdb.findByIdAndDelete(id);
     
     if (!deletedDataPesq) {
       return res.status(404).json({ error: 'Documento não encontrado' });

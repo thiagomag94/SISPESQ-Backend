@@ -15,6 +15,7 @@ const path = require('path');
 const corsMiddleware = require('./middleware/cors');
 const publicRoutesController = require('./controllers/publicRoutesController');
 const researcherController = require('./controllers/ResearcherController')
+const LattesController = require('./controllers/LattesController')
 
 
 
@@ -51,6 +52,7 @@ app.use('/Departments', RouterDepartment)
 //app.use('/Articles')
 //app.use('/Centers')
 app.use('/Researchers',RouterResearcher )
+app.use('/Lattes', LattesController.getLattes);
 
 
 // Public routes

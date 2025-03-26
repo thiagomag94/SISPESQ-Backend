@@ -3,6 +3,7 @@ const Routes = require('./routes/Professores(old)');
 const RouterRegister = require("./routes/Authorize");
 const RouterDepartment = require('./routes/Departments')
 const RouterResearcher = require('./routes/Researchers')
+const RouterLattes = require('./routes/Lattes')
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -52,7 +53,7 @@ app.use('/Departments', RouterDepartment)
 //app.use('/Articles')
 //app.use('/Centers')
 app.use('/Researchers',RouterResearcher )
-app.use('/Lattes', LattesController.getLattes);
+app.use('/Lattes', RouterLattes);
 
 
 // Public routes

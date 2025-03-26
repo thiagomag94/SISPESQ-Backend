@@ -62,7 +62,14 @@ const emptyCurriculo = {
         },
         PRODUCAO_BIBLIOGRAFICA: {
             ARTIGOS_PUBLICADOS: [],
-            LIVROS_E_CAPITULOS: [],
+            LIVROS_E_CAPITULOS: [
+                {
+                    LIVROS_PUBLICADOS_OU_ORGANIZADOS:[],
+                    CAPITULO_DE_LIVROS_PUBLICADOS:[],
+                }
+            ],
+            TRABALHOS_EM_EVENTOS:[],
+            TEXTO_EM_JORNAL_OU_REVISTA:[],
         },
         PRODUCAO_TECNICA: {
             SOFTWARE: [],
@@ -199,6 +206,203 @@ const getLattes = async (req, res) => {
                 
             }
         }
+
+        // producao bibliográfica Livros e Capitulos
+        if(cvData['PRODUCAO-BIBLIOGRAFICA'] && cvData['PRODUCAO-BIBLIOGRAFICA'][0]['LIVROS-E-CAPITULOS'][0]){
+            
+            if(cvData['PRODUCAO-BIBLIOGRAFICA'][0]['LIVROS-E-CAPITULOS'][0]['LIVROS-PUBLICADOS-OU-ORGANIZADOS']){
+                const livros_publicados_ou_organizados = cvData['PRODUCAO-BIBLIOGRAFICA'][0]['LIVROS-E-CAPITULOS'][0]['LIVROS-PUBLICADOS-OU-ORGANIZADOS'][0]['LIVRO-PUBLICADO-OU-ORGANIZADO'] || []
+                for (let livro of livros_publicados_ou_organizados) {
+                    const dadosBasicos = livro['DADOS-BASICOS-DO-LIVRO'][0]['$'];
+                    const detalhamento = livro['DETALHAMENTO-DO-LIVRO'][0]['$'];
+    
+                    curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.push({
+                        NATUREZA: dadosBasicos['NATUREZA'] || "",
+                        TITULO_DO_LIVRO_INGLES:dadosBasicos['TITULO-DO-LIVRO-INGLES'] || "",
+                        TITULO_DO_LIVRO: dadosBasicos['TITULO-DO-LIVRO'] || "",
+                        ANO: dadosBasicos['ANO'] || "",
+                        PAIS_DE_PUBLICACAO: dadosBasicos['PAIS-DE-PUBLICACAO'] || "",
+                        IDIOMA: dadosBasicos['IDIOMA'] || "",
+                        MEIO_DE_DIVULGACAO: dadosBasicos['MEIO-DE-DIVULGACAO'] || "",
+                        HOME_PAGE_DO_TRABALHO: dadosBasicos['HOME-PAGE-DO-TRABALHO'] || "",
+                        DOI: dadosBasicos['DOI'] || "",
+                        NOME_DA_EDITORA: detalhamento['NOME-DA-EDITORA'] || "",
+                        NUMERO_DE_PAGINAS: detalhamento['NUMERO-DE-PAGINAS'] || "",
+                        TIPO: dadosBasicos['TIPO'] || "",
+                        ISBN: detalhamento['ISBN'] || "",
+                        NUMERO_DE_VOLUMES: detalhamento['NUMERO-DE-VOLUMES'] || "",
+                        NUMERO_DE_PAGINAS:detalhamento['NUMERO-DE-PAGINAS'] || "",
+                        AUTORES: [],
+                        PALAVRAS_CHAVE: {
+                            PALAVRA_CHAVE_1: "",
+                            PALAVRA_CHAVE_2: "",
+                            PALAVRA_CHAVE_3: "",
+                            PALAVRA_CHAVE_4: "",
+                            PALAVRA_CHAVE_5: "",
+                            PALAVRA_CHAVE_6: "",
+                        },
+                    });
+    
+                    // Preencher autores
+                    if (livro['AUTORES']) {
+                        for (let autor of livro['AUTORES']) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).AUTORES.push({
+                                NOME_COMPLETO_DO_AUTOR: autor['$']['NOME-COMPLETO-DO-AUTOR'] || "",
+                                ORDEM_DE_AUTORIA: autor['$']['ORDEM-DE-AUTORIA'] || "",
+                                ID_Lattes: autor['$']['NRO-ID-CNPQ'] || "",
+                            });
+                        }
+                    }
+    
+                    // Preencher palavras-chave
+                    if (livro['PALAVRAS-CHAVE'] && livro['PALAVRAS-CHAVE'][0]) {
+                        const palavrasChave = livro['PALAVRAS-CHAVE'][0]['$'];
+                        const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).PALAVRAS_CHAVE;
+    
+                        palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                        palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                        palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                        palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                        palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                        palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                    }
+                }
+    
+            }
+            
+            
+            
+            if(cvData['PRODUCAO-BIBLIOGRAFICA'][0]['LIVROS-E-CAPITULOS'][0]['CAPITULOS-DE-LIVROS-PUBLICADOS']){
+                    const capitulos_de_livros_publicados = cvData['PRODUCAO-BIBLIOGRAFICA'][0]['LIVROS-E-CAPITULOS'][0]['CAPITULOS-DE-LIVROS-PUBLICADOS'][0]['CAPITULO-DE-LIVRO-PUBLICADO'] || []
+           
+            
+                    for (let capitulo of capitulos_de_livros_publicados) {
+                        const dadosBasicos = capitulo['DADOS-BASICOS-DO-CAPITULO'][0]['$'];
+                        const detalhamento = capitulo['DETALHAMENTO-DO-CAPITULO'][0]['$'];
+
+                        curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.push({
+                            TIPO:dadosBasicos['TIPO'] || "",
+                            TITULO_DO_CAPITULO_DO_LIVRO: dadosBasicos['TITULO-DO-CAPITULO-DO-LIVRO'] || "",
+                            TITULO_DO_CAPITULO_DO_LIVRO_INGLES: dadosBasicos['TITULO-DO-CAPITULO-DO-LIVRO-INGLES'] || "",
+                            ANO: dadosBasicos['ANO'] || "",
+                            PAIS_DE_PUBLICACAO: dadosBasicos['PAIS-DE-PUBLICACAO'] || "",
+                            IDIOMA: dadosBasicos['IDIOMA'] || "",
+                            MEIO_DE_DIVULGACAO: dadosBasicos['MEIO-DE-DIVULGACAO'] || "",
+                            HOME_PAGE_DO_TRABALHO: dadosBasicos['HOME-PAGE-DO-TRABALHO'] || "",
+                            DOI: dadosBasicos['DOI'] || "",
+                            TITULO_DO_LIVRO: detalhamento['TITULO-DO-LIVRO'] || "",
+                            NUMERO_DE_VOLUMES: detalhamento['NUMERO-DE-VOLUMES'] || "",
+                            NOME_DA_EDITORA: detalhamento['NOME-DA-EDITORA'] || "",
+                            NUMERO_DE_PAGINAS: detalhamento['NUMERO-DE-PAGINAS'] || "",
+                            PAGINA_FINAL:detalhamento['PAGINA-FINAL'] || "",
+                            ISBN:detalhamento['ISBN'] || "" ,
+                            AUTORES: [],
+                            PALAVRAS_CHAVE: {
+                                PALAVRA_CHAVE_1: "",
+                                PALAVRA_CHAVE_2: "",
+                                PALAVRA_CHAVE_3: "",
+                                PALAVRA_CHAVE_4: "",
+                                PALAVRA_CHAVE_5: "",
+                                PALAVRA_CHAVE_6: "",
+                            },
+                        });
+
+                        // Preencher autores
+                        if (capitulo['AUTORES']) {
+                            for (let autor of capitulo['AUTORES']) {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).AUTORES.push({
+                                    NOME_COMPLETO_DO_AUTOR: autor['$']['NOME-COMPLETO-DO-AUTOR'] || "",
+                                    ORDEM_DE_AUTORIA: autor['$']['ORDEM-DE-AUTORIA'] || "",
+                                    ID_Lattes: autor['$']['NRO-ID-CNPQ'] || "",
+                                });
+                            }
+                        }
+
+                        // Preencher palavras-chave
+                        if (capitulo['PALAVRAS-CHAVE'] && capitulo['PALAVRAS-CHAVE'][0]) {
+                            const palavrasChave = capitulo['PALAVRAS-CHAVE'][0]['$'];
+                            const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).PALAVRAS_CHAVE;
+
+                            palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                        }
+                }
+            }
+            
+            
+        }    
+            
+
+        if(cvData['PRODUCAO-BIBLIOGRAFICA'] && cvData['PRODUCAO-BIBLIOGRAFICA'][0]['TRABALHOS-EM-EVENTOS']){
+            const trabalhos_em_eventos = cvData['PRODUCAO-BIBLIOGRAFICA'][0]['TRABALHOS-EM-EVENTOS'][0]['TRABALHO-EM-EVENTOS']
+            
+            
+            for(let trabalho of trabalhos_em_eventos){
+                const dadosBasicos = trabalho['DADOS-BASICOS-DO-TRABALHO'][0]['$']
+                const detalhamento = trabalho['DETALHAMENTO-DO-TRABALHO'][0]['$']
+
+                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.push({
+
+                    NATUREZA:dadosBasicos['NATUREZA'],
+                    TITULO_DO_TRABALHO: dadosBasicos['TITULO-DO-TRABALHO'],
+                    ANO_DO_TRABALHO: dadosBasicos['ANO-DO-TRABALHO'] ,
+                    PAIS_DO_EVENTO: dadosBasicos['PAIS-DO-EVENTO'],
+                    IDIOMA:dadosBasicos['IDIOMA'],
+                    MEIO_DE_DIVULGACAO:dadosBasicos['MEIO-DE-DIVULGACAO'],
+                    HOME_PAGE_DO_TRABALHO: dadosBasicos['HOME-PAGE-DO-TRABALHO'] ,
+                    DOI: dadosBasicos['DOI'],
+                    TITULO_DO_TRABALHO_INGLES:dadosBasicos['TITULO-DO-TRABALHO-INGLES'],
+                    CLASSIFICACAO_DO_EVENTO:detalhamento['CLASSIFICACAO-DO-EVENTO'] ,
+                    NOME_DO_EVENTO: detalhamento['NOME-DO-EVENTO'],
+                    CIDADE_DO_EVENTO:detalhamento['CIDADE-DO-EVENTO'],
+                    ANO_DE_REALIZACAO:detalhamento['ANO-DE-REALIZACAO'],
+                    AUTORES: [],
+                    PALAVRAS_CHAVE: {
+                        PALAVRA_CHAVE_1: "",
+                        PALAVRA_CHAVE_2: "",  
+                        PALAVRA_CHAVE_3: "",
+                        PALAVRA_CHAVE_4: "",    
+                        PALAVRA_CHAVE_5: "",
+                        PALAVRA_CHAVE_6: ""},
+                   
+               
+                });
+
+
+
+                // Preencher autores
+                if (trabalho['AUTORES']) {
+                    for (let autor of trabalho['AUTORES']) {
+                        curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).AUTORES.push({
+                            NOME_COMPLETO_DO_AUTOR: autor['$']['NOME-COMPLETO-DO-AUTOR'] || "",
+                            ORDEM_DE_AUTORIA: autor['$']['ORDEM-DE-AUTORIA'] || "",
+                            ID_Lattes: autor['$']['NRO-ID-CNPQ'] || "",
+                        });
+                    }
+                }
+                if (trabalho['PALAVRAS-CHAVE'] && trabalho['PALAVRAS-CHAVE'][0]) {
+                    const palavrasChave = trabalho['PALAVRAS-CHAVE'][0]['$'];
+                    const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).PALAVRAS_CHAVE;
+                
+                    palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                    palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                }
+                
+
+
+            }
+            
+        }
+
+      
      
         if (cvData['OUTRA-PRODUCAO'] && cvData['OUTRA-PRODUCAO'][0]['ORIENTACOES-CONCLUIDAS']) {
             console.log('ENTROU NO IF OUTRAS PRODUCOES')
@@ -284,10 +488,27 @@ const getLattes = async (req, res) => {
     }
     
     res.json({lattesSimplificado, lattes});
+    
 };
 
+
+
+const getLattesbyId = async(req, res)=>{
+    const id_lattes = req.params.id
+    console.log(id_lattes);
+    
+    try{
+        const resultQuery = await lattesdb.find({ "CURRICULO_VITAE.ID_Lattes": id_lattes })
+       console.log(resultQuery[0]);
+        
+        res.status(200).json({lattes:resultQuery[0]}) 
+    }catch(err){
+        res.status(500).json({ error: 'Internal server error'})
+    }
+}
+
 module.exports = {
-    getLattes
+    getLattes, getLattesbyId
 };
 
 

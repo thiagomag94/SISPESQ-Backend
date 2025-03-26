@@ -97,13 +97,149 @@ const LattesSchema = new Schema({
             ],
             LIVROS_E_CAPITULOS: [
                 {
-                    TITULO_DO_LIVRO: String,
-                    ANO_DO_LIVRO: String,
-                    AUTORES: String,
-                    ISBN: String,
-                    NOME_DA_EDITORA: String,
-                    NUMERO_DE_PAGINAS: String,
-                    DOI: String,
+                    LIVROS_PUBLICADOS_OU_ORGANIZADOS: [
+                        {   NATUREZA: String,
+                            TITULO_DO_LIVRO: String,
+                            TITULO_DO_LIVRO_INGLES: String,
+                            PAIS_DE_PUBLICACAO: String,
+                            IDIOMA: String,
+                            MEIO_DE_DIVULGACAO: String,
+                            ANO: String,
+                            NOME_DA_EDITORA: String,
+                            NUMERO_DE_PAGINAS: String,
+                            DOI: String,
+                            TIPO:String,
+                            HOME_PAGE_DO_TRABALHO:String,
+                            NUMERO_DE_VOLUMES: String,
+                            NUMERO_DE_PAGINAS: String,
+                            ISBN: String,
+                            AUTORES: [
+                                {
+                                    NOME_COMPLETO_DO_AUTOR: String,
+                                    ORDEM_DE_AUTORIA: String,
+                                    ID_Lattes: String,
+
+                                }
+                            ],
+                            PALAVRAS_CHAVE:{
+                                PALAVRA_CHAVE_1: String,
+                                PALAVRA_CHAVE_2: String,
+                                PALAVRA_CHAVE_3: String,
+                                PALAVRA_CHAVE_4: String,
+                                PALAVRA_CHAVE_5: String,
+                                PALAVRA_CHAVE_6: String,
+                            },
+
+                        },
+                    ],
+                    CAPITULO_DE_LIVROS_PUBLICADOS:[
+                        {
+                            TIPO:String,
+                            TITULO_DO_CAPITULO_DO_LIVRO: String,
+                            ANO: String,
+                            PAIS_DE_PUBLICACAO:String,
+                            IDIOMA:String,
+                            MEIO_DE_DIVULGACAO:String,	
+                            HOME_PAGE_DO_TRABALHO:String,
+                            DOI:String,
+                            TITULO_DO_CAPITULO_DO_LIVRO_INGLES:String, 
+                            TITULO_DO_LIVRO: String,
+                            NUMERO_DE_VOLUMES: String,
+                            NUMERO_DE_PAGINAS: String,
+                            ISBN:String,
+                            AUTORES: [
+                                {
+                                    NOME_COMPLETO_DO_AUTOR: String,
+                                    ORDEM_DE_AUTORIA: String,
+                                    ID_Lattes: String,
+
+                                }
+                            ],
+                            PALAVRAS_CHAVE:{
+                                PALAVRA_CHAVE_1: String,
+                                PALAVRA_CHAVE_2: String,
+                                PALAVRA_CHAVE_3: String,
+                                PALAVRA_CHAVE_4: String,
+                                PALAVRA_CHAVE_5: String,
+                                PALAVRA_CHAVE_6: String,
+                            },
+                            
+                        },
+
+                    ],
+                    
+    
+                },
+            ],
+            TRABALHOS_EM_EVENTOS: [
+                {
+                    NATUREZA:String,
+                    TITULO_DO_TRABALHO: String,
+                    ANO_DO_TRABALHO: String,
+                    PAIS_DO_EVENTO: String,
+                    IDIOMA:String,
+                    MEIO_DE_DIVULGACAO:String,
+                    HOME_PAGE_DO_TRABALHO: String,
+                    DOI:String,
+                    TITULO_DO_TRABALHO_INGLES:String,
+                    CLASSIFICACAO_DO_EVENTO: String,
+                    NOME_DO_EVENTO: String,
+                    CIDADE_DO_EVENTO:String,
+                    ANO_DE_REALIZACAO:String,
+                    AUTORES: [
+                        {
+                            NOME_COMPLETO_DO_AUTOR: String,
+                            ORDEM_DE_AUTORIA: String,
+                            ID_Lattes: String,
+
+                        }
+                    ],
+                    PALAVRAS_CHAVE:{
+                        PALAVRA_CHAVE_1: String,
+                        PALAVRA_CHAVE_2: String,
+                        PALAVRA_CHAVE_3: String,
+                        PALAVRA_CHAVE_4: String,
+                        PALAVRA_CHAVE_5: String,
+                        PALAVRA_CHAVE_6: String,
+                    },
+
+                   
+                },
+            ],
+            TEXTO_EM_JORNAL_OU_REVISTA:[
+                {
+                    NATUREZA:String,
+                    TITULO_DO_TEXTO: String,
+                    ANO_DO_TEXTO: String,
+                    PAIS_DE_PUBLICACAO: String,
+                    IDIOMA:String,
+                    MEIO_DE_DIVULGACAO:String,
+                    HOME_PAGE_DO_TRABALHO: String,
+                    DOI:String,
+                    TITULO_DO_TRABALHO_INGLES:String,
+                    TITULO_DO_JORNAL_OU_REVISTA:String,
+                    ISSN:String,
+                    DATA_DE_PUBLICACAO:String,
+                    PAGINA_INICIAL:String,
+                    PAGINA_FINAL:String,
+                    LOCAL_DE_PUBLICACAO:String,
+                    AUTORES: [
+                        {
+                            NOME_COMPLETO_DO_AUTOR: String,
+                            ORDEM_DE_AUTORIA: String,
+                            ID_Lattes: String,
+                        },
+                    ],
+                    PALAVRAS_CHAVE:{
+                        PALAVRA_CHAVE_1: String,
+                        PALAVRA_CHAVE_2: String,
+                        PALAVRA_CHAVE_3: String,
+                        PALAVRA_CHAVE_4: String,
+                        PALAVRA_CHAVE_5: String,
+                        PALAVRA_CHAVE_6: String,
+                    },
+
+
                 },
             ],
         },

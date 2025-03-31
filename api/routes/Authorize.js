@@ -16,7 +16,7 @@ app.use(express.json())
 
 
 //-------------------------------rotas de login e registro-------------------------------------------------
-register.post('/signup', async(req, res) =>{
+register.post('/signup', checkToken,  async(req, res) =>{
     const {name, email, password, confirmPassword, isAdmin} = req.body
     
     console.log(name)

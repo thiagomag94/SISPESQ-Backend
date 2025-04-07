@@ -150,6 +150,7 @@ const getLattes = async (req, res) => {
             curriculo.CURRICULO_VITAE.DADOS_GERAIS.UF_NASCIMENTO = dadosGerais['UF-NASCIMENTO'] || "";
             curriculo.CURRICULO_VITAE.DADOS_GERAIS.CIDADE_NASCIMENTO = dadosGerais['CIDADE-NASCIMENTO'] || "";
             curriculo.CURRICULO_VITAE.DADOS_GERAIS.TEXTO_RESUMO_CV_RH_EN = resumo_cv['TEXTO-RESUMO-CV-RH-EN'] || ""
+             curriculo.CURRICULO_VITAE.DADOS_GERAIS.TEXTO_RESUMO_CV_RH = resumo_cv['TEXTO-RESUMO-CV-RH'] || ""
             curriculo.CURRICULO_VITAE.DADOS_GERAIS.ORCID_ID = dadosGerais['ORCID-ID'] || "";
             
         }

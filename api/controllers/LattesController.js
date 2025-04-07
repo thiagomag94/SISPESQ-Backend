@@ -18,6 +18,7 @@ const emptyCurriculo = {
             CIDADE_NASCIMENTO: "",
             DATA_FALECIMENTO: "",
             TEXTO_RESUMO_CV_RH_EN: "",
+            TEXTO_RESUMO_CV_RH: "",
             ORCID_ID:""
         },
         FORMACAO_ACADEMICA_TITULACAO: {

@@ -107,8 +107,7 @@ register.post('/login', async(req,res)=>{
                     },
                     secret,
                 )
-                console.log(secret)
-                console.log(token)
+              
                 res.status(200).json({message:"Authentication was successfully done", token, user})
             }catch(error){
                 res.status(500).json({error:error, message:"Something went wrong. Try again later"})

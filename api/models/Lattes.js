@@ -16,6 +16,7 @@ const LattesSchema = new Schema({
             CIDADE_NASCIMENTO: String,
             DATA_FALECIMENTO: String,
             TEXTO_RESUMO_CV_RH_EN: String,
+            TEXTO_RESUMO_CV_RH: String,
             ORCID_ID: String,
         },
         FORMACAO_ACADEMICA_TITULACAO: {

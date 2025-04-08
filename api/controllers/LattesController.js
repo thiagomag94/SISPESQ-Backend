@@ -105,18 +105,14 @@ const getLattes = async (req, res) => {
             if (fs.existsSync(xmlPath) && fs.statSync(xmlPath).isFile()) {
                 const fileBuffer = fs.readFileSync(xmlPath); // Lê o arquivo como buffer
 
-                // Detecta a codificação do arquivo usando jschardet
-                const encoding = jschardet.detect(fileBuffer).encoding;
-                //console.log(`Codificação detectada para o arquivo ${xmlPath}: ${encoding}`);
-
-                // Converte o arquivo para utf-8 (independente da codificação detectada)
                 let xml;
                 try {
-                    xml = iconv.decode(fileBuffer, encoding || 'utf-8'); // Se não detectar, assume utf-8
+                  xml = iconv.decode(fileBuffer, 'ISO-8859-1');
                 } catch (e) {
-                    console.warn(`Erro ao decodificar com ${encoding}, tentando UTF-8 como fallback...`);
-                    xml = fileBuffer.toString('utf-8');
+                  console.warn(`Erro ao decodificar como ISO-8859-1, tentando UTF-8 como fallback...`);
+                  xml = fileBuffer.toString('utf-8');
                 }
+                
 
 
                 try {

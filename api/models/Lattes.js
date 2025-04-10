@@ -246,7 +246,7 @@ const LattesSchema = new Schema({
         },
         PRODUCAO_TECNICA: {
             SOFTWARE: [
-                {
+                {   TITULO_DO_SOFTWARE: String,
                     TITULO_DO_SOFTWARE_INGLES: String,
                     ANO: String,
                     AUTORES: [
@@ -264,7 +264,7 @@ const LattesSchema = new Schema({
                 },
             ],
             PATENTE: [
-                {
+                {   TITULO: String,
                     TITULO_INGLES: String,
                     ANO_DESENVOLVIMENTO: String,
                     AUTORES: [
@@ -274,10 +274,12 @@ const LattesSchema = new Schema({
                             ID_Lattes: String,
                         },
                     ],
-                    TIPO_PATENTE: String,
+                    PAIS: String,
                     CODIGO_DO_REGISTRO_OU_PATENTE: String,
                     INSTITUICAO_DEPOSITO_REGISTRO: String,
                     HOME_PAGE: String,
+                    DATA_DE_CONCESSAO: String,
+                    DATA_DE_DEPOSITO: String,
                 },
             ],
         },
@@ -311,6 +313,43 @@ const LattesSchema = new Schema({
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,
+                    TIPO_DE_ORIENTACAO: String,
+                   
+                },
+            ],
+            
+        },
+        ORIENTACOES_EM_ANDAMENTO: {
+            ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO: [
+                {
+                    NOME_DO_ORIENTADO: String,
+                    ANO: String,
+                    TITULO: String,
+                    NOME_DA_INSTITUICAO: String,
+                    NOME_DO_CURSO: String,
+                    TIPO: String,
+                    TIPO_DE_ORIENTACAO: String,
+                },
+            ],
+            ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO: [
+                {
+                    NOME_DO_ORIENTADO: String,
+                    ANO: String,
+                    TITULO: String,
+                    NOME_DA_INSTITUICAO: String,
+                    NOME_DO_CURSO: String,
+                    TIPO: String,
+                    TIPO_DE_ORIENTACAO: String,
+                },
+            ],
+            ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO: [
+                {
+                    NOME_DO_ORIENTADO: String,
+                    ANO: String,
+                    TITULO: String,
+                    NOME_DA_INSTITUICAO: String,
+                    NOME_DO_CURSO: String,
+                    TIPO_DE_ORIENTACAO: String,
                    
                 },
             ],

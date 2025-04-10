@@ -81,6 +81,11 @@ const emptyCurriculo = {
             ORIENTACOES_CONCLUIDAS_PARA_MESTRADO: [],
             ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO: [],
         },
+        ORIENTACOES_EM_ANDAMENTO: {
+            ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO: [],
+            ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO: [],
+            ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO: [],
+        },
     },
 };
 
@@ -453,8 +458,121 @@ const getLattes = async (req, res) => {
             
             
         }
+        if (cvData['DADOS-COMPLEMENTARES'] && cvData['DADOS-COMPLEMENTARES'][0]['ORIENTACOES-EM-ANDAMENTO']) {
+            const orientacoes = cvData['DADOS-COMPLEMENTARES'][0]['ORIENTACOES-EM-ANDAMENTO'] || [];
+            
+            const orientacoes_mestrado = orientacoes[0]['ORIENTACAO-EM-ANDAMENTO-DE-MESTRADO'] || [];
+            const orientacoes_doutorado = orientacoes[0]['ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO'] || [];
+            const orientacoes_pos_doutorado = orientacoes[0]['ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO'] || [];
+            for (let orientacao of orientacoes_mestrado) {
+                
+                const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-MESTRADO'][0]['$'];
+                const detalhamento = orientacao['DETALHAMENTO-DA-ORIENTACAO-EM-ANDAMENTO-DE-MESTRADO'][0]['$'];
+                curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.push({
+                    NOME_DO_ORIENTADO: detalhamento['NOME-DO-ORIENTADO'] || "",
+                    TITULO: dadosBasicos['TITULO-DO-TRABALHO'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    NOME_DA_INSTITUICAO: detalhamento['NOME-DA-INSTITUICAO'] || "",
+                    NOME_DO_CURSO: detalhamento['NOME-DO-CURSO'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
+                });
+
+            }
+            for (let orientacao of orientacoes_doutorado) {
+                const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO'][0]['$'];
+                const detalhamento = orientacao['DETALHAMENTO-DA-ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO'][0]['$'];
+                curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.push({
+                    NOME_DO_ORIENTADO: detalhamento['NOME-DO-ORIENTADO'] || "",
+                    TITULO: dadosBasicos['TITULO-DO-TRABALHO'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    NOME_DA_INSTITUICAO: detalhamento['NOME-DA-INSTITUICAO'] || "",
+                    NOME_DO_CURSO: detalhamento['NOME-DO-CURSO'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
+                });
+
+            }
+            for (let orientacao of orientacoes_pos_doutorado) {
+                const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO'][0]['$'];
+                const detalhamento = orientacao['DETALHAMENTO-DA-ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO'][0]['$'];
+                curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO.push({
+                    NOME_DO_ORIENTADO: detalhamento['NOME-DO-ORIENTADO'] || "",
+                    TITULO: dadosBasicos['TITULO-DO-TRABALHO'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    NOME_DA_INSTITUICAO: detalhamento['NOME-DA-INSTITUICAO'] || "",
+                    NOME_DO_CURSO: detalhamento['NOME-DO-CURSO'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
+                });
+
+            }
+        }
         
-        
+        if(cvData['PRODUCAO-TECNICA'] && cvData['PRODUCAO-TECNICA'][0]['SOFTWARE']){
+            const softwares = cvData['PRODUCAO-TECNICA'][0]['SOFTWARE'] || []
+            for(let software of softwares){
+                const dadosBasicos = software['DADOS-BASICOS-DO-SOFTWARE'][0]['$']
+                const detalhamento = software['DETALHAMENTO-DO-SOFTWARE'][0]['$']
+                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.push({
+                    TITULO_DO_SOFTWARE: dadosBasicos['TITULO-DO-SOFTWARE'] || "",
+                    TITULO_DO_SOFTWARE_INGLES: dadosBasicos['TITULO-DO-SOFTWARE-INGLES'] || "",
+                    ANO: dadosBasicos['ANO'] || "",
+                    FINALIDADE: detalhamento['FINALIDADE'] || "",
+                    HOME_PAGE: dadosBasicos['HOME-PAGE'] || "",
+                    TIPO: dadosBasicos['TIPO'] || "",
+                    AUTORES:[],
+                    AMBIENTE: detalhamento['AMBIENTE'] || "",
+
+                }) 
+                 // Preencher autores
+                 if (software['AUTORES']) {
+                    for (let autor of software['AUTORES']) {
+                        curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.at(-1).AUTORES.push({
+                            NOME_COMPLETO_DO_AUTOR: autor['$']['NOME-COMPLETO-DO-AUTOR'] || "",
+                            ORDEM_DE_AUTORIA: autor['$']['ORDEM-DE-AUTORIA'] || "",
+                            ID_Lattes: autor['$']['NRO-ID-CNPQ'] || "",
+                        });
+                    }
+                }
+
+            }}
+            if(cvData['PRODUCAO-TECNICA'] && cvData['PRODUCAO-TECNICA'][0]['PATENTE']){
+                const patentes = cvData['PRODUCAO-TECNICA'][0]['PATENTE'] || []
+                for(let patente of patentes){
+                    const dadosBasicos = patente['DADOS-BASICOS-DA-PATENTE'][0]['$']
+                    const detalhamento = patente['DETALHAMENTO-DA-PATENTE'][0]['$']
+                    const registro_ou_patente = patente['DETALHAMENTO-DA-PATENTE'][0]['REGISTRO-OU-PATENTE'][0]['$'] || []
+                    curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.push({
+                        TITULO: dadosBasicos['TITULO'] || "",
+                        TITULO_INGLES: dadosBasicos['TITULO-INGLES'] || "",
+                        ANO_DESENVOLVIMENTO: dadosBasicos['ANO_DESENVOLVIMENTO'] || "",
+                        CODIGO_DO_REGISTRO_OU_PATENTE: registro_ou_patente['CODIGO-DO-REGISTRO-OU-PATENTE'] || "",
+                        INSTITUICAO_DEPOSITO_REGISTRO: registro_ou_patente['INSTITUICAO-DEPOSITO-REGISTRO'] || "",
+                        AUTORES: [],
+                        PAIS: dadosBasicos['PAIS'] || "",
+                        HOME_PAGE: dadosBasicos['HOME-PAGE'] || "",
+                        DATA_DE_CONCESSAO: registro_ou_patente['DATA-DE-CONCESSAO'] || "",
+                        DATA_DE_DEPOSITO: registro_ou_patente['DATA-PEDIDO-DE-DESPOSITO'] || "",
+
+                    })
+                    // Preencher autores
+                    if (patente['AUTORES']) {
+                        for (let autor of patente['AUTORES']) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).AUTORES.push({
+                                NOME_COMPLETO_DO_AUTOR: autor['$']['NOME-COMPLETO-DO-AUTOR'] || "",
+                                ORDEM_DE_AUTORIA: autor['$']['ORDEM-DE-AUTORIA'] || "",
+                                ID_Lattes: autor['$']['NRO-ID-CNPQ'] || "",
+                            });
+                        }
+                    }
+
+                }}
+
+            
+
+
+
  
         lattesSimplificado.push(curriculo);
 

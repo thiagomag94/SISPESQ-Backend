@@ -1,33 +1,115 @@
 const mongoose = require('mongoose')
 const {Schema} = mongoose
 const bcrypt = require('bcryptjs');
-const { type } = require('os');
+
+
+// Esquema para Permissões
+const PermissionSetSchema = new mongoose.Schema({
+  administrador_sistema: { type: Boolean, default: false },
+  gestor_institucional: { type: Boolean, default: false },
+  gestor_unidade: { type: Boolean, default: false },
+  gestor_departamento: { type: Boolean, default: false },
+  coordenador_pesquisa: { type: Boolean, default: false },
+  producao_consultar: { type: Boolean, default: false },
+  producao_validar: { type: Boolean, default: false },
+  producao_editar: { type: Boolean, default: false },
+  producao_ocultar: { type: Boolean, default: false },
+  producao_importar: { type: Boolean, default: false },
+  grupos_gerenciar: { type: Boolean, default: false },
+  grupos_membros: { type: Boolean, default: false },
+  grupos_relatorios: { type: Boolean, default: false },
+  projetos_consultar: { type: Boolean, default: false },
+  projetos_cadastrar: { type: Boolean, default: false },
+  projetos_avaliar: { type: Boolean, default: false },
+  projetos_financiamento: { type: Boolean, default: false },
+  indicadores_visualizar: { type: Boolean, default: false },
+  indicadores_exportar: { type: Boolean, default: false },
+  indicadores_customizar: { type: Boolean, default: false },
+  usuarios_gerenciar: { type: Boolean, default: false },
+  parametrizacoes: { type: Boolean, default: false },
+  auditoria: { type: Boolean, default: false }
+}, { _id: false });
+
+// Esquema Principal do Usuário
+const UserSchema = new mongoose.Schema({
+  // Dados básicos do formulário
+  name: {
+    type: String,
+    required: [true, 'Nome é obrigatório'],
+    trim: true,
+    maxlength: [120, 'Nome não pode exceder 120 caracteres']
+  },
+  email: {
+    type: String,
+    required: [true, 'Email é obrigatório'],
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: [/^\w+([.-]?\w+)*@ufpe\.br$/, 'Por favor, use um email institucional @ufpe.br']
+  },
+  password: {
+    type: String,
+    required: [true, 'Senha é obrigatória'],
+    
+    minlength: [8, 'Senha deve ter no mínimo 8 caracteres']
+  },
+  ID_Lattes: {
+    type: String,
+    required: false,
+    unique: false,
+    trim: true,
+    match: [/^\d+$/, 'ID Lattes deve conter apenas números']
+  },
+
+  // Controle de acesso
+  isAdmin: {
+    type: Boolean,
+    default: false
+  },
+  role: {
+    type: String,
+    required: true,
+    enum: {
+      values: ['Administrador do Sistema', 'Gestor da Propesqi', 'Gestor de Departamento', 'Pesquisador'],
+      message: 'Tipo de usuário inválido'
+    },
+    default: 'Pesquisador'
+  },
+  permissions: {
+    type: PermissionSetSchema,
+    required: true,
+    default: () => ({})
+  },
+
+  // Dados adicionais básicos
+  lastPasswordChange: {
+    type: Date,
+    default: Date.now
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+
+}, { timestamps: true });
 
 
 
-const userSchema = new mongoose.Schema({
-    name: { 
-        type:String, 
-        unique: true, 
-        required:true
-    },
-    email: { 
-        type:String, 
-        unique: true,
-        required:true
-    },
-    password: {
-        type:String,
-        required:true
-    },
-    isAdmin: {
-        type:Boolean,
-        default: false
-      }
-  });
+// Índices para otimização
+UserSchema.index({ email: 1 }, { unique: true });
+
+UserSchema.index({ role: 1 });
+
+
+
+
 
   // Antes de salvar, criptografar a senha com hash bcrypt
-userSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function (next) {
     const user = this;
     if (user.isModified('password')) {
       const salt = await bcrypt.genSalt(10);
@@ -188,7 +270,7 @@ const DepartamentoSchema = new Schema({
 
 
 
-const usersdb = mongoose.model('Users', userSchema)
+const usersdb = mongoose.model('Users', UserSchema)
 const Datapesqdb = mongoose.model('DataPesq', DataPesqSchema)
 
 const Researcherdb = mongoose.model('Researcher', ResearcherSchema)

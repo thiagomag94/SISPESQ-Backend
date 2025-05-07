@@ -17,11 +17,12 @@ app.use(express.json())
 
 //-------------------------------rotas de login e registro-------------------------------------------------
 register.post('/signup', checkToken,  async(req, res) =>{
-    const {name, email, password, confirmPassword, isAdmin} = req.body
-    
+    const {name, email, password, confirmPassword, isAdmin, role, ID_Lattes, permissions} = req.body
     console.log(name)
-    console.log(password)
-
+    console.log(role)
+    console.log(ID_Lattes)
+    
+   
     if (!name){
         res.json({message:"username is required"})
 
@@ -49,7 +50,10 @@ register.post('/signup', checkToken,  async(req, res) =>{
                 name:name,
                 email:email,
                 password:password,
-                isAdmin:isAdmin
+                isAdmin:isAdmin,
+                ID_Lattes:ID_Lattes,
+                role:role,
+                permissions:permissions
             })
     
             
@@ -70,7 +74,7 @@ register.post('/signup', checkToken,  async(req, res) =>{
 
 register.post('/login', async(req,res)=>{
     const {email, password} = req.body
-
+   
     //validation
 
     if (!email){
@@ -90,7 +94,7 @@ register.post('/login', async(req,res)=>{
         //check if password match
 
         const checkPassword = await bcrypt.compare(password, user.password)
-        console.log(checkPassword)
+      
 
         if (checkPassword){
             

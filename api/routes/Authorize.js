@@ -188,6 +188,7 @@ register.get('/', checkToken, async(req, res)=>{
     try{
         const resultQuery = await usersdb.find()
         res.status(200).json({result:resultQuery})
+        console.log(resultQuery)
 
     }catch(err){
         res.status(500).json({ error: 'Internal server error'})

@@ -1,8 +1,37 @@
 const fs = require('fs');
 const csv = require('csv-parser');
 const { Datapesqdb, Researcherdb } = require('../db');
+const multer = require('multer');
+const path = require('path');
 
 
+
+
+
+
+const updateDatabaseTeste = async (req,res)=>{
+  try{
+    
+    if (!req.file) {
+      return res.status(400).json({ 
+        success: false,
+        message: 'Nenhum arquivo enviado ou formato inválido' 
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      message: 'Arquivo de pesquisadores enviado com sucesso',
+      filename: req.file.originalname,
+      path: req.file.path
+    });
+  }catch(error){
+    res.status(500).json({
+      success: true,
+      message: 'Internal Server Error',
+  })
+  }
+}
 const updateDatabase = async (req, res) => {
   try {
     const DataPesq = [];
@@ -152,6 +181,7 @@ async function deleteAllResearchers(req, res) {
 module.exports = {
  getResearchers,
   updateDatabase,
+  updateDatabaseTeste,
   updateResearchers,
   createResearchers,
   deleteResearchers,

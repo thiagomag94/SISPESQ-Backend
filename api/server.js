@@ -17,6 +17,8 @@ const corsMiddleware = require('./middleware/cors');
 const publicRoutesController = require('./controllers/publicRoutesController');
 const researcherController = require('./controllers/ResearcherController')
 const LattesController = require('./controllers/LattesController')
+const upload = require('./controllers/UploadController')
+
 
 
 
@@ -58,6 +60,7 @@ app.use('/Lattes', RouterLattes);
 
 // Public routes
 app.get('/updateDb', researcherController.updateDatabase);
+app.post('/updatedb/researchers', upload.single('file'), researcherController.updateDatabaseTeste)
 app.get('/', publicRoutesController.getIndex);
 app.get('/teste', publicRoutesController.getUpload);
 

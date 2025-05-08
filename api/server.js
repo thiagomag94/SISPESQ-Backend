@@ -18,6 +18,7 @@ const publicRoutesController = require('./controllers/publicRoutesController');
 const researcherController = require('./controllers/ResearcherController')
 const LattesController = require('./controllers/LattesController')
 const upload = require('./controllers/UploadController')
+const { uploadMiddleware, checkUploadDirs, uploadFile } = require('./controllers/UploadController');
 
 
 
@@ -38,6 +39,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Static files
 app.use(express.static('public'));
+
+
 
 // Database connection
 mongoose.connect(config.databaseUrl, {
@@ -60,7 +63,7 @@ app.use('/Lattes', RouterLattes);
 
 // Public routes
 app.get('/updateDb', researcherController.updateDatabase);
-app.post('/updatedb/researchers', upload.single('file'), researcherController.updateDatabaseTeste)
+app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)
 app.get('/', publicRoutesController.getIndex);
 app.get('/teste', publicRoutesController.getUpload);
 

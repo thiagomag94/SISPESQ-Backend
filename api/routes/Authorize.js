@@ -130,8 +130,8 @@ register.post('/login', async(req,res)=>{
 
 register.put('/update/:id', checkToken, async(req, res)=>{
     const userId = req.params.id
-   
-    const updatedUser = req.body
+    const isAdmin = req.body.isAdmin
+    const updatedUser = req.body.toUpdate
 
     try{
         if(isAdmin){
@@ -140,7 +140,7 @@ register.put('/update/:id', checkToken, async(req, res)=>{
                     res.status(500).json({ msg: 'Internal server error', error:err})
                 }
                 else{
-                    res.status(200).json({message:"usuário atualizado", result:result})
+                    res.status(200).json({message:"Usuário Atualizado!", result:result})
                 }
             } )
         }
@@ -188,7 +188,7 @@ register.get('/', checkToken, async(req, res)=>{
     try{
         const resultQuery = await usersdb.find()
         res.status(200).json({result:resultQuery})
-        console.log(resultQuery)
+      
 
     }catch(err){
         res.status(500).json({ error: 'Internal server error'})

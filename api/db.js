@@ -205,8 +205,14 @@ const ResearcherSchema = new Schema({
     SIAPE: String,
     SIGLA_CENTRO: String,
     UORG_LOTACAO: String,
-    DATA_INGRESSO_UFPE: String,
-    DATA_EXCLUSAO_UFPE: String,
+    DATA_INGRESSO_UFPE: {
+      type: Date,
+      set: (v) => v ? new Date(v.split('/').reverse().join('-')) : null, // Converte "DD/MM/YYYY" → Date
+  },
+  DATA_EXCLUSAO_UFPE: {
+      type: Date,
+      set: (v) => v ? new Date(v.split('/').reverse().join('-')) : null, // Trata campos vazios
+  },
     TITULACAO: String,
     CARGO: String,
     C: String,
@@ -225,7 +231,7 @@ const DepartamentoSchema = new Schema({
     NUM_DOCENTES_ORCID: String,
     NUM_DOCENTES_SCOPUS: String,
     NUM_DOCENTES_SCHOLAR: String,
-    ID_DOCENTES: [{type:mongoose.Schema.Types.ObjectId, ref:'DataPesq'}],
+    ID_DOCENTES: [{type:mongoose.Schema.Types.ObjectId, ref:'Researcher'}],
     PRODUCAO: {
         2024: {
             BIBLIOGRAFICA: { type: Number, default: 0 },

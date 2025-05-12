@@ -1,4 +1,4 @@
-const {Departamentodb} = require('../db')
+const {Departamentodb, Researcherdb} = require('../db')
 const {Datapesqdb} = require('../db')
 const { v4: uuidv4 } = require('uuid'); 
 
@@ -32,7 +32,7 @@ const getDepartments = async (req, res) => {
   try {
     // Extrai os parâmetros de busca e filtro da query string
     const { departamento, centro, id } = req.query;
-    
+    console.log("ID CHEGANDO", id)
 
     // Construindo a consulta com base nos parâmetros
     let query = {}
@@ -96,9 +96,11 @@ async function createDepartmentsFromResearchers(req, res) {
   try {
     await Departamentodb.deleteMany({});
     // Agrupar docentes por UORG_LOTACAO e coletar seus IDs
-    const docentesAgrupados = await Datapesqdb.aggregate([
+    const docentesAgrupados = await Researcherdb.aggregate([
       {
-        $match: { UORG_LOTACAO: { $exists: true, $ne: null } } // Filtra docentes com UORG_LOTACAO válido
+        $match: {
+          UORG_LOTACAO: { $exists: true, $ne: null, $nin: [""] }
+        } // Filtra docentes com UORG_LOTACAO válido
       },
       {
           $group: {
@@ -152,7 +154,8 @@ async function createDepartmentsFromResearchers(req, res) {
  
   res.status(201).json({message:"Departamentos criados"})
 } catch (error) {
- //console.error('Erro ao criar departamentos:', error);
+ console.error('Erro ao criar departamentos:', error);
+ res.status(500).json({message: "Houve erro na criação"})
 } 
 }
 

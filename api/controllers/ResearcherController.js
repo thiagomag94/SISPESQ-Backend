@@ -36,34 +36,68 @@ const updateDatabase = async (req, res) => {
   try {
     const DataPesq = [];
     fs.createReadStream('researchers.csv')
-      .pipe(csv({ separator: ';', mapHeaders: ({ header }) => header.trim() // remove espaços em branco}))
+      .pipe(csv({ 
+        separator: ';', 
+        mapHeaders: ({ header }) => header.trim() // remove espaços nos cabeçalhos
       }))
-      .on('data', (rows) => {
-        DataPesq.push(rows);
-      }).on('end', async () => {
-        const deletedATAPESQ = await Researcherdb.deleteMany({});
-        if (deletedATAPESQ) {
-         
-          Researcherdb.insertMany(DataPesq).then(() => {
-           
-            res.status(200).json(DataPesq);
-          }).catch((err) => console.log(err));
+      .on('data', (row) => {
+        // Objeto para armazenar os dados tratados
+        const trimmedData = {};
+        
+        // Aplica trim() em todos os campos string
+        for (const key in row) {
+          if (typeof row[key] === 'string') {
+            trimmedData[key] = row[key].trim();
+          } else {
+            trimmedData[key] = row[key];
+          }
         }
+        
+        DataPesq.push(trimmedData);
+      })
+      .on('end', async () => {
+        try {
+          const deletedATAPESQ = await Researcherdb.deleteMany({});
+          
+          if (deletedATAPESQ) {
+            // Inserir os dados tratados
+            const result = await Researcherdb.insertMany(DataPesq);
+            res.status(200).json({
+              message: 'Dados atualizados com sucesso',
+              count: result.length
+            });
+          }
+        } catch (err) {
+          console.error('Erro ao inserir dados:', err);
+          res.status(500).send("Erro ao inserir dados no banco");
+        }
+      })
+      .on('error', (error) => {
+        console.error('Erro ao ler o arquivo CSV:', error);
+        res.status(500).send("Erro ao processar o arquivo CSV");
       });
   } catch (error) {
+    console.error('Erro no processo:', error);
     res.status(500).send("Internal server error");
   }
-}
+};
 
 //---------------------------GET --------------------------------------
 
 const getResearchers = async (req, res) => {
   try {
+    function converterParaISO(dataDDMMYYYY) {
+      if (!dataDDMMYYYY) return null;
+      const [dia, mes, ano] = dataDDMMYYYY.split('/');
+      return new Date(`${ano}-${mes}-${dia}`);
+    }
+
+
     // Extrai os parâmetros de busca e filtro da query string
-    const { professor, centro, departamento } = req.query;
+    const { professor, centro, departamento, titulacao, admissaomaiorque, admissaomenorque, dedicacao } = req.query;
 
-   
-
+  
+    console.log(admissaomenorque)
     // Construindo a consulta
     let query = {};
 
@@ -95,11 +129,31 @@ const getResearchers = async (req, res) => {
       query.UORG_LOTACAO = departamento;
     }
 
-    // Exibe a query final para depuração
- 
+    if(titulacao) query.TITULACAO = titulacao
 
-    // Consultando os dados no banco de dados
+    if(dedicacao) query.REGIME_DE_TRABALHO = dedicacao
+
+    if (admissaomaiorque || admissaomenorque) {
+      const filtroData = {};
+    
+      if (admissaomaiorque) {
+        filtroData.$gte = new Date(admissaomaiorque);
+      }
+    
+      if (admissaomenorque) {
+        filtroData.$lte = new Date(admissaomenorque);
+      }
+    
+      if (Object.keys(filtroData).length > 0) {
+        query.DATA_INGRESSO_UFPE = filtroData;
+      }
+    }
+    
+
+    // Exibe a query final para depuração
     console.log("Query:", query);
+    // Consultando os dados no banco de dados
+   
     const resultado_query = await Researcherdb.find(query);
     console.log("Resultado:", resultado_query);
     

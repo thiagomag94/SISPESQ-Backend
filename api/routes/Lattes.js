@@ -7,7 +7,8 @@ app.use(express.json())
 const lattesController = require('../controllers/LattesController')
 
 
-router.get('/', lattesController.getLattes)
+router.get('/create', lattesController.createLattes)
 router.get('/:id', lattesController.getLattesbyId)
+router.get('/', lattesController.getLattes)
 
 module.exports = router

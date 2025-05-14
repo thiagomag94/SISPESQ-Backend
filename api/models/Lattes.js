@@ -69,7 +69,7 @@ const LattesSchema = new Schema({
                 {
                     TITULO_DO_ARTIGO: String,
                     TITULO_DO_ARTIGO_INGLES: String,
-                    ANO_DO_ARTIGO: String,
+                    ANO_DO_ARTIGO: Date,
                     AUTORES: [
                         {
                             NOME_COMPLETO_DO_AUTOR: String,

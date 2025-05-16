@@ -94,7 +94,7 @@ const getResearchers = async (req, res) => {
 
 
     // Extrai os parâmetros de busca e filtro da query string
-    const { professor, centro, departamento, titulacao, admissaomaiorque, admissaomenorque, dedicacao } = req.query;
+    const { id, professor, centro, departamento, titulacao, admissaomaiorque, admissaomenorque, dedicacao } = req.query;
 
   
     console.log(admissaomenorque)
@@ -102,7 +102,9 @@ const getResearchers = async (req, res) => {
     let query = {};
 
     // Filtro por professor (busca pelo nome)
-    
+    if (id) {
+      query._id = id
+    }
     
     if (professor) {
       const palavras = professor.trim().split(' ').filter(Boolean); // Divide o nome em palavras

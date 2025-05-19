@@ -291,6 +291,15 @@ const createLattes = async (req, res) => {
                                 palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
                                 palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
                             }
+
+                            // Ajustar ANO do livro para Date (31/12/ANO)
+                            if (curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).ANO && 
+                                /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).ANO)) {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).ANO = 
+                                    new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).ANO}-12-31T00:00:00.000Z`);
+                            } else {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].LIVROS_PUBLICADOS_OU_ORGANIZADOS.at(-1).ANO = null;
+                            }
                         }
             
                     }
@@ -354,6 +363,15 @@ const createLattes = async (req, res) => {
                                     palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
                                     palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
                                     palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                                }
+
+                                // Ajustar ANO do capítulo para Date (31/12/ANO)
+                                if (curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).ANO && 
+                                    /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).ANO)) {
+                                    curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).ANO = 
+                                        new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).ANO}-12-31T00:00:00.000Z`);
+                                } else {
+                                    curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS[0].CAPITULO_DE_LIVROS_PUBLICADOS.at(-1).ANO = null;
                                 }
                         }
                     }
@@ -421,8 +439,14 @@ const createLattes = async (req, res) => {
                             palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
                         }
                         
-
-
+                        // Ajustar ANO_DO_TRABALHO para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).ANO_DO_TRABALHO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).ANO_DO_TRABALHO)) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).ANO_DO_TRABALHO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).ANO_DO_TRABALHO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS.at(-1).ANO_DO_TRABALHO = null;
+                        }
                     }
                     
                 }
@@ -450,6 +474,14 @@ const createLattes = async (req, res) => {
                             TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
                         });
 
+                        // Ajustar ANO da orientação de mestrado para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO.at(-1).ANO = null;
+                        }
                     }
                     for (let orientacao of orientacoes_doutorado) {
                         const dadosBasicos = orientacao['DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO']?.[0]?.['$'] || {};
@@ -463,6 +495,15 @@ const createLattes = async (req, res) => {
                             TIPO: dadosBasicos['TIPO'] || "",
                             TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
                         });
+
+                        // Ajustar ANO da orientação de doutorado para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO.at(-1).ANO = null;
+                        }
                     }
                     for (let orientacao of orientacoes_pos_doutorado) {
                         const dadosBasicos = orientacao['DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-POS-DOUTORADO']?.[0]?.['$'] || {};
@@ -477,6 +518,14 @@ const createLattes = async (req, res) => {
                             TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
                         });
 
+                        // Ajustar ANO da orientação de pós-doutorado para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO.at(-1).ANO = null;
+                        }
                     }
                 }
                 if (cvData['DADOS-COMPLEMENTARES'] && cvData['DADOS-COMPLEMENTARES'][0]['ORIENTACOES-EM-ANDAMENTO']) {
@@ -499,6 +548,14 @@ const createLattes = async (req, res) => {
                             TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
                         });
 
+                        // Ajustar ANO da orientação em andamento de mestrado para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.at(-1).ANO = null;
+                        }
                     }
                     for (let orientacao of orientacoes_doutorado) {
                         const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO']?.[0]?.['$'] || {};
@@ -513,6 +570,14 @@ const createLattes = async (req, res) => {
                             TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
                         });
 
+                        // Ajustar ANO da orientação em andamento de doutorado para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.at(-1).ANO = null;
+                        }
                     }
                     for (let orientacao of orientacoes_pos_doutorado) {
                         const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO']?.[0]?.['$'] || {};
@@ -527,6 +592,14 @@ const createLattes = async (req, res) => {
                             TIPO_DE_ORIENTACAO: detalhamento['TIPO-DE-ORIENTACAO'] || "",
                         });
 
+                        // Ajustar ANO da orientação em andamento de pós-doutorado para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO.at(-1).ANO = null;
+                        }
                     }
                 }
                 
@@ -557,6 +630,14 @@ const createLattes = async (req, res) => {
                             }
                         }
 
+                        // Ajustar ANO do software para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.at(-1).ANO && 
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE.at(-1).ANO = null;
+                        }
                     }}
                     if(cvData['PRODUCAO-TECNICA'] && cvData['PRODUCAO-TECNICA'][0]['PATENTE']){
                         const patentes = cvData['PRODUCAO-TECNICA'][0]['PATENTE'] || []
@@ -588,6 +669,15 @@ const createLattes = async (req, res) => {
                                 }
                             }
 
+                            // Ajustar datas da patente para Date (mantendo formato original)
+                            if (curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO) {
+                                const [dia, mes, ano] = curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO.split('/');
+                                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO = new Date(`${ano}-${mes}-${dia}`);
+                            }
+                            if (curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO) {
+                                const [dia, mes, ano] = curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO.split('/');
+                                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO = new Date(`${ano}-${mes}-${dia}`);
+                            }
                         }}
 
                 

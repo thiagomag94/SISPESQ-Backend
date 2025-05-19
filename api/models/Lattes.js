@@ -105,7 +105,7 @@ const LattesSchema = new Schema({
                             PAIS_DE_PUBLICACAO: String,
                             IDIOMA: String,
                             MEIO_DE_DIVULGACAO: String,
-                            ANO: String,
+                            ANO: Date,
                             NOME_DA_EDITORA: String,
                             NUMERO_DE_PAGINAS: String,
                             DOI: String,
@@ -137,7 +137,7 @@ const LattesSchema = new Schema({
                         {
                             TIPO:String,
                             TITULO_DO_CAPITULO_DO_LIVRO: String,
-                            ANO: String,
+                            ANO: Date,
                             PAIS_DE_PUBLICACAO:String,
                             IDIOMA:String,
                             MEIO_DE_DIVULGACAO:String,	
@@ -176,7 +176,7 @@ const LattesSchema = new Schema({
                 {
                     NATUREZA:String,
                     TITULO_DO_TRABALHO: String,
-                    ANO_DO_TRABALHO: String,
+                    ANO_DO_TRABALHO: Date,
                     PAIS_DO_EVENTO: String,
                     IDIOMA:String,
                     MEIO_DE_DIVULGACAO:String,
@@ -211,7 +211,7 @@ const LattesSchema = new Schema({
                 {
                     NATUREZA:String,
                     TITULO_DO_TEXTO: String,
-                    ANO_DO_TEXTO: String,
+                    ANO_DO_TEXTO: Date,
                     PAIS_DE_PUBLICACAO: String,
                     IDIOMA:String,
                     MEIO_DE_DIVULGACAO:String,
@@ -248,7 +248,7 @@ const LattesSchema = new Schema({
             SOFTWARE: [
                 {   TITULO_DO_SOFTWARE: String,
                     TITULO_DO_SOFTWARE_INGLES: String,
-                    ANO: String,
+                    ANO: Date,
                     AUTORES: [
                         {
                             NOME_COMPLETO_DO_AUTOR: String,
@@ -278,8 +278,8 @@ const LattesSchema = new Schema({
                     CODIGO_DO_REGISTRO_OU_PATENTE: String,
                     INSTITUICAO_DEPOSITO_REGISTRO: String,
                     HOME_PAGE: String,
-                    DATA_DE_CONCESSAO: String,
-                    DATA_DE_DEPOSITO: String,
+                    DATA_DE_CONCESSAO: Date,
+                    DATA_DE_DEPOSITO: Date,
                 },
             ],
         },
@@ -287,7 +287,7 @@ const LattesSchema = new Schema({
             ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO: [
                 {
                     NOME_DO_ORIENTADO: String,
-                    ANO: String,
+                    ANO: Date,
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,
@@ -298,7 +298,7 @@ const LattesSchema = new Schema({
             ORIENTACOES_CONCLUIDAS_PARA_MESTRADO: [
                 {
                     NOME_DO_ORIENTADO: String,
-                    ANO: String,
+                    ANO: Date,
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,
@@ -309,7 +309,7 @@ const LattesSchema = new Schema({
             ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO: [
                 {
                     NOME_DO_ORIENTADO: String,
-                    ANO: String,
+                    ANO: Date,
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,
@@ -323,7 +323,7 @@ const LattesSchema = new Schema({
             ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO: [
                 {
                     NOME_DO_ORIENTADO: String,
-                    ANO: String,
+                    ANO: Date,
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,
@@ -334,7 +334,7 @@ const LattesSchema = new Schema({
             ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO: [
                 {
                     NOME_DO_ORIENTADO: String,
-                    ANO: String,
+                    ANO: Date,
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,
@@ -345,7 +345,7 @@ const LattesSchema = new Schema({
             ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO: [
                 {
                     NOME_DO_ORIENTADO: String,
-                    ANO: String,
+                    ANO: Date,
                     TITULO: String,
                     NOME_DA_INSTITUICAO: String,
                     NOME_DO_CURSO: String,

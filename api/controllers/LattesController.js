@@ -107,8 +107,8 @@ const createLattes = async (req, res) => {
         console.log('Dados antigos removidos com sucesso');
 
         // Deletar todos os artigos publicados antes de inserir
-        await ArtigoPublicado.deleteMany({});
-        console.log('Artigos antigos removidos com sucesso');
+        //await ArtigoPublicado.deleteMany({});
+        //console.log('Artigos antigos removidos com sucesso');
 
         // Array para acumular todos os artigos publicados
         let artigosParaSalvar = [];
@@ -213,20 +213,20 @@ const createLattes = async (req, res) => {
                             artigoObj.PALAVRAS_CHAVE.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
                         }
                         // Só adiciona se ID_Lattes não for vazio e não estiver no array
-                        if (
-                          artigoObj.ID_Lattes &&
-                          !artigosParaSalvar.some(a =>
-                            (artigoObj.DOI && a.DOI === artigoObj.DOI) ||
-                            (!artigoObj.DOI &&
-                              a.TITULO_DO_ARTIGO === artigoObj.TITULO_DO_ARTIGO &&
-                              a.ANO_DO_ARTIGO?.getTime?.() === artigoObj.ANO_DO_ARTIGO?.getTime?.() &&
-                              a.TITULO_DO_PERIODICO_OU_REVISTA === artigoObj.TITULO_DO_PERIODICO_OU_REVISTA &&
-                              a.ID_Lattes === artigoObj.ID_Lattes
-                            )
-                          )
-                        ) {
-                          artigosParaSalvar.push(artigoObj);
-                        }
+                        //if (
+                          //artigoObj.ID_Lattes &&
+                          //!artigosParaSalvar.some(a =>
+                            //(artigoObj.DOI && a.DOI === artigoObj.DOI) ||
+                            //(!artigoObj.DOI &&
+                              //a.TITULO_DO_ARTIGO === artigoObj.TITULO_DO_ARTIGO &&
+                              //a.ANO_DO_ARTIGO?.getTime?.() === artigoObj.ANO_DO_ARTIGO?.getTime?.() &&
+                              //a.TITULO_DO_PERIODICO_OU_REVISTA === artigoObj.TITULO_DO_PERIODICO_OU_REVISTA &&
+                              //a.ID_Lattes === artigoObj.ID_Lattes
+                            //)
+                          //)
+                        //) {
+                          //artigosParaSalvar.push(artigoObj);
+                        //}
                         // Adicionar ao currículo normalmente
                         curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.ARTIGOS_PUBLICADOS.push(artigoObj);
                     }
@@ -655,8 +655,7 @@ const createLattes = async (req, res) => {
                                 PAIS: dadosBasicos['PAIS'] || "",
                                 HOME_PAGE: dadosBasicos['HOME-PAGE'] || "",
                                 DATA_DE_CONCESSAO: registro_ou_patente['DATA-DE-CONCESSAO'] || "",
-                                DATA_DE_DEPOSITO: registro_ou_patente['DATA-PEDIDO-DE-DESPOSITO'] || "",
-
+                                DATA_DE_DEPOSITO: registro_ou_patente['DATA-PEDIDO-DE-DEPOSITO'] || "",
                             })
                             // Preencher autores
                             if (patente['AUTORES']) {
@@ -671,12 +670,30 @@ const createLattes = async (req, res) => {
 
                             // Ajustar datas da patente para Date (mantendo formato original)
                             if (curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO) {
-                                const [dia, mes, ano] = curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO.split('/');
-                                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO = new Date(`${ano}-${mes}-${dia}`);
+                                const dataDeposito = curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO;
+                                if (dataDeposito.length === 8) {
+                                    const dia = dataDeposito.substring(0, 2);
+                                    const mes = dataDeposito.substring(2, 4);
+                                    const ano = dataDeposito.substring(4, 8);
+                                    curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO = new Date(`${ano}-${mes}-${dia}`);
+                                } else {
+                                    curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO = null;
+                                }
+                            } else {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_DEPOSITO = null;
                             }
                             if (curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO) {
-                                const [dia, mes, ano] = curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO.split('/');
-                                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO = new Date(`${ano}-${mes}-${dia}`);
+                                const dataConcessao = curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO;
+                                if (dataConcessao.length === 8) {
+                                    const dia = dataConcessao.substring(0, 2);
+                                    const mes = dataConcessao.substring(2, 4);
+                                    const ano = dataConcessao.substring(4, 8);
+                                    curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO = new Date(`${ano}-${mes}-${dia}`);
+                                } else {
+                                    curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO = null;
+                                }
+                            } else {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE.at(-1).DATA_DE_CONCESSAO = null;
                             }
                         }}
 

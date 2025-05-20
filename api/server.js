@@ -19,9 +19,9 @@ const researcherController = require('./controllers/ResearcherController')
 const LattesController = require('./controllers/LattesController')
 const upload = require('./controllers/UploadController')
 const { uploadMiddleware, checkUploadDirs, uploadFile } = require('./controllers/UploadController');
-
-
-
+const RouterPatentes = require('./routes/Patentes')
+const RouterSoftwares = require('./routes/Softwares')
+const RouterOrientacoes = require('./routes/Orientacoes')
 
 
 
@@ -59,8 +59,9 @@ app.use('/Departments', RouterDepartment)
 //app.use('/Centers')
 app.use('/Researchers',RouterResearcher )
 app.use('/Lattes', RouterLattes);
-
-
+app.use('/Patentes', RouterPatentes);
+app.use('/Softwares', RouterSoftwares);
+app.use('/Orientacoes', RouterOrientacoes);
 // Public routes
 app.get('/updateDb', researcherController.updateDatabase);
 app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)

@@ -22,6 +22,7 @@ const { uploadMiddleware, checkUploadDirs, uploadFile } = require('./controllers
 const RouterPatentes = require('./routes/Patentes')
 const RouterSoftwares = require('./routes/Softwares')
 const RouterOrientacoes = require('./routes/Orientacoes')
+const RouterProducao = require('./routes/Produção')
 
 
 
@@ -62,6 +63,7 @@ app.use('/Lattes', RouterLattes);
 app.use('/Patentes', RouterPatentes);
 app.use('/Softwares', RouterSoftwares);
 app.use('/Orientacoes', RouterOrientacoes);
+app.use('/Producao/', RouterProducao);
 // Public routes
 app.get('/updateDb', researcherController.updateDatabase);
 app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)

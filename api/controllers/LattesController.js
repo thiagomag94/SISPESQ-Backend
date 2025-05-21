@@ -4,7 +4,6 @@ const xml2js = require('xml2js');
 const jschardet = require('jschardet'); // Usando jschardet para detectar codificação
 const iconv = require('iconv-lite'); // Importando o iconv-lite para conversão de codificação
 const { lattesdb } = require('../models/Lattes');
-const ArtigoPublicado = require('../models/ArtigoPublicado');
 
 const emptyCurriculo = {
     CURRICULO_VITAE: {
@@ -106,12 +105,6 @@ const createLattes = async (req, res) => {
         await lattesdb.deleteMany({});
         console.log('Dados antigos removidos com sucesso');
 
-        // Deletar todos os artigos publicados antes de inserir
-        //await ArtigoPublicado.deleteMany({});
-        //console.log('Artigos antigos removidos com sucesso');
-
-        // Array para acumular todos os artigos publicados
-        let artigosParaSalvar = [];
         // Array para acumular todos os currículos Lattes
         let curriculosParaSalvar = [];
 
@@ -212,21 +205,6 @@ const createLattes = async (req, res) => {
                             artigoObj.PALAVRAS_CHAVE.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
                             artigoObj.PALAVRAS_CHAVE.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
                         }
-                        // Só adiciona se ID_Lattes não for vazio e não estiver no array
-                        //if (
-                          //artigoObj.ID_Lattes &&
-                          //!artigosParaSalvar.some(a =>
-                            //(artigoObj.DOI && a.DOI === artigoObj.DOI) ||
-                            //(!artigoObj.DOI &&
-                              //a.TITULO_DO_ARTIGO === artigoObj.TITULO_DO_ARTIGO &&
-                              //a.ANO_DO_ARTIGO?.getTime?.() === artigoObj.ANO_DO_ARTIGO?.getTime?.() &&
-                              //a.TITULO_DO_PERIODICO_OU_REVISTA === artigoObj.TITULO_DO_PERIODICO_OU_REVISTA &&
-                              //a.ID_Lattes === artigoObj.ID_Lattes
-                            //)
-                          //)
-                        //) {
-                          //artigosParaSalvar.push(artigoObj);
-                        //}
                         // Adicionar ao currículo normalmente
                         curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.ARTIGOS_PUBLICADOS.push(artigoObj);
                     }
@@ -717,13 +695,6 @@ const createLattes = async (req, res) => {
             }
         }
 
-        // Após processar todos os arquivos, salvar todos os artigos em lote
-        if (artigosParaSalvar.length > 0) {
-            await ArtigoPublicado.insertMany(artigosParaSalvar);
-            console.log(`${artigosParaSalvar.length} artigos salvos com sucesso`);
-            artigosParaSalvar = []; // Libera a referência
-            if (global.gc) global.gc(); // Força garbage collection
-        }
         // Após processar todos os arquivos, salvar todos os currículos em lotes de 5.000
         const BATCH_SIZE = 500;
         let totalCurriculos = curriculosParaSalvar.length;
@@ -734,7 +705,6 @@ const createLattes = async (req, res) => {
             batchCount++;
             console.log(`Lote ${batchCount} de currículos salvo (${batch.length} documentos, ${curriculosParaSalvar.length} restantes)`);
            
-            
             // Forçar garbage collection se possível
             if (global.gc) {
                 global.gc();
@@ -747,9 +717,9 @@ const createLattes = async (req, res) => {
         }
 
         res.json({ message: "Processamento concluído com sucesso", total: folders.length, falhas: failedFiles.length });
-    } catch (err) {
-        console.error('Erro no processamento principal:', err);
-        res.status(500).json({ error: "Erro no processamento" });
+    } catch (error) {
+        console.error('Erro ao processar arquivos:', error);
+        res.status(500).json({ error: error.message });
     }
 };
 

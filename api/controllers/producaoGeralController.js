@@ -2,6 +2,26 @@ const { Datapesqdb, Researcherdb} = require('../db');
 const {lattesdb} = require('../models/Lattes');
 const mongoose = require('mongoose');
 
+// Funções auxiliares para cálculo de datas
+const calcularDataFim = (situacaoFuncional, dataExclusao) => {
+    if (situacaoFuncional === 'APOSENTADO') {
+        if (dataExclusao) {
+            const dataFim = new Date(dataExclusao);
+            dataFim.setFullYear(dataFim.getFullYear() + 10);
+            return dataFim;
+        }
+        return new Date();
+    }
+    return dataExclusao || new Date();
+};
+
+const calcularPeriodoAtividade = (researcher) => {
+    return {
+        inicio: researcher.DATA_INGRESSO_UFPE || new Date(0),
+        fim: calcularDataFim(researcher.SITUACAO_FUNCIONAL, researcher.DATA_EXCLUSAO)
+    };
+};
+
 const ProducaoGeral = async (req, res) => {
     try {
         // Get the collection and clear existing data before any processing
@@ -44,7 +64,7 @@ const ProducaoGeral = async (req, res) => {
                                 if: { $eq: ['$SITUACAO_FUNCIONAL', 'APOSENTADO'] },
                                 then: {
                                     $ifNull: [
-                                        { $add: ['$DATA_EXCLUSAO', 1000 * 60 * 60 * 24 * 365 * 10] },
+                                        { $dateAdd: { startDate: '$DATA_EXCLUSAO', unit: 'year', amount: 10 } },
                                         new Date()
                                     ]
                                 },
@@ -54,7 +74,7 @@ const ProducaoGeral = async (req, res) => {
                     }
                 }
             },
-            // Calculamos as contagens usando expressões condicionais
+            // Calculamos as contagens e coletamos as produções
             {
                 $addFields: {
                     contagem: {
@@ -75,7 +95,15 @@ const ProducaoGeral = async (req, res) => {
                         livros: {
                             $size: {
                                 $filter: {
-                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS.0.LIVROS_PUBLICADOS_OU_ORGANIZADOS', []] },
+                                    input: { 
+                                        $ifNull: [
+                                            { $getField: {
+                                                field: "LIVROS_PUBLICADOS_OU_ORGANIZADOS",
+                                                input: { $arrayElemAt: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS', 0] }
+                                            }},
+                                            []
+                                        ]
+                                    },
                                     as: 'livro',
                                     cond: {
                                         $and: [
@@ -89,7 +117,15 @@ const ProducaoGeral = async (req, res) => {
                         capitulos: {
                             $size: {
                                 $filter: {
-                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS.0.CAPITULO_DE_LIVROS_PUBLICADOS', []] },
+                                    input: { 
+                                        $ifNull: [
+                                            { $getField: {
+                                                field: "CAPITULO_DE_LIVROS_PUBLICADOS",
+                                                input: { $arrayElemAt: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS', 0] }
+                                            }},
+                                            []
+                                        ]
+                                    },
                                     as: 'capitulo',
                                     cond: {
                                         $and: [
@@ -244,6 +280,184 @@ const ProducaoGeral = async (req, res) => {
                                 }
                             }
                         }
+                    },
+                    producoes: {
+                        artigos: {
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.ARTIGOS_PUBLICADOS', []] },
+                                as: 'artigo',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$artigo.ANO_DO_ARTIGO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$artigo.ANO_DO_ARTIGO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        livros: {
+                            $filter: {
+                                input: { 
+                                    $ifNull: [
+                                        { $getField: {
+                                            field: "LIVROS_PUBLICADOS_OU_ORGANIZADOS",
+                                            input: { $arrayElemAt: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS', 0] }
+                                        }},
+                                        []
+                                    ]
+                                },
+                                as: 'livro',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$livro.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$livro.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        capitulos: {
+                            $filter: {
+                                input: { 
+                                    $ifNull: [
+                                        { $getField: {
+                                            field: "CAPITULO_DE_LIVROS_PUBLICADOS",
+                                            input: { $arrayElemAt: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.LIVROS_E_CAPITULOS', 0] }
+                                        }},
+                                        []
+                                    ]
+                                },
+                                as: 'capitulo',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$capitulo.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$capitulo.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        trabalhos_eventos: {
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TRABALHOS_EM_EVENTOS', []] },
+                                as: 'trabalho',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$trabalho.ANO_DO_TRABALHO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$trabalho.ANO_DO_TRABALHO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        textos_jornais: {
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.TEXTO_EM_JORNAL_OU_REVISTA', []] },
+                                as: 'texto',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$texto.ANO_DO_TEXTO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$texto.ANO_DO_TEXTO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        softwares: {
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE', []] },
+                                as: 'software',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$software.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$software.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        patentes: {
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_TECNICA.PATENTE', []] },
+                                as: 'patente',
+                                cond: {
+                                    $and: [
+                                        { $gte: [{ $year: '$$patente.DATA_DE_DEPOSITO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$patente.DATA_DE_DEPOSITO' }, { $year: '$periodo_atividade.fim' }] }
+                                    ]
+                                }
+                            }
+                        },
+                        orientacoes_concluidas: {
+                            doutorado: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO', []] },
+                                    as: 'orientacao',
+                                    cond: {
+                                        $and: [
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                        ]
+                                    }
+                                }
+                            },
+                            mestrado: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_MESTRADO', []] },
+                                    as: 'orientacao',
+                                    cond: {
+                                        $and: [
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                        ]
+                                    }
+                                }
+                            },
+                            pos_doutorado: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.ORIENTACOES_CONCLUIDAS.ORIENTACOES_CONCLUIDAS_PARA_POS_DOUTORADO', []] },
+                                    as: 'orientacao',
+                                    cond: {
+                                        $and: [
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        orientacoes_andamento: {
+                            doutorado: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO', []] },
+                                    as: 'orientacao',
+                                    cond: {
+                                        $and: [
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                        ]
+                                    }
+                                }
+                            },
+                            mestrado: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO', []] },
+                                    as: 'orientacao',
+                                    cond: {
+                                        $and: [
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                        ]
+                                    }
+                                }
+                            },
+                            pos_doutorado: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO', []] },
+                                    as: 'orientacao',
+                                    cond: {
+                                        $and: [
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -263,7 +477,8 @@ const ProducaoGeral = async (req, res) => {
                     centro: '$SIGLA_CENTRO',
                     situacao_funcional: '$SITUACAO_FUNCIONAL',
                     periodo_atividade: 1,
-                    contagem: 1
+                    contagem: 1,
+                    producoes: 1
                 }
             },
             // Filtramos documentos com _id nulo
@@ -304,18 +519,60 @@ const ProducaoGeral = async (req, res) => {
 
 const getProducaoGeral = async (req, res) => {
     try {
-        const { centro, departamento, situacao_funcional } = req.query;
+        const { centro, departamento, situacao_funcional, groupBy } = req.query;
         
         // Acessar a collection criada pelo $out
         const producaoGeralCollection = mongoose.connection.collection('producao_geral');
         
-        // Construir query baseada nos filtros
-        const query = {};
-        if (centro) query.centro = centro;
-        if (departamento) query.departamento = departamento;
-        if (situacao_funcional) query.situacao_funcional = situacao_funcional;
+        // Construir pipeline de agregação
+        const pipeline = [];
 
-        const results = await producaoGeralCollection.find(query).toArray();
+        // Adicionar filtros ao pipeline
+        const matchStage = {};
+        if (centro) matchStage.centro = centro;
+        if (departamento) matchStage.departamento = departamento;
+        if (situacao_funcional) matchStage.situacao_funcional = situacao_funcional;
+
+        if (Object.keys(matchStage).length > 0) {
+            pipeline.push({ $match: matchStage });
+        }
+
+        // Adicionar agrupamento se especificado
+        if (groupBy) {
+            const groupFields = groupBy.split(',');
+            const groupStage = {
+                _id: {}
+            };
+
+            // Adicionar campos de agrupamento
+            groupFields.forEach(field => {
+                groupStage._id[field] = `$${field}`;
+            });
+
+            // Adicionar contagem e somas para cada tipo de produção
+            groupStage.total_pesquisadores = { $sum: 1 };
+            groupStage.artigos = { $sum: '$contagem.artigos' };
+            groupStage.livros = { $sum: '$contagem.livros' };
+            groupStage.capitulos = { $sum: '$contagem.capitulos' };
+            groupStage.trabalhos_eventos = { $sum: '$contagem.trabalhos_eventos' };
+            groupStage.textos_jornais = { $sum: '$contagem.textos_jornais' };
+            groupStage.softwares = { $sum: '$contagem.softwares' };
+            groupStage.patentes = { $sum: '$contagem.patentes' };
+            groupStage.orientacoes_concluidas_doutorado = { $sum: '$contagem.orientacoes_concluidas.doutorado' };
+            groupStage.orientacoes_concluidas_mestrado = { $sum: '$contagem.orientacoes_concluidas.mestrado' };
+            groupStage.orientacoes_concluidas_pos_doutorado = { $sum: '$contagem.orientacoes_concluidas.pos_doutorado' };
+
+            groupStage.orientacoes_andamento_doutorado = { $sum: '$contagem.orientacoes_andamento.doutorado' };
+            groupStage.orientacoes_andamento_mestrado = { $sum: '$contagem.orientacoes_andamento.mestrado' };
+            groupStage.orientacoes_andamento_pos_doutorado = { $sum: '$contagem.orientacoes_andamento.pos_doutorado' };
+
+            pipeline.push({ $group: groupStage });
+
+            // Ordenar resultados pelo _id
+            pipeline.push({ $sort: { _id: 1 } });
+        }
+
+        const results = await producaoGeralCollection.aggregate(pipeline).toArray();
         
         res.status(200).json({
             success: true,

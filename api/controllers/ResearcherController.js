@@ -3,6 +3,7 @@ const csv = require('csv-parser');
 const { Datapesqdb, Researcherdb } = require('../db');
 const multer = require('multer');
 const path = require('path');
+const { get } = require('http');
 
 
 
@@ -94,10 +95,12 @@ const getResearchers = async (req, res) => {
 
 
     // Extrai os parâmetros de busca e filtro da query string
-    const { id, professor, centro, departamento, titulacao, admissaomaiorque, admissaomenorque, dedicacao } = req.query;
+    const { id, id_lattes, professor, centro, departamento, titulacao, admissaomaiorque, admissaomenorque, dedicacao, admissaoiguala,  situacao_funcional, exclusaomaiorque, exclusaomenorque, exclusaoiguala } = req.query;
 
   
     console.log(admissaomenorque)
+    console.log(typeof admissaomenorque, admissaomenorque)
+    console.log(typeof admissaoiguala, admissaoiguala)
     // Construindo a consulta
     let query = {};
 
@@ -105,7 +108,9 @@ const getResearchers = async (req, res) => {
     if (id) {
       query._id = id
     }
-    
+    if(id_lattes) {
+      query.ID_Lattes = id_lattes;
+    }
     if (professor) {
       const palavras = professor.trim().split(' ').filter(Boolean); // Divide o nome em palavras
      
@@ -135,29 +140,67 @@ const getResearchers = async (req, res) => {
 
     if(dedicacao) query.REGIME_DE_TRABALHO = dedicacao
 
-    if (admissaomaiorque || admissaomenorque) {
+    if (admissaomaiorque || admissaomenorque || admissaoiguala) {
       const filtroData = {};
     
+    if (admissaoiguala) {
+      const dataInicio = new Date(admissaoiguala);
+      dataInicio.setHours(0, 0, 0, 0);
+  
+      const dataFim = new Date(admissaoiguala);
+      dataFim.setHours(23, 59, 59, 999);
+  
+      filtroData.$gte = dataInicio;
+      filtroData.$lte = dataFim;
+    } else {
       if (admissaomaiorque) {
         filtroData.$gte = new Date(admissaomaiorque);
       }
-    
       if (admissaomenorque) {
         filtroData.$lte = new Date(admissaomenorque);
       }
+    }
     
-      if (Object.keys(filtroData).length > 0) {
+    if (Object.keys(filtroData).length > 0) {
         query.DATA_INGRESSO_UFPE = filtroData;
       }
     }
     
+    
+    if (exclusaomaiorque || exclusaomenorque || exclusaoiguala) {
+      const filtroDataExclusao = {};
+      if (exclusaoiguala) {
+        const dataInicioExclusao = new Date(exclusaoiguala);
+        dataInicioExclusao.setHours(0, 0, 0, 0);
+        const dataFimExclusao = new Date(exclusaoiguala);
+        dataFimExclusao.setHours(23, 59, 59, 999);
+
+        filtroDataExclusao.$gte = dataInicioExclusao;
+        filtroDataExclusao.$lte = dataFimExclusao;
+      } else {
+        if (exclusaomaiorque) {
+          filtroDataExclusao.$gte = new Date(exclusaomaiorque);
+        }
+        if (exclusaomenorque) {
+          filtroDataExclusao.$lte = new Date(exclusaomenorque);
+        }
+      }
+      if (Object.keys(filtroDataExclusao).length > 0) {
+        query.DATA_EXCLUSAO_UFPE = filtroDataExclusao;
+      }
+    }
+
+    if(situacao_funcional) {
+      query.SITUACAO_FUNCIONAL = situacao_funcional;
+    }
+      
 
     // Exibe a query final para depuração
     console.log("Query:", query);
     // Consultando os dados no banco de dados
    
     const resultado_query = await Researcherdb.find(query);
-    console.log("Resultado:", resultado_query);
+  
     
 
     // Retornando os resultados
@@ -169,6 +212,32 @@ const getResearchers = async (req, res) => {
   }
 };
 
+
+const getDuplicatedResearchers = async (req, res) => {
+  try {
+    const duplicates = await Researcherdb.aggregate([
+      {
+        $group: {
+          _id: "$ID_Lattes",
+          count: { $sum: 1 },
+          documents: { $push: "$$ROOT" }
+        }
+      },
+      {
+        $match: { count: { $gt: 1 } }
+      }
+    ]);
+
+    if (duplicates.length === 0) {
+      return res.status(404).json({ message: "Nenhum documento duplicado encontrado." });
+    }
+
+    res.status(200).json(duplicates);
+  } catch (error) {
+    console.error("Erro ao buscar documentos duplicados:", error);
+    res.status(500).json({ error: "Erro interno no servidor", details: error.message });
+  }
+};  
 
 //------------------------CREATE--------------------------------------------------------------
 
@@ -241,6 +310,7 @@ module.exports = {
   updateResearchers,
   createResearchers,
   deleteResearchers,
-  deleteAllResearchers
+  deleteAllResearchers,
+  getDuplicatedResearchers
 }
 

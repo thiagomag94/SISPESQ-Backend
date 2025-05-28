@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const xml2js = require('xml2js');
 const jschardet = require('jschardet'); // Usando jschardet para detectar codificação
 const iconv = require('iconv-lite'); // Importando o iconv-lite para conversão de codificação
@@ -775,8 +776,103 @@ const getLattesbyId = async(req, res)=>{
     }
 }
 
+const extrairTodosCurriculos= async(req, res) =>{
+    const parser = new xml2js.Parser();
+    const dir = path.join(__dirname, '../../xml_files');
+    const folders = fs.readdirSync(dir);
+
+    const failedLogPath = path.join(__dirname, '../../lattes_failed_files.log');
+    fs.writeFileSync(failedLogPath, ''); // limpa o log
+
+    const curriculos = [];
+    const failedFiles = [];
+    console.log(`Iniciando processamento de ${folders.length} pastas...`);
+    for (const folder of folders) {
+        const folderPath = path.join(dir, folder);
+        const stat = fs.statSync(folderPath);
+        if (!stat.isDirectory()) continue;
+
+        const xmlPath = path.join(folderPath, `${folder}.xml`);
+        if (!fs.existsSync(xmlPath)) continue;
+
+        try {
+            const fileBuffer = fs.readFileSync(xmlPath);
+            let xml;
+            try {
+                xml = iconv.decode(fileBuffer, 'ISO-8859-1');
+            } catch (e) {
+                xml = fileBuffer.toString('utf-8');
+            }
+
+            const result = await parser.parseStringPromise(xml);
+            const cvData = result['CURRICULO-VITAE'];
+
+            if (cvData) {
+                curriculos.push(cvData);
+            } else {
+                failedFiles.push(folder);
+            }
+        } catch (err) {
+            console.error(`Erro ao processar ${folder}:`, err.message);
+            failedFiles.push(folder);
+        }
+    }
+    res.json({
+        message: `Processamento concluído. Total de currículos extraídos: ${curriculos.length}`,
+        curriculos,
+        failedFiles: failedFiles.length > 0 ? failedFiles : null
+    });
+
+    if (failedFiles.length > 0) {
+        fs.appendFileSync(failedLogPath, failedFiles.join('\n'));
+    }
+}
+    
+
+
+const getInternalId = async (req, res) => {
+  const id_lattes = req.query.id_lattes;
+
+  
+
+
+  if (!id_lattes) {
+    return res.status(400).json({ error: 'Faltando o parâmetro id_lattes' });
+  }
+
+  
+  try {
+
+    const result = await lattesdb.findOne({ "CURRICULO_VITAE.ID_Lattes": id_lattes });
+
+    if (result) {
+        const url = `http://lattes.cnpq.br/${id_lattes}`;
+        console.log(`Buscando ID interno para: ${url}`);
+        const response = await fetch(url, { redirect: 'follow' });
+        const finalUrl = response.url;
+
+        // Extrai o parâmetro 'id' da URL final
+        const idMatch = finalUrl.match(/[?&]id=([^&]+)/);
+
+        if (idMatch && idMatch[1]) {
+        return res.json({ internalId: idMatch[1] });
+        } else {
+        return res.status(404).json({ error: 'ID interno não encontrado na URL final' });
+        }
+      }else{
+        return res.status(404).json({ error: 'Currículo não encontrado para o ID Lattes fornecido' });
+      }
+    
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+
 module.exports = {
-    createLattes, getLattesbyId, getLattes
+    createLattes, getLattesbyId, getLattes, extrairTodosCurriculos, getInternalId
 };
 
 

@@ -44,7 +44,7 @@ app.use(express.static('public'));
 
 
 // Database connection
-mongoose.connect(config.databaseUrl, {
+mongoose.connect(config.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   maxPoolSize:10  // Limite de conexões simultâneas

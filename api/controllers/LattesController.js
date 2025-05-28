@@ -723,17 +723,44 @@ const createLattes = async (req, res) => {
     }
 };
 
-const getLattes = async(req, res)=>{
-    
-    try{
-        const resultQuery = await lattesdb.find({ })
-   
+const getLattes = async (req, res) => {
+    try {
+      const rawPage = req.query.page?.toString().trim();
+      const page = parseInt(rawPage, 10) || 1;
+      const limit = parseInt(req.query.limit, 10) || 10;
+      const skip = (page - 1) * limit;
+  
+      const filtro = { ID_Lattes: { $ne: null, $ne: "" } };
+  
+      const total = await lattesdb.countDocuments(filtro);
+      const totalPages = Math.ceil(total / limit);
+  
+      // Evita pagina inválida
+      if (page > totalPages && totalPages !== 0) {
+        return res.status(400).json({ error: `Página ${page} não existe. Total de páginas: ${totalPages}` });
+      }
+  
+      const curriculos = await lattesdb
+        .find()
+        .skip(skip)
+        .limit(limit)
         
-        res.status(200).json({lattes:resultQuery.length}) 
-    }catch(err){
-        res.status(500).json({ error: 'Internal server error'})
+  
+      res.status(200).json({
+        total,
+        page,
+        totalPages,
+        curriculos
+      });
+  
+    } catch (err) {
+      console.error('Erro em getLattes:', err);
+      res.status(500).json({ error: 'Erro interno no servidor' });
     }
-}
+  };
+  
+  
+  
 const getLattesbyId = async(req, res)=>{
     const id_lattes = req.params.id
     console.log(id_lattes);

@@ -520,7 +520,7 @@ const ProducaoGeral = async (req, res) => {
 const getProducaoGeral = async (req, res) => {
     try {
         const { centro, departamento, situacao_funcional, groupBy } = req.query;
-        
+        console.log('Consultando produção geral com filtros:', { centro, departamento, situacao_funcional, groupBy });
         // Acessar a collection criada pelo $out
         const producaoGeralCollection = mongoose.connection.collection('producao_geral');
         

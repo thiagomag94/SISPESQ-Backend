@@ -1,85 +1,355 @@
 {
     "openapi": "3.0.0",
     "info": {
-      "title": "API de Registro de Usuários",
+      "title": "SISPESQ - Sistema de Pesquisa e Pesquisadores",
       "version": "1.0.0",
-      "description": "Documentação da API de Registro de Usuários"
+      "description": "API para gerenciamento de pesquisadores e produção científica"
     },
     "paths": {
-      "/": {
+      "/departments": {
         "get": {
-          "summary": "Redirecionar para a página inicial",
+          "summary": "Obter lista de departamentos",
           "responses": {
-            "302": {
-              "description": "Redirecionamento para a página inicial"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
+            "200": {
+              "description": "Lista de departamentos retornada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Department"
+                    }
+                  }
+                }
+              }
             }
           }
-        }
-      },
-      "Users/signup": {
+        },
         "post": {
-          "summary": "Registrar um novo usuário",
+          "summary": "Criar novo departamento",
           "requestBody": {
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserRegistration"
+                  "$ref": "#/components/schemas/Department"
                 }
               }
             }
           },
           "responses": {
-            "200": {
-              "description": "Usuário registrado com sucesso"
-            },
-            "400": {
-              "description": "Erro de validação dos dados do usuário"
-            },
-            "409": {
-              "description": "Usuário já existente"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
+            "201": {
+              "description": "Departamento criado com sucesso"
             }
           }
         }
       },
-      "Users/login": {
+      "/departments/createFromResearchers": {
+        "get": {
+          "summary": "Criar departamentos a partir de pesquisadores",
+          "responses": {
+            "201": {
+              "description": "Departamentos criados com sucesso"
+            }
+          }
+        }
+      },
+      "/researchers": {
+        "get": {
+          "summary": "Obter lista de pesquisadores",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "id_lattes",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "professor",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "centro",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Lista de pesquisadores retornada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Researcher"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "post": {
-          "summary": "Autenticar um usuário",
+          "summary": "Criar novo pesquisador",
           "requestBody": {
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserLogin"
+                  "$ref": "#/components/schemas/Researcher"
                 }
               }
             }
           },
           "responses": {
-            "200": {
-              "description": "Autenticação bem-sucedida"
-            },
-            "400": {
-              "description": "Erro de validação dos dados de autenticação"
-            },
-            "404": {
-              "description": "Usuário não encontrado"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
+            "201": {
+              "description": "Pesquisador criado com sucesso"
             }
           }
         }
       },
-      "Users/delete/{id}": {
-        "delete": {
-          "summary": "Deletar um usuário",
+      "/orientacoes/{id_docente}": {
+        "get": {
+          "summary": "Obter orientações de um docente",
+          "parameters": [
+            {
+              "name": "id_docente",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Orientações retornadas com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "orientacoes": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Orientation"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/patentes/{id_docente}": {
+        "get": {
+          "summary": "Obter patentes de um docente",
+          "parameters": [
+            {
+              "name": "id_docente",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Patentes retornadas com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "patentes": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Patent"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/softwares/{id_docente}": {
+        "get": {
+          "summary": "Obter softwares de um docente",
+          "parameters": [
+            {
+              "name": "id_docente",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Softwares retornados com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "softwares": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Software"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/producao": {
+        "get": {
+          "summary": "Obter produção geral",
+          "parameters": [
+            {
+              "name": "centro",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "departamento",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "situacao_funcional",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "groupBy",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Produção retornada com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Production"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/lattes": {
+        "get": {
+          "summary": "Obter currículos Lattes",
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "default": 1
+              },
+              "description": "Número da página"
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "schema": {
+                "type": "integer",
+                "default": 10
+              },
+              "description": "Quantidade de itens por página"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Currículos retornados com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "integer",
+                        "description": "Total de registros"
+                      },
+                      "page": {
+                        "type": "integer",
+                        "description": "Número da página atual"
+                      },
+                      "totalPages": {
+                        "type": "integer",
+                        "description": "Total de páginas"
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/Lattes"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Página inválida",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": "string",
+                        "description": "Mensagem de erro"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/lattes/{id}": {
+        "get": {
+          "summary": "Obter currículo Lattes por ID",
           "parameters": [
             {
               "name": "id",
@@ -92,37 +362,45 @@
           ],
           "responses": {
             "200": {
-              "description": "Usuário deletado com sucesso"
-            },
-            "401": {
-              "description": "Usuário não autorizado a deletar outros usuários"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
+              "description": "Currículo retornado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Lattes"
+                  }
+                }
+              }
             }
           }
         }
       },
-      "Users/": {
+      "/lattes/create": {
         "get": {
-          "summary": "Obter todos os usuários",
+          "summary": "Criar currículos Lattes",
           "responses": {
             "200": {
-              "description": "Lista de usuários retornada com sucesso"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
+              "description": "Currículos criados com sucesso"
             }
           }
         }
       },
-      "Users/{id}": {
+      "/lattes/rawjson": {
         "get": {
-          "summary": "Obter detalhes de um usuário",
+          "summary": "Obter currículos Lattes em formato JSON",
+          "responses": {
+            "200": {
+              "description": "Currículos retornados com sucesso"
+            }
+          }
+        }
+      },
+      "/lattes/internal-id": {
+        "get": {
+          "summary": "Obter ID interno do Lattes",
           "parameters": [
             {
-              "name": "id",
-              "in": "path",
+              "name": "id_lattes",
+              "in": "query",
               "required": true,
               "schema": {
                 "type": "string"
@@ -131,56 +409,177 @@
           ],
           "responses": {
             "200": {
-              "description": "Detalhes do usuário retornados com sucesso"
-            },
-            "404": {
-            "description": "Usuário não encontrado"
-            },
-            "500": {
-            "description": "Erro interno do servidor"
+              "description": "ID interno retornado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "internalId": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
             }
-            }
-            }
-            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Department": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
             },
-            "components": {
-            "schemas": {
-            "UserRegistration": {
-            "type": "object",
-            "properties": {
-            "name": {
-            "type": "string"
+            "nome": {
+              "type": "string"
             },
-            "email": {
-            "type": "string",
-            "format": "email"
+            "centro": {
+              "type": "string"
             },
-            "password": {
-            "type": "string"
-            },
-            "confirmPassword": {
-            "type": "string"
-            },
-            "isAdmin": {
-            "type": "boolean"
+            "ID_DOCENTES": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
+          },
+          "required": ["nome", "centro"]
+        },
+        "Researcher": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
             },
-            "required": ["name", "email", "password", "confirmPassword", "isAdmin"]
+            "NOME": {
+              "type": "string"
             },
-            "UserLogin": {
-            "type": "object",
-            "properties": {
-            "email": {
-            "type": "string",
-            "format": "email"
+            "EMAIL_PRINCIPAL": {
+              "type": "string"
             },
-            "password": {
-            "type": "string"
-            }
+            "EMAIL_SECUNDARIO": {
+              "type": "string"
             },
-            "required": ["email", "password"]
+            "DEPARTAMENTO": {
+              "type": "string"
+            },
+            "CENTRO": {
+              "type": "string"
+            },
+            "SITUACAO_FUNCIONAL": {
+              "type": "string"
+            },
+            "DATA_INGRESSO_UFPE": {
+              "type": "string",
+              "format": "date"
+            },
+            "DATA_EXCLUSAO_UFPE": {
+              "type": "string",
+              "format": "date"
             }
+          },
+          "required": ["NOME", "EMAIL_PRINCIPAL", "DEPARTAMENTO", "CENTRO"]
+        },
+        "Orientation": {
+          "type": "object",
+          "properties": {
+            "tipo": {
+              "type": "string"
+            },
+            "ano": {
+              "type": "integer"
+            },
+            "titulo": {
+              "type": "string"
+            },
+            "orientando": {
+              "type": "string"
             }
+          },
+          "required": ["tipo", "ano", "titulo", "orientando"]
+        },
+        "Patent": {
+          "type": "object",
+          "properties": {
+            "titulo": {
+              "type": "string"
+            },
+            "ano": {
+              "type": "integer"
+            },
+            "status": {
+              "type": "string"
             }
+          },
+          "required": ["titulo", "ano", "status"]
+        },
+        "Software": {
+          "type": "object",
+          "properties": {
+            "nome": {
+              "type": "string"
+            },
+            "ano": {
+              "type": "integer"
+            },
+            "descricao": {
+              "type": "string"
             }
-  
+          },
+          "required": ["nome", "ano", "descricao"]
+        },
+        "Production": {
+          "type": "object",
+          "properties": {
+            "centro": {
+              "type": "string"
+            },
+            "departamento": {
+              "type": "string"
+            },
+            "bibliografica": {
+              "type": "integer"
+            },
+            "tecnica": {
+              "type": "integer"
+            },
+            "artistica": {
+              "type": "integer"
+            }
+          },
+          "required": ["centro", "departamento", "bibliografica", "tecnica", "artistica"]
+        },
+        "Lattes": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "CURRICULO_VITAE": {
+              "type": "object",
+              "properties": {
+                "ID_Lattes": {
+                  "type": "string"
+                },
+                "PRODUCAO_BIBLIOGRAFICA": {
+                  "type": "object"
+                },
+                "PRODUCAO_TECNICA": {
+                  "type": "object"
+                },
+                "ORIENTACOES": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "required": ["CURRICULO_VITAE"]
+        }
+      }
+    }
+  }

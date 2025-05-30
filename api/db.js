@@ -111,90 +111,7 @@ UserSchema.pre('save', async function (next) {
     next();
   });
 
-  const DataPesqSchema = new Schema({
-    aleatorio:String,
-    id:{type:Number, unique:true},
-    PESQUISADOR: {type:String, unique:true},
-    NUM_SIAPE: String,
-    DOCENTE_UFPE_2014: String,
-    CH_EXTENSIONISTA: String,
-    EXTENSIONISTA: String,
-    GESTOR: String,
-    FUNCAO_GRATIFICADA: String,
-    SEXO: String,
-    DATA_NASCIMENTO: String,
-    IDADE: String,
-    FAIXA_ETARIA: String,
-    DATA_ADMISSAO: String,
-    T_ADMISSAO_HOJE: String,
-    FAIXA_T_ADMISSAO: String,
-    CAMPUS: String,
-    SIGLA_CENTRO: String,
-    UORG_LOTACAO: String,
-    CARGO: String,
-    REGIME_DE_TRABALHO: String,
-    ESCOLARIDADE: String,
-    TITULACAO: String,
-    ATUACAO_PPGs_UFPE_PERMANENTE: String,
-    ATUACAO_PPGs_UFPE_COLABORADOR: String,
-    ATUACAO_PPGs_UFPE_TOTAL: String,
-    ORIENTACOES_MESTRADO: String,
-    ORIENTACOES_DOUTORADO: String,
-    TOTAL: String,
-    A1: String,
-    A2: String,
-    A3: String,
-    A4: String,
-    B1: String,
-    B2: String,
-    B3: String,
-    B4: String,
-    C: String,
-    NP: String,
-    TOTAL_GLOBAL: String,
-    TOTAL_QUALIFICADO_MAIORIGUALC: String,
-    TOTAL_MAIORIGUALB4: String,
-    TOTAL_MAIORIGUALA4: String,
-    TOTAL_MAIORIGUALA2: String,
-    PONTUACAO: String,
-    PERCENTIL: String,
-    RANKING: String,
-    SCHOLAR: String,
-    SCOPUS: String,
-    ORCID: String,
-    LATTES: String,
-    PRODUCAO: {
-        2024: {
-            BIBLIOGRAFICA: { type: Number, default: 0 },
-            TECNICA: { type: Number, default: 0 },
-            ARTISTICA: { type: Number, default: 0 }
-        },
-        2023: {
-            BIBLIOGRAFICA: { type: Number, default: 0 },
-            TECNICA: { type: Number, default: 0 },
-            ARTISTICA: { type: Number, default: 0 }
-        },
-        2022: {
-            BIBLIOGRAFICA: { type: Number, default: 0 },
-            TECNICA: { type: Number, default: 0 },
-            ARTISTICA: { type: Number, default: 0 }
-        },
-        2021: {
-            BIBLIOGRAFICA: { type: Number, default: 0 },
-            TECNICA: { type: Number, default: 0 },
-            ARTISTICA: { type: Number, default: 0 }
-        },
-        2020: {
-            BIBLIOGRAFICA: { type: Number, default: 0 },
-            TECNICA: { type: Number, default: 0 },
-            ARTISTICA: { type: Number, default: 0 }
-        }
-    },
-    KEYWORDS: {type:Array, default:[]},
-    ARTIGOS: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artigos' }] // Referência para os artigos publicados pelo pesquisador
-    }
-    
-)
+  
 const ResearcherSchema = new Schema({
     aleatorio:String,
     PESQUISADOR: {type:String},
@@ -269,9 +186,9 @@ const DepartamentoSchema = new Schema({
 
 
 const usersdb = mongoose.model('Users', UserSchema)
-const Datapesqdb = mongoose.model('DataPesq', DataPesqSchema)
+
 
 const Researcherdb = mongoose.model('Researcher', ResearcherSchema)
 const Departamentodb = mongoose.model('Departamento', DepartamentoSchema);
 
-module.exports = {usersdb, Datapesqdb, Departamentodb, Researcherdb}
+module.exports = {usersdb, Departamentodb, Researcherdb}

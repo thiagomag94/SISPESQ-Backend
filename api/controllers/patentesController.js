@@ -1,4 +1,4 @@
-const { Datapesqdb, Researcherdb} = require('../db');
+const { Researcherdb} = require('../db');
 const {lattesdb} = require('../models/Lattes');
 
 const getPatentes = async (req, res) => {

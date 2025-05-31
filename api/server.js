@@ -23,6 +23,10 @@ const RouterPatentes = require('./routes/Patentes')
 const RouterSoftwares = require('./routes/Softwares')
 const RouterOrientacoes = require('./routes/Orientacoes')
 const RouterProducao = require('./routes/Produção')
+const { requestLogger, errorLogger } = require('./middleware/logger');
+const { metricsMiddleware } = require('./middleware/metrics');
+
+
 
 
 
@@ -34,6 +38,17 @@ app.use(express.json());
 app.use(corsMiddleware);
 // Responder às requisições OPTIONS manualmente, caso necessário
 app.options('*', cors());  // Responde a todas as requisições OPTIONS com CORS
+
+// Adicione antes das rotas
+app.use(requestLogger);
+app.use(metricsMiddleware);
+
+// Adicione as rotas de health e metrics
+app.use('/health', require('./routes/health'));
+
+
+// Adicione depois das rotas
+app.use(errorLogger);
 
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -52,6 +67,9 @@ mongoose.connect(config.MONGO_URI, {
   .then(() => console.log('Mongo DB connected!',mongoose.connections.length))
   .catch(err => console.log('Connection failed', err));
   mongoose.set('strictQuery', false);
+
+
+  
 // Routes
 app.use('/Professores', Routes);
 app.use('/Users', RouterRegister);

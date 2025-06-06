@@ -566,6 +566,52 @@ const getProducaoGeral = async (req, res) => {
             groupStage.orientacoes_andamento_mestrado = { $sum: '$contagem.orientacoes_andamento.mestrado' };
             groupStage.orientacoes_andamento_pos_doutorado = { $sum: '$contagem.orientacoes_andamento.pos_doutorado' };
 
+            // Total de produções bibliográficas (artigos + trabalhos_eventos + capitulos + livros)
+            groupStage.total_producao_bibliografica = {
+                $sum: {
+                    $add: ['$contagem.artigos', '$contagem.trabalhos_eventos', '$contagem.capitulos', '$contagem.livros']
+                }
+            };
+
+            // Total de produção técnica (patentes + softwares)
+            groupStage.total_producao_tecnica = {
+                $sum: {
+                    $add: ['$contagem.patentes', '$contagem.softwares']
+                }
+            };
+
+            // Total de orientações concluídas
+            groupStage.total_orientacoes_concluidas = {
+                $sum: {
+                    $add: [
+                        '$contagem.orientacoes_concluidas.doutorado',
+                        '$contagem.orientacoes_concluidas.mestrado',
+                        '$contagem.orientacoes_concluidas.pos_doutorado'
+                    ]
+                }
+            };
+
+            // Total de orientações em andamento
+            groupStage.total_orientacoes_andamento = {
+                $sum: {
+                    $add: [
+                        '$contagem.orientacoes_andamento.doutorado',
+                        '$contagem.orientacoes_andamento.mestrado',
+                        '$contagem.orientacoes_andamento.pos_doutorado'
+                    ]
+                }
+            };
+
+            // Total geral de orientações (concluídas + em andamento)
+            groupStage.total_orientacoes = {
+                $sum: {
+                    $add: [
+                        { $sum: '$total_orientacoes_concluidas' },
+                        { $sum: '$total_orientacoes_andamento' }
+                    ]
+                }
+            };
+
             pipeline.push({ $group: groupStage });
 
             // Ordenar resultados pelo _id

@@ -602,12 +602,16 @@ const getProducaoGeral = async (req, res) => {
                 }
             };
 
-            // Total geral de orientações (concluídas + em andamento)
-            groupStage.total_orientacoes = {
+             // Total geral de orientações (concluídas + em andamento)
+             groupStage.total_orientacoes = {
                 $sum: {
                     $add: [
-                        { $sum: '$total_orientacoes_concluidas' },
-                        { $sum: '$total_orientacoes_andamento' }
+                        '$contagem.orientacoes_concluidas.doutorado',
+                        '$contagem.orientacoes_concluidas.mestrado',
+                        '$contagem.orientacoes_concluidas.pos_doutorado',
+                        '$contagem.orientacoes_andamento.doutorado',
+                        '$contagem.orientacoes_andamento.mestrado',
+                        '$contagem.orientacoes_andamento.pos_doutorado'
                     ]
                 }
             };

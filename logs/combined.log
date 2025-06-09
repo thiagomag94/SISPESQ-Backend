@@ -783,3 +783,179 @@
 {"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad11fdcbc9894d74dd0d"},"timestamp":"2025-06-07T11:14:55.629Z","url":"/Departments?id=6822ad11fdcbc9894d74dd0d"}
 {"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad11fdcbc9894d74dd0d"},"timestamp":"2025-06-07T11:14:56.184Z","url":"/Departments?id=6822ad11fdcbc9894d74dd0d"}
 {"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE OCEANOGRAFIA"},"timestamp":"2025-06-07T11:14:56.321Z","url":"/Producao?departamento=DEPARTAMENTO+DE+OCEANOGRAFIA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T22:58:49.915Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-08T22:58:49.955Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T22:58:49.958Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T22:58:49.960Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-08T22:58:49.964Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T22:58:49.966Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T22:59:13.637Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad10fdcbc9894d74dce9"},"timestamp":"2025-06-08T22:59:22.947Z","url":"/Departments?id=6822ad10fdcbc9894d74dce9"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad10fdcbc9894d74dce9"},"timestamp":"2025-06-08T22:59:22.951Z","url":"/Departments?id=6822ad10fdcbc9894d74dce9"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad10fdcbc9894d74dce9"},"timestamp":"2025-06-08T22:59:22.967Z","url":"/Departments?id=6822ad10fdcbc9894d74dce9"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad10fdcbc9894d74dce9"},"timestamp":"2025-06-08T22:59:22.971Z","url":"/Departments?id=6822ad10fdcbc9894d74dce9"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE BIOQUÍMICA"},"timestamp":"2025-06-08T22:59:23.344Z","url":"/Producao?departamento=DEPARTAMENTO+DE+BIOQU%C3%8DMICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE BIOQUÍMICA"},"timestamp":"2025-06-08T22:59:23.375Z","url":"/Producao?departamento=DEPARTAMENTO+DE+BIOQU%C3%8DMICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:02:31.146Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"t"},"timestamp":"2025-06-08T23:02:33.668Z","url":"/Departments?departamento=t"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"th"},"timestamp":"2025-06-08T23:02:33.797Z","url":"/Departments?departamento=th"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thi"},"timestamp":"2025-06-08T23:02:33.942Z","url":"/Departments?departamento=thi"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thia"},"timestamp":"2025-06-08T23:02:34.085Z","url":"/Departments?departamento=thia"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiag"},"timestamp":"2025-06-08T23:02:34.426Z","url":"/Departments?departamento=thiag"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago"},"timestamp":"2025-06-08T23:02:34.518Z","url":"/Departments?departamento=thiago"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago "},"timestamp":"2025-06-08T23:02:34.711Z","url":"/Departments?departamento=thiago+"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago h"},"timestamp":"2025-06-08T23:02:34.948Z","url":"/Departments?departamento=thiago+h"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago he"},"timestamp":"2025-06-08T23:02:35.092Z","url":"/Departments?departamento=thiago+he"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago hen"},"timestamp":"2025-06-08T23:02:35.284Z","url":"/Departments?departamento=thiago+hen"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henr"},"timestamp":"2025-06-08T23:02:35.437Z","url":"/Departments?departamento=thiago+henr"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henri"},"timestamp":"2025-06-08T23:02:35.528Z","url":"/Departments?departamento=thiago+henri"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henriq"},"timestamp":"2025-06-08T23:02:35.754Z","url":"/Departments?departamento=thiago+henriq"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henriqu"},"timestamp":"2025-06-08T23:02:35.901Z","url":"/Departments?departamento=thiago+henriqu"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique"},"timestamp":"2025-06-08T23:02:35.991Z","url":"/Departments?departamento=thiago+henrique"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique "},"timestamp":"2025-06-08T23:02:36.155Z","url":"/Departments?departamento=thiago+henrique+"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique n"},"timestamp":"2025-06-08T23:02:36.307Z","url":"/Departments?departamento=thiago+henrique+n"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique na"},"timestamp":"2025-06-08T23:02:36.465Z","url":"/Departments?departamento=thiago+henrique+na"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique nap"},"timestamp":"2025-06-08T23:02:36.614Z","url":"/Departments?departamento=thiago+henrique+nap"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique napo"},"timestamp":"2025-06-08T23:02:36.828Z","url":"/Departments?departamento=thiago+henrique+napo"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique napol"},"timestamp":"2025-06-08T23:02:37.069Z","url":"/Departments?departamento=thiago+henrique+napol"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique napole"},"timestamp":"2025-06-08T23:02:37.663Z","url":"/Departments?departamento=thiago+henrique+napole"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique napoleã"},"timestamp":"2025-06-08T23:02:38.178Z","url":"/Departments?departamento=thiago+henrique+napole%C3%A3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"thiago henrique napoleão"},"timestamp":"2025-06-08T23:02:38.336Z","url":"/Departments?departamento=thiago+henrique+napole%C3%A3o"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:02:44.592Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"t"},"timestamp":"2025-06-08T23:02:46.216Z","url":"/Researchers?professor=t"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"th"},"timestamp":"2025-06-08T23:02:46.345Z","url":"/Researchers?professor=th"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thi"},"timestamp":"2025-06-08T23:02:46.480Z","url":"/Researchers?professor=thi"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thia"},"timestamp":"2025-06-08T23:02:46.597Z","url":"/Researchers?professor=thia"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiag"},"timestamp":"2025-06-08T23:02:46.929Z","url":"/Researchers?professor=thiag"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago"},"timestamp":"2025-06-08T23:02:47.026Z","url":"/Researchers?professor=thiago"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago "},"timestamp":"2025-06-08T23:02:47.193Z","url":"/Researchers?professor=thiago+"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago h"},"timestamp":"2025-06-08T23:02:47.414Z","url":"/Researchers?professor=thiago+h"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago he"},"timestamp":"2025-06-08T23:02:47.513Z","url":"/Researchers?professor=thiago+he"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago hen"},"timestamp":"2025-06-08T23:02:47.680Z","url":"/Researchers?professor=thiago+hen"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henr"},"timestamp":"2025-06-08T23:02:47.825Z","url":"/Researchers?professor=thiago+henr"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henri"},"timestamp":"2025-06-08T23:02:47.931Z","url":"/Researchers?professor=thiago+henri"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henriq"},"timestamp":"2025-06-08T23:02:48.125Z","url":"/Researchers?professor=thiago+henriq"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henriqu"},"timestamp":"2025-06-08T23:02:48.260Z","url":"/Researchers?professor=thiago+henriqu"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique"},"timestamp":"2025-06-08T23:02:48.362Z","url":"/Researchers?professor=thiago+henrique"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique "},"timestamp":"2025-06-08T23:02:48.493Z","url":"/Researchers?professor=thiago+henrique+"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique n"},"timestamp":"2025-06-08T23:02:48.724Z","url":"/Researchers?professor=thiago+henrique+n"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique na"},"timestamp":"2025-06-08T23:02:48.959Z","url":"/Researchers?professor=thiago+henrique+na"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique nap"},"timestamp":"2025-06-08T23:02:49.128Z","url":"/Researchers?professor=thiago+henrique+nap"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique napo"},"timestamp":"2025-06-08T23:02:49.597Z","url":"/Researchers?professor=thiago+henrique+napo"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique napol"},"timestamp":"2025-06-08T23:02:49.846Z","url":"/Researchers?professor=thiago+henrique+napol"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique napole"},"timestamp":"2025-06-08T23:02:49.942Z","url":"/Researchers?professor=thiago+henrique+napole"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique napoleõ"},"timestamp":"2025-06-08T23:02:50.495Z","url":"/Researchers?professor=thiago+henrique+napole%C3%B5"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"professor":"thiago henrique napole"},"timestamp":"2025-06-08T23:02:51.223Z","url":"/Researchers?professor=thiago+henrique+napole"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822a72dfdcbc9894d74dc2f"},"timestamp":"2025-06-08T23:03:00.129Z","url":"/Researchers?id=6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:00.345Z","url":"/Patentes/6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:00.352Z","url":"/Softwares/6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:00.354Z","url":"/Orientacoes/6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:00.355Z","url":"/Lattes/0869167120016962"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"0869167120016962"},"timestamp":"2025-06-08T23:03:00.363Z","url":"/Lattes/internal-id?id_lattes=0869167120016962"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:00.371Z","url":"/Patentes/6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:03.348Z","url":"/Softwares/6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:03.354Z","url":"/Orientacoes/6822a72dfdcbc9894d74dc2f"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:03.616Z","url":"/Lattes/0869167120016962"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"0869167120016962"},"timestamp":"2025-06-08T23:03:03.729Z","url":"/Lattes/internal-id?id_lattes=0869167120016962"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:18.927Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-08T23:03:18.934Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:18.939Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:18.940Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-08T23:03:18.945Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-08T23:03:18.946Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T15:44:18.896Z","url":"/Lattes/rawjson"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T15:44:19.117Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T15:45:08.831Z","url":"/Lattes/rawjson"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T15:54:04.862Z","url":"/Producao"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T15:55:09.437Z","url":"/Producao"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T15:55:14.127Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:20:40.442Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:20:40.481Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:20:48.220Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:20:48.246Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:23:15.426Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:23:15.462Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:23:22.129Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:23:22.156Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:25:38.585Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T16:25:38.616Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T19:57:02.814Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T19:57:02.846Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T19:59:20.121Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:00:14.315Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:01:38.424Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:01:38.438Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:01:38.440Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:01:38.449Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:01:38.450Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:01:38.452Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:10:44.452Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-09T20:10:56.922Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-09T20:10:56.928Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-09T20:10:56.929Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-09T20:10:56.937Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-09T20:10:57.405Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-09T20:10:57.419Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:23:15.707Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:23:18.655Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:23:18.659Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:23:18.662Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:23:18.664Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:23:18.667Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:23:18.669Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:15.727Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:24:15.731Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:15.734Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:26.736Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:24:26.739Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:26.741Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:34.133Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:24:34.137Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:34.138Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:34.146Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:24:34.148Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:34.153Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:58.929Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:58.934Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:24:58.937Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:24:58.941Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:25:13.289Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:25:13.292Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:25:13.298Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:25:13.300Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:25:13.303Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:25:13.308Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:25:14.954Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:25:16.689Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:26:04.408Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:26:04.412Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:26:04.416Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:26:04.417Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:26:04.422Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:26:04.422Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:26:06.223Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:26:07.373Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:28:18.885Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:28:18.888Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:28:18.891Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:28:18.894Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:28:18.900Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:28:19.710Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:28:21.113Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:28:22.231Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:30:57.601Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:30:57.605Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:30:57.608Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:30:57.609Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:30:57.615Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:30:57.615Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:30:59.940Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:31:00.343Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:35.493Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:35.511Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:32:35.521Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:35.537Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:35.548Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:35.556Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:32:37.835Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:37.941Z","url":"/Researchers"}

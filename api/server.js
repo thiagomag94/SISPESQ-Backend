@@ -23,6 +23,7 @@ const RouterPatentes = require('./routes/Patentes')
 const RouterSoftwares = require('./routes/Softwares')
 const RouterOrientacoes = require('./routes/Orientacoes')
 const RouterProducao = require('./routes/Produção')
+const RouterArtigos = require('./routes/Artigos')
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { metricsMiddleware } = require('./middleware/metrics');
 
@@ -74,7 +75,7 @@ mongoose.connect(config.MONGO_URI, {
 app.use('/Professores', Routes);
 app.use('/Users', RouterRegister);
 app.use('/Departments', RouterDepartment)
-//app.use('/Articles')
+app.use('/Artigos', RouterArtigos)
 //app.use('/Centers')
 app.use('/Researchers',RouterResearcher )
 app.use('/Lattes', RouterLattes);

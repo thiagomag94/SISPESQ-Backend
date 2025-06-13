@@ -22,7 +22,9 @@ const calcularPeriodoAtividade = (researcher) => {
     };
 };
 
-const ProducaoGeral = async (req, res) => {
+
+//Todos os dados de produção vão ser filtrados pelo periodo de atividade do pesquisador
+const ProducaoGeralcreate = async (req, res) => {
     try {
         // Get the collection and clear existing data before any processing
         const producaoGeralCollection = mongoose.connection.collection('producao_geral');
@@ -640,6 +642,6 @@ const getProducaoGeral = async (req, res) => {
 };
 
 module.exports = {
-    ProducaoGeral,
+    ProducaoGeralcreate,
     getProducaoGeral
 };

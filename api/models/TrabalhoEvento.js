@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Autor = require('./Autor');
-const PalavrasChave = require('./PalavrasChave');
+const {AutorSchema} = require('./Autor');
+const {PalavrasChaveSchema} = require('./PalavrasChave');
 
 const TrabalhoEventoSchema = new Schema({
     NATUREZA: String,
@@ -17,8 +17,8 @@ const TrabalhoEventoSchema = new Schema({
     NOME_DO_EVENTO: String,
     CIDADE_DO_EVENTO: String,
     ANO_DE_REALIZACAO: String,
-    AUTORES: [Autor.schema],
-    PALAVRAS_CHAVE: PalavrasChave.schema
+    AUTORES: [AutorSchema],
+    PALAVRAS_CHAVE: PalavrasChaveSchema
 });
 
 const TrabalhoEvento = mongoose.model('TrabalhoEvento', TrabalhoEventoSchema);

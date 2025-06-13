@@ -5,7 +5,7 @@ app.use(express.json())
 
 const producaoGeralController = require('../controllers/producaoGeralController')
 
-router.get('/create', producaoGeralController.ProducaoGeral)
+router.get('/create', producaoGeralController.ProducaoGeralcreate)
 router.get('/', producaoGeralController.getProducaoGeral)
 
 

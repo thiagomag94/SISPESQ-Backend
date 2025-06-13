@@ -25,4 +25,4 @@ const PalavrasChaveSchema = new Schema({
 });
 
 const PalavrasChave = mongoose.model('PalavrasChave', PalavrasChaveSchema);
-module.exports = PalavrasChave;
+module.exports = {PalavrasChave, PalavrasChaveSchema};

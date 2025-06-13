@@ -7,7 +7,8 @@ app.use(express.json())
 const trabalhoEmEventosController = require('../controllers/trabalhoEmEventosController') 
 
 
-router.get('/', trabalhoEmEventosController.getTodosTrabalhosEmEventos)
-
+router.get('/create', trabalhoEmEventosController.createTodosTrabalhosEmEventos)
+router.get('/', trabalhoEmEventosController.getAllTrabalhosEmEventos)
+router.delete('/', trabalhoEmEventosController.deleteAllTrabalhosEmEventos)
 
 module.exports = router

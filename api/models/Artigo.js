@@ -4,6 +4,7 @@ const {AutorSchema} = require('./Autor');
 const {PalavrasChaveSchema} = require('./PalavrasChave');
 
 const ArtigoSchema = new Schema({
+    ID_LATTES_AUTOR: String,
     TITULO_DO_ARTIGO: String,
     TITULO_DO_ARTIGO_INGLES: String,
     ANO_DO_ARTIGO: Date,

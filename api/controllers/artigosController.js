@@ -105,15 +105,16 @@ const createTodosArtigos = async (req, res) => {
 
         const pipeline = [
             { $match: { "producoes.artigos": { $exists: true, $not: { $size: 0 } } } },
-            { $project: { _id: 0, artigos: "$producoes.artigos" } },
-            { $unwind: "$artigos" },
+            
+            { $unwind: "$producoes.artigos" },
             { $project: { 
                 _id: 0,
-                DOI: "$artigos.DOI",
-                TITULO_DO_ARTIGO: "$artigos.TITULO_DO_ARTIGO",
-                ANO_DO_ARTIGO: "$artigos.ANO_DO_ARTIGO",
-                AUTORES: "$artigos.AUTORES",
-                PALAVRAS_CHAVE: "$artigos.PALAVRAS_CHAVE"
+                ID_LATTES_AUTOR: "$id_lattes",
+                DOI: "$producoes.artigos.DOI",
+                TITULO_DO_ARTIGO: "$producoes.artigos.TITULO_DO_ARTIGO",
+                ANO_DO_ARTIGO: "$producoes.artigos.ANO_DO_ARTIGO",
+                AUTORES: "$producoes.artigos.AUTORES",
+                PALAVRAS_CHAVE: "$producoes.artigos.PALAVRAS_CHAVE"
             } }
         ];
 

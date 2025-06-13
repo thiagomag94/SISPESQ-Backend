@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Autor = require('./Autor');
+const {AutorSchema} = require('./Autor');
 
 const PatenteSchema = new Schema({
+    ID_LATTES_AUTOR: String,
     TITULO: String,
     TITULO_INGLES: String,
     ANO_DESENVOLVIMENTO: String,
-    AUTORES: [Autor.schema],
+    AUTORES: [AutorSchema],
     PAIS: String,
     CODIGO_DO_REGISTRO_OU_PATENTE: String,
     INSTITUICAO_DEPOSITO_REGISTRO: String,

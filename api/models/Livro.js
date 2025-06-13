@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Autor = require('./Autor');
-const PalavrasChave = require('./PalavrasChave');
+const {AutorSchema} = require('./Autor');
+const {PalavrasChaveSchema} = require('./PalavrasChave');
 
 const LivroSchema = new Schema({
+    ID_LATTES_AUTOR: String,
     NATUREZA: String,
     TITULO_DO_LIVRO: String,
     TITULO_DO_LIVRO_INGLES: String,
@@ -18,8 +19,8 @@ const LivroSchema = new Schema({
     HOME_PAGE_DO_TRABALHO: String,
     NUMERO_DE_VOLUMES: String,
     ISBN: String,
-    AUTORES: [Autor.schema],
-    PALAVRAS_CHAVE: PalavrasChave.schema
+    AUTORES: [AutorSchema],
+    PALAVRAS_CHAVE: PalavrasChaveSchema
 });
 
 const Livro = mongoose.model('Livro', LivroSchema);

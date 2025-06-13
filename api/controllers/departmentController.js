@@ -53,10 +53,10 @@ const getDepartments = async (req, res) => {
         }
       }
       // Consultando os dados no banco de dados com os filtros aplicados
-      console.log(query)
+      //console.log(query)
       const departamentos = await Departamentodb.find(query);
        // Retornando os resultados
-       console.log(departamentos)
+      //console.log(departamentos)
     
        res.status(200).json({ departamentos:departamentos, total_departamentos:departamentos.length });
        

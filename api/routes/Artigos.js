@@ -7,6 +7,6 @@ const artigosController = require('../controllers/artigosController');
 
 router.get('/create', artigosController.createTodosArtigos);
 router.get('/', artigosController.getTodosArtigosUFPE);
-router.get('/delete', artigosController.deleteAllArtigos);
+router.get('/deleteAll', artigosController.deleteAllArtigos);
 
 module.exports = router;

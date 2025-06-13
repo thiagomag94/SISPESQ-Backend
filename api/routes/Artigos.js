@@ -1,12 +1,12 @@
 const express = require('express');
-const app = express()
+const app = express();
 const router = express.Router();
-app.use(express.json())
+app.use(express.json());
 
-const artigosController = require('../controllers/artigosController')
+const artigosController = require('../controllers/artigosController');
 
+router.get('/create', artigosController.createTodosArtigos);
+router.get('/', artigosController.getTodosArtigosUFPE);
+router.get('/delete', artigosController.deleteAllArtigos);
 
-router.get('/', artigosController.getTodosArtigosUFPE)
-
-
-module.exports = router
+module.exports = router;

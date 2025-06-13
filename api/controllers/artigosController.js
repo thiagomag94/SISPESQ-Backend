@@ -1,160 +1,101 @@
 const mongoose = require('mongoose');
 const redis = require('../redis');
+const Artigos = require('../models/Artigo');
 
-const criaArtigo = async (req, res) => {
-    // Criar o artigo no banco de dados
-    
-    Artigos.create(artigoData)
-    .then(artigo => {
-    console.log('Artigo criado:', artigo);
-    return artigo;  // Passar o artigo para o próximo passo
-    })
-    .catch(err => {
-    console.error('Erro ao criar artigo:', err);
-    });
-    
-  
-}
 
 const getTodosArtigosUFPE = async (req, res) => {
     try {
-        // Check if Redis is available
-        if (!redis) {
-            console.log('Redis is not available, skipping cache');
-            // Proceed with MongoDB query
-            console.log('Starting artigos query');
-            
-            // Cria índices se não existirem
-            await mongoose.connection.db.collection('producao_geral').createIndexes([
-                { key: { "producoes.artigos.DOI": 1 } },
-                { key: { "producoes.artigos.TITULO_DO_ARTIGO": 1 } },
-                { key: { "producoes.artigos.ANO_DO_ARTIGO": 1 } }
-            ]);
+        // Primeiro contar todos os documentos
+        const totalDocs = await Artigos.countDocuments({});
+        
+        // Obter parâmetros de paginação da query
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 10;
+        const skip = (page - 1) * limit;
 
-            const pipeline = [
-                { $match: { "producoes.artigos": { $exists: true, $not: { $size: 0 } } } },
-                { $project: { _id: 0, artigos: "$producoes.artigos" } },
-                { $unwind: "$artigos" },
-                { $project: { 
-                    _id: 0,
-                    DOI: "$artigos.DOI",
-                    TITULO_DO_ARTIGO: "$artigos.TITULO_DO_ARTIGO",
-                    ANO_DO_ARTIGO: "$artigos.ANO_DO_ARTIGO"
-                } }
-            ];
+        // Buscar os documentos paginados
+        const artigos = await Artigos.find({})
+            .skip(skip)
+            .limit(limit)
+            .sort({ ANO_DO_ARTIGO: -1 });
 
-            const producaoGeralCollection = mongoose.connection.collection('producao_geral');
-            
-            // Configura o response como stream
-            res.setHeader('Content-Type', 'application/json');
-            res.write('[');
-            
-            // Processa em chunks
-            const batchSize = 1000;
-            let isFirstChunk = true;
-            let allData = '[';
-            
-            const cursor = await producaoGeralCollection.aggregate(pipeline)
-                .batchSize(batchSize);
-            
-            for await (const doc of cursor) {
-                if (!isFirstChunk) {
-                    res.write(',');
-                    allData += ',';
-                }
-                isFirstChunk = false;
-                const docStr = JSON.stringify(doc);
-                res.write(docStr);
-                allData += docStr;
-            }
-            
-            res.end(']');
-            allData += ']';
-            return;
+        if (!artigos || artigos.length === 0) {
+            return res.status(404).json({ 
+                error: 'Nenhum documento encontrado',
+                total: totalDocs
+            });
         }
 
-        // Check Redis cache first
-        const cacheKey = 'artigos_ufpe';
-        
-        // Try to get from cache
-        let cachedData;
-        try {
-            cachedData = await redis.get(cacheKey);
-        } catch (redisError) {
-            console.error('Redis error:', redisError);
-            // Fall back to MongoDB query
-            console.log('Redis error occurred, falling back to MongoDB');
-            // Proceed with MongoDB query
-            console.log('Starting artigos query');
-            
-            // Cria índices se não existirem
-            await mongoose.connection.db.collection('producao_geral').createIndexes([
-                { key: { "producoes.artigos.DOI": 1 } },
-                { key: { "producoes.artigos.TITULO_DO_ARTIGO": 1 } },
-                { key: { "producoes.artigos.ANO_DO_ARTIGO": 1 } }
-            ]);
+        // Calcular número total de páginas
+        const totalPages = Math.ceil(totalDocs / limit);
 
-            const pipeline = [
-                { $match: { "producoes.artigos": { $exists: true, $not: { $size: 0 } } } },
-                { $project: { _id: 0, artigos: "$producoes.artigos" } },
-                { $unwind: "$artigos" },
-                { $project: { 
-                    _id: 0,
-                    DOI: "$artigos.DOI",
-                    TITULO_DO_ARTIGO: "$artigos.TITULO_DO_ARTIGO",
-                    ANO_DO_ARTIGO: "$artigos.ANO_DO_ARTIGO"
-                } }
-            ];
-
-            const producaoGeralCollection = mongoose.connection.collection('producao_geral');
-            
-            // Configura o response como stream
-            res.setHeader('Content-Type', 'application/json');
-            res.write('[');
-            
-            // Processa em chunks
-            const batchSize = 1000;
-            let isFirstChunk = true;
-            let allData = '[';
-            
-            const cursor = await producaoGeralCollection.aggregate(pipeline)
-                .batchSize(batchSize);
-            
-            for await (const doc of cursor) {
-                if (!isFirstChunk) {
-                    res.write(',');
-                    allData += ',';
-                }
-                isFirstChunk = false;
-                const docStr = JSON.stringify(doc);
-                res.write(docStr);
-                allData += docStr;
+        res.status(200).json({
+            total: totalDocs, // Total geral de documentos
+            data: artigos,
+            pagination: {
+                page,
+                limit,
+                totalDocs,
+                totalPages,
+                hasMore: page < totalPages
             }
-            
-            res.end(']');
-            allData += ']';
-            
-            // Try to store in Redis
-            try {
-                await redis.set(cacheKey, allData, 'EX', 86400); // 24 hours
-                console.log('Cached data successfully');
-            } catch (redisError) {
-                console.error('Failed to cache data:', redisError);
-            }
-            return;
-        }
-        
-        if (cachedData) {
-            console.log('Returning cached data');
-            res.setHeader('Content-Type', 'application/json');
-            res.end(cachedData);
-            return;
-        }
+        });
+    } catch (err) {
+        console.error('Erro ao buscar artigos:', err);
+        res.status(500).json({ 
+            error: "Erro ao buscar artigos", 
+            details: err.message 
+        });
+    }
+};
 
-        // If we got here, Redis is available but cache miss occurred
-        console.log('Cache miss, querying MongoDB');
-        // Proceed with MongoDB query (code is the same as above)
+const filterArtigosDuplicados = async (artigos) => {
+    const batchSize = 1000;
+    const seen = new Map();
+    const artigosUnicos = [];
+    const artigosDuplicados = [];
+
+    const normalize = (text = "") =>
+        text.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+    const processBatch = async (batch) => {
+        const promises = batch.map(async (artigo) => {
+            const doiValido = artigo.DOI && artigo.DOI.trim().length > 0;
+
+            const key = doiValido
+                ? `doi-${normalize(artigo.DOI)}`
+                : `title-${normalize(artigo.TITULO_DO_ARTIGO)}-year-${artigo.ANO_DO_ARTIGO?.toString()}`;
+
+            if (seen.has(key)) {
+                return { artigo, isDuplicate: true };
+            } else {
+                seen.set(key, true);
+                return { artigo, isDuplicate: false };
+            }
+        });
+
+        const results = await Promise.all(promises);
+        return results;
+    };
+
+    for (let i = 0; i < artigos.length; i += batchSize) {
+        const batch = artigos.slice(i, i + batchSize);
+        const results = await processBatch(batch);
         
+        results.forEach(result => {
+            if (result.isDuplicate) {
+                artigosDuplicados.push(result.artigo);
+            } else {
+                artigosUnicos.push(result.artigo);
+            }
+        });
+    }
+
+    return { artigosUnicos, artigosDuplicados };
+};
+
+const createTodosArtigos = async (req, res) => {
+    try {
         // Cria índices se não existirem
         await mongoose.connection.db.collection('producao_geral').createIndexes([
             { key: { "producoes.artigos.DOI": 1 } },
@@ -170,53 +111,63 @@ const getTodosArtigosUFPE = async (req, res) => {
                 _id: 0,
                 DOI: "$artigos.DOI",
                 TITULO_DO_ARTIGO: "$artigos.TITULO_DO_ARTIGO",
-                ANO_DO_ARTIGO: "$artigos.ANO_DO_ARTIGO"
+                ANO_DO_ARTIGO: "$artigos.ANO_DO_ARTIGO",
+                AUTORES: "$artigos.AUTORES",
+                PALAVRAS_CHAVE: "$artigos.PALAVRAS_CHAVE"
             } }
         ];
 
-        const producaoGeralCollection = mongoose.connection.collection('producao_geral');
-        
-        // Configura o response como stream
-        res.setHeader('Content-Type', 'application/json');
-        res.write('[');
-        
-        // Processa em chunks
-        const batchSize = 1000;
-        let isFirstChunk = true;
-        let allData = '[';
-        
-        const cursor = await producaoGeralCollection.aggregate(pipeline)
-            .batchSize(batchSize);
-        
+        const resultados = [];
+        const cursor = await mongoose.connection.db.collection('producao_geral')
+            .aggregate(pipeline)
+            .batchSize(1000);
+
         for await (const doc of cursor) {
-            if (!isFirstChunk) {
-                res.write(',');
-                allData += ',';
-            }
-            isFirstChunk = false;
-            const docStr = JSON.stringify(doc);
-            res.write(docStr);
-            allData += docStr;
+            resultados.push(doc);
         }
+
+        const { artigosUnicos } = await filterArtigosDuplicados(resultados);
         
-        res.end(']');
-        allData += ']';
+       
+        // Limpa a coleção existente
+        await Artigos.deleteMany({});
+        // Salva os artigos únicos
+        await Artigos.insertMany(artigosUnicos);
         
-        // Try to store in Redis
-        try {
-            await redis.set(cacheKey, allData, 'EX', 86400); // 24 hours
-            console.log('Cached data successfully');
-        } catch (redisError) {
-            console.error('Failed to cache data:', redisError);
-        }
-        
+        res.status(200).json({ 
+            message: `${artigosUnicos.length} artigos criados com sucesso`,
+            total: artigosUnicos.length 
+        });
     } catch (err) {
-        console.error('Erro ao buscar artigos:', err);
-        res.status(500).json({ error: "Erro ao buscar artigos", details: err.message });
+        console.error('Erro ao criar artigos:', err);
+        res.status(500).json({ 
+            error: "Erro ao criar artigos", 
+            details: err.message 
+        });
+    }
+};
+
+const deleteAllArtigos = async (req, res) => {
+    try {
+        // Excluir todos os artigos
+        const result = await Artigos.deleteMany({});
+        
+        res.status(200).json({
+            message: 'Todos os artigos foram excluídos com sucesso',
+            deletedCount: result.deletedCount
+        });
+    } catch (err) {
+        console.error('Erro ao excluir artigos:', err);
+        res.status(500).json({ 
+            error: "Erro ao excluir artigos", 
+            details: err.message 
+        });
     }
 };
 
 module.exports = {
-    criaArtigo,
-    getTodosArtigosUFPE
+   
+    getTodosArtigosUFPE,
+    createTodosArtigos,
+    deleteAllArtigos
 };

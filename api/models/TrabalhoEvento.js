@@ -4,6 +4,7 @@ const {AutorSchema} = require('./Autor');
 const {PalavrasChaveSchema} = require('./PalavrasChave');
 
 const TrabalhoEventoSchema = new Schema({
+    ID_LATTES_AUTOR: String, // Campo para relacionar ao autor
     NATUREZA: String,
     TITULO_DO_TRABALHO: String,
     ANO_DO_TRABALHO: Date,

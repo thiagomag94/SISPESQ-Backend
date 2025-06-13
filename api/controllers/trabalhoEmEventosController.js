@@ -70,16 +70,16 @@ const createTodosTrabalhosEmEventos = async (req, res) => {
 
         const pipeline = [
             { $match: { "producoes.trabalhos_eventos": { $exists: true, $not: { $size: 0 } } } },
-            { $project: { _id: 0, trabalhos: "$producoes.trabalhos_eventos" } },
-            { $unwind: "$trabalhos" },
+            { $unwind: "$producoes.trabalhos_eventos" },
             { $project: { 
                 _id: 0,
-                TITULO_DO_TRABALHO: "$trabalhos.TITULO_DO_TRABALHO",
-                ANO_DO_TRABALHO: "$trabalhos.ANO_DO_TRABALHO",
-                NOME_DO_EVENTO: "$trabalhos.NOME_DO_EVENTO",
-                CIDADE_DO_EVENTO: "$trabalhos.CIDADE_DO_EVENTO",
-                PAIS_DO_EVENTO: "$trabalhos.PAIS_DO_EVENTO",
-                AUTORES: "$trabalhos.AUTORES"
+                ID_LATTES_AUTOR: "$id_lattes", 
+                TITULO_DO_TRABALHO: "$producoes.trabalhos_eventos.TITULO_DO_TRABALHO",
+                ANO_DO_TRABALHO: "$producoes.trabalhos_eventos.ANO_DO_TRABALHO",
+                NOME_DO_EVENTO: "$producoes.trabalhos_eventos.NOME_DO_EVENTO",
+                CIDADE_DO_EVENTO: "$producoes.trabalhos_eventos.CIDADE_DO_EVENTO",
+                PAIS_DO_EVENTO: "$producoes.trabalhos_eventos.PAIS_DO_EVENTO",
+                AUTORES: "$producoes.trabalhos_eventos.AUTORES"
             } }
         ];
 

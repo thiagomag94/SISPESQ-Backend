@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Autor = require('./Autor');
-const PalavrasChave = require('./PalavrasChave');
+const {AutorSchema} = require('./Autor');
+const {PalavrasChaveSchema} = require('./PalavrasChave');
 
 const ArtigoSchema = new Schema({
     TITULO_DO_ARTIGO: String,
     TITULO_DO_ARTIGO_INGLES: String,
     ANO_DO_ARTIGO: Date,
-    AUTORES: [Autor.schema],
+    AUTORES: [AutorSchema],
     TITULO_DO_PERIODICO_OU_REVISTA: String,
     VOLUME: String,
     PAGINA_INICIAL: String,
@@ -15,7 +15,7 @@ const ArtigoSchema = new Schema({
     DOI: String,
     ISSN: String,
     IDIOMA: String,
-    PALAVRAS_CHAVE: PalavrasChave.schema,
+    PALAVRAS_CHAVE: PalavrasChaveSchema,
     HOME_PAGE_DO_TRABALHO: String
 });
 

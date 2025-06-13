@@ -9,6 +9,6 @@ const trabalhoEmEventosController = require('../controllers/trabalhoEmEventosCon
 
 router.get('/create', trabalhoEmEventosController.createTodosTrabalhosEmEventos)
 router.get('/', trabalhoEmEventosController.getAllTrabalhosEmEventos)
-router.delete('/', trabalhoEmEventosController.deleteAllTrabalhosEmEventos)
+router.get('/deleteAll', trabalhoEmEventosController.deleteAllTrabalhosEmEventos)
 
 module.exports = router

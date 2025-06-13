@@ -1,12 +1,14 @@
+
+
 const express = require('express');
 const app = express()
 const router = express.Router();
 app.use(express.json())
 
-const artigosController = require('../controllers/artigosController')
+const livrosController = require('../controllers/livrosController') 
 
 
-router.get('/', artigosController.getTodosArtigosUFPE)
+router.get('/', livrosController.getTodosLivrosUFPE)
 
 
 module.exports = router

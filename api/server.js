@@ -1,4 +1,3 @@
-
 const Routes = require('./routes/Professores(old)');
 const RouterRegister = require("./routes/Authorize");
 const RouterDepartment = require('./routes/Departments')
@@ -24,6 +23,9 @@ const RouterSoftwares = require('./routes/Softwares')
 const RouterOrientacoes = require('./routes/Orientacoes')
 const RouterProducao = require('./routes/Produção')
 const RouterArtigos = require('./routes/Artigos')
+const RouterLivros = require('./routes/Livros')
+const RouterTrabalhos = require('./routes/Trabalhos')
+
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { metricsMiddleware } = require('./middleware/metrics');
 
@@ -83,6 +85,8 @@ app.use('/Patentes', RouterPatentes);
 app.use('/Softwares', RouterSoftwares);
 app.use('/Orientacoes', RouterOrientacoes);
 app.use('/Producao/', RouterProducao);
+app.use('/Livros', RouterLivros)
+app.use('/Trabalhos', RouterTrabalhos)
 // Public routes
 app.get('/updateDb', researcherController.updateDatabase);
 app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)
@@ -94,4 +98,3 @@ app.get('/teste', publicRoutesController.getUpload);
 app.listen(config.port, '0.0.0.0', () => {
   console.log(`Server running, PORT ${config.port}`);
 });
-

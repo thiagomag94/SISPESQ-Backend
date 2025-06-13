@@ -959,3 +959,1022 @@
 {"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:35.556Z","url":"/Lattes/"}
 {"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:32:37.835Z","url":"/Producao?groupBy=ano"}
 {"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:32:37.941Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:33:55.747Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:33:55.762Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:33:55.765Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:33:55.766Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:33:55.767Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:33:55.768Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:33:56.313Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:33:57.460Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:37:33.467Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:37:33.474Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:37:33.481Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:37:33.482Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:37:33.486Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:37:33.487Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:37:35.344Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:37:36.379Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:05.149Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:05.155Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:38:05.159Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:05.162Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:18.114Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:18.118Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:38:18.125Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:18.128Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:18.132Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:18.135Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:38:19.934Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:38:20.988Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:14.079Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:14.086Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:39:14.091Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:14.097Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:20.939Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:20.942Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:39:20.947Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:20.951Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:20.954Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:20.957Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:39:22.972Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:39:24.084Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:41:00.457Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:41:00.461Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:41:00.466Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:41:00.475Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:41:00.482Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:41:00.490Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-09T20:41:01.703Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-09T20:41:03.145Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:19:05.099Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:19:05.116Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T12:19:05.119Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:19:05.121Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:19:05.124Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:19:05.125Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T12:19:07.724Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:19:11.307Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:20:45.131Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:20:45.140Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T12:20:45.142Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:20:45.143Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:20:45.143Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:20:45.144Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T12:20:47.001Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:36:43.445Z","url":"/Artigos/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:36:50.292Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:37:01.874Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:37:08.238Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:41:54.153Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:41:55.274Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:44:25.978Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:44:43.434Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:44:43.440Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:44:43.443Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:44:43.445Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T12:44:47.146Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T12:44:47.748Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:51:39.372Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:51:39.376Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:51:39.377Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T12:51:39.380Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T12:51:40.194Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T12:51:41.081Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:54:12.487Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:54:12.491Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T12:54:12.495Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:54:12.496Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:54:12.504Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:54:12.504Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T12:54:14.153Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:54:16.190Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:56:08.989Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:56:09.677Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:57:48.771Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T12:57:49.661Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:09:06.133Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:09:11.340Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:09:30.130Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:09:35.209Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:10:51.248Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:10:56.624Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:23:09.843Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:23:10.850Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:39:44.770Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:39:46.752Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:41:39.005Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:41:40.393Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:44:04.265Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:44:04.270Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T13:44:04.280Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:44:04.282Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:44:04.284Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:44:04.293Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T13:44:06.201Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:44:12.050Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:52:01.107Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:52:01.281Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:52:20.077Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:52:20.112Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:52:33.541Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:52:33.677Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:59:01.107Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:59:15.273Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T13:59:20.841Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:00:47.688Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:00:49.355Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:03:07.151Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:03:08.377Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:06:32.709Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:06:32.716Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:06:32.727Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:06:32.730Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:06:32.745Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:06:32.749Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:06:34.654Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:06:40.412Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:11:44.390Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:11:45.962Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:12:05.833Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:12:07.087Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:20.706Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:20.715Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:15:20.728Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:20.729Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T14:15:20.886Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T14:15:20.894Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:32.113Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:32.119Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:15:32.122Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:32.123Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:33.717Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:33.733Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:15:35.190Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:15:35.956Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T14:15:36.742Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T14:21:39.639Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T14:21:39.645Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T14:21:40.312Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T14:22:51.435Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad13fdcbc9894d74dd3a"},"timestamp":"2025-06-10T14:22:51.437Z","url":"/Departments?id=6822ad13fdcbc9894d74dd3a"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE LETRAS"},"timestamp":"2025-06-10T14:22:51.991Z","url":"/Producao?departamento=DEPARTAMENTO+DE+LETRAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:23:18.155Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:23:18.158Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:23:18.163Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:23:18.171Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:23:18.293Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:23:18.939Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:23:19.360Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:23:20.269Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:26:06.967Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:26:06.973Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:26:06.981Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:26:06.983Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:26:06.989Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:26:06.996Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:26:09.070Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:26:09.164Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:29:52.818Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:29:52.823Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:29:52.829Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:29:52.830Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:29:52.835Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:29:52.836Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:29:58.997Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:30:08.745Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:34:46.569Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:34:46.576Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:34:46.581Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:34:46.583Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:35:16.705Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:35:16.709Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:35:16.717Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:35:16.722Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:35:16.722Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:35:16.723Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T14:35:17.920Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:35:19.494Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:39:02.069Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:39:04.022Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:42:11.587Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:42:18.212Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:42:56.769Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:43:02.642Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:43:23.013Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:43:30.732Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:44:36.375Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:44:43.369Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:44:56.951Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:44:58.565Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:51:11.316Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:51:12.819Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:52:22.193Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:52:28.216Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:59:14.810Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T14:59:20.556Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:00:04.519Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:00:10.585Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:00:56.520Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:00:58.378Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:05:21.336Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:05:23.345Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:07:50.290Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:07:53.127Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:09:26.082Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:09:29.030Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:10:19.719Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:10:22.840Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:13:50.946Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:13:54.083Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:14:34.546Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:14:34.555Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:14:34.566Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:14:34.568Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:14:34.570Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:14:34.584Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:14:36.243Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:14:41.950Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:46.186Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:46.197Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:18:46.200Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:46.207Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:51.425Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:51.428Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:18:51.431Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:51.436Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:51.441Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:51.442Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:18:54.165Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:18:59.641Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:28:57.244Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:00.067Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:40.211Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:40.219Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:29:40.229Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:40.230Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:40.238Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:40.240Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:29:44.433Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:29:50.096Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:32:24.371Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:32:24.381Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:32:24.386Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:32:24.387Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:32:24.388Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:32:24.389Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:32:25.791Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:32:25.983Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:35:11.451Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:35:11.455Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:35:11.460Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:35:11.461Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:35:11.467Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:35:11.471Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:35:13.094Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:35:13.331Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:36:07.230Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:36:07.243Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:36:07.245Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:36:07.247Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:36:07.248Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:36:07.250Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:36:08.592Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:36:09.824Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:45:16.759Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:45:16.772Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:45:16.774Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:45:16.775Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:45:16.776Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:45:16.777Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:47:36.699Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:47:36.714Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:47:36.720Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:47:36.721Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:47:36.722Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:47:36.723Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:47:39.135Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:47:40.774Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:53:16.453Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:53:16.464Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:53:16.468Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:53:16.470Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:53:16.472Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:53:16.473Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:25.156Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:25.180Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:25.240Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:48.337Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:48.351Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:54:48.355Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:48.356Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:48.358Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:48.360Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:54:49.834Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:54:51.247Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:57:58.592Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:57:58.600Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:57:58.612Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:57:58.613Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:57:58.614Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:57:58.616Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T15:58:01.329Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T15:58:05.504Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:33:55.982Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:33:55.986Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:33:55.988Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:33:55.996Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:33:56.000Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:33:56.001Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:34:04.586Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:34:07.360Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:25.660Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:25.662Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:35:25.667Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:25.668Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:29.319Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:29.321Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:35:29.326Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:29.331Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:29.333Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:29.334Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:35:33.105Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:35:33.456Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:30.205Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:30.207Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:37:30.212Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:30.213Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:37:30.222Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:30.224Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:36.179Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:36.189Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:37:50.568Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:37:54.538Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:00.763Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:05.018Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:38:11.591Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:13.566Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:13.783Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:20.605Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:30.281Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:30.282Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:38:30.286Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:30.287Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:30.290Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:30.292Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:38:33.453Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:38:37.391Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:04.080Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:04.083Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:41:04.087Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:04.089Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:09.478Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:09.480Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:41:09.482Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:09.484Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:09.487Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:09.494Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:41:12.831Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:41:20.899Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:42:58.769Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:42:58.774Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:42:58.777Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:42:58.779Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:42:58.783Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:42:58.784Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:03.299Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:10.185Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:14.973Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:14.975Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:14.977Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:14.978Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:14.979Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:14.979Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:17.147Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:18.468Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:30.840Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:30.844Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:30.847Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:30.848Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:30.854Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:30.855Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:33.168Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:35.426Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:45.728Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:45.729Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:45.729Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:45.730Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:45.730Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:45.730Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:43:47.971Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:43:49.385Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:44:10.478Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:44:10.483Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:44:10.484Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:44:10.487Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:44:10.489Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:44:10.490Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:44:12.114Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:44:12.475Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:45:19.596Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:45:19.599Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:45:19.601Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:45:19.607Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:45:19.608Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:45:19.610Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:45:22.708Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:45:26.555Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:46:07.241Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:46:07.244Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:46:07.246Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:46:07.252Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:46:07.253Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:46:07.256Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:46:08.913Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:46:09.117Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:47:43.260Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:47:43.262Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:47:43.265Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:47:43.268Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:48:36.344Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:48:36.347Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:48:36.352Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:48:36.355Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:48:36.358Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:48:36.359Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:48:37.618Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:48:38.699Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:49:20.400Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:49:20.402Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:49:20.404Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:49:20.408Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:49:20.414Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:49:20.415Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:49:25.405Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:49:32.215Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:52:38.592Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:52:43.862Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:52:43.866Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:52:43.868Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:52:43.873Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T17:52:44.789Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T17:53:06.793Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:56:05.105Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:56:05.115Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T17:56:07.113Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:56:50.436Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:56:50.437Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:56:50.440Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:56:50.442Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T17:56:50.821Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T17:56:50.940Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:57:27.462Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T17:57:27.466Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T17:57:27.861Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:57:56.126Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:57:58.366Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:57:58.369Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:57:58.374Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:57:58.375Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:57:58.381Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:57:58.382Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:57:59.936Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:58:01.174Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:59:57.977Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:59:57.980Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T17:59:57.984Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T17:59:57.987Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:21:31.401Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE CIÊNCIAS GEOGRÁFICAS"},"timestamp":"2025-06-10T18:21:54.144Z","url":"/Researchers?departamento=DEPARTAMENTO+DE+CI%C3%8ANCIAS+GEOGR%C3%81FICAS"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822a72dfdcbc9894d74d688"},"timestamp":"2025-06-10T18:22:04.137Z","url":"/Researchers?id=6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:04.343Z","url":"/Patentes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:04.348Z","url":"/Softwares/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:04.360Z","url":"/Orientacoes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"7217736964361440"},"timestamp":"2025-06-10T18:22:04.362Z","url":"/Lattes/internal-id?id_lattes=7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:04.365Z","url":"/Lattes/7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:04.366Z","url":"/Patentes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:05.585Z","url":"/Softwares/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:05.898Z","url":"/Orientacoes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:22:06.492Z","url":"/Lattes/7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"7217736964361440"},"timestamp":"2025-06-10T18:22:06.494Z","url":"/Lattes/internal-id?id_lattes=7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822a72dfdcbc9894d74d688"},"timestamp":"2025-06-10T18:23:58.405Z","url":"/Researchers?id=6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:00.163Z","url":"/Patentes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:00.168Z","url":"/Softwares/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:00.171Z","url":"/Orientacoes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:00.177Z","url":"/Lattes/7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"7217736964361440"},"timestamp":"2025-06-10T18:24:00.179Z","url":"/Lattes/internal-id?id_lattes=7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:00.185Z","url":"/Patentes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:05.704Z","url":"/Softwares/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:08.316Z","url":"/Orientacoes/6822a72dfdcbc9894d74d688"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:24:08.317Z","url":"/Lattes/7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"7217736964361440"},"timestamp":"2025-06-10T18:24:08.317Z","url":"/Lattes/internal-id?id_lattes=7217736964361440"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:07.216Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T18:25:07.220Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:07.221Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:07.228Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:07.228Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:07.236Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T18:25:10.014Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:13.215Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:43.006Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822a72dfdcbc9894d74cff6"},"timestamp":"2025-06-10T18:25:51.053Z","url":"/Researchers?id=6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.277Z","url":"/Patentes/6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.281Z","url":"/Softwares/6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.282Z","url":"/Orientacoes/6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"9944976090960730"},"timestamp":"2025-06-10T18:25:51.285Z","url":"/Lattes/internal-id?id_lattes=9944976090960730"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.285Z","url":"/Lattes/9944976090960730"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.289Z","url":"/Patentes/6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.946Z","url":"/Softwares/6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:51.971Z","url":"/Orientacoes/6822a72dfdcbc9894d74cff6"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:25:52.329Z","url":"/Lattes/9944976090960730"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id_lattes":"9944976090960730"},"timestamp":"2025-06-10T18:25:52.330Z","url":"/Lattes/internal-id?id_lattes=9944976090960730"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:26:16.590Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:26:16.593Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:26:16.595Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T18:26:16.600Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:26:16.600Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:26:16.604Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T18:26:19.209Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T18:26:32.187Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:07:22.255Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:07:24.102Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:11:37.914Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:11:42.394Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:11:42.398Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:11:42.401Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:11:42.403Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:11:43.129Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:11:43.268Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:12:24.825Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:12:26.218Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA","groupBy":"null"},"timestamp":"2025-06-10T19:13:11.521Z","url":"/Producao?departamento=DEPARTAMENTO%20DE%20F%C3%8DSICA&groupBy=null"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:13:11.941Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:15:13.653Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:15:15.312Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:16:39.728Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:16:39.736Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:16:40.191Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:05.773Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:05.777Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:05.779Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:05.781Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:17:06.301Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:17:06.405Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:25.089Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:25.092Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:25.095Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-10T19:17:25.096Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:17:25.593Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-10T19:17:25.604Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:18:26.345Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:18:26.349Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:18:26.354Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:18:26.355Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:18:26.360Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:18:26.360Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:18:27.315Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:18:28.302Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:24:51.630Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:24:51.635Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:24:51.636Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:24:51.640Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:24:51.641Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:24:51.658Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:24:52.716Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:24:52.717Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:28:31.282Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:28:31.286Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:28:31.289Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:28:31.290Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:28:31.297Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:28:31.300Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:28:32.808Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:28:32.810Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:31:55.076Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:31:55.084Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:31:55.088Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:31:55.089Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:31:55.089Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:31:55.090Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:31:56.852Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:31:56.854Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:02.180Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:04.404Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:32:52.630Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:52.634Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:52.635Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:52.640Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:52.641Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:32:56.896Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:56.899Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:56.900Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:56.902Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:56.907Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-10T19:32:56.907Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:58.218Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:58.324Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:58.822Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-10T19:32:59.615Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:05:54.485Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T13:06:01.756Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:01.764Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:01.774Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:01.777Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T13:06:01.779Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:01.781Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:08.906Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:08.908Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:11.742Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:06:13.478Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:07:15.862Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dcdd"},"timestamp":"2025-06-11T13:07:22.019Z","url":"/Departments?id=6822ad0ffdcbc9894d74dcdd"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dcdd"},"timestamp":"2025-06-11T13:07:22.023Z","url":"/Departments?id=6822ad0ffdcbc9894d74dcdd"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dcdd"},"timestamp":"2025-06-11T13:07:22.026Z","url":"/Departments?id=6822ad0ffdcbc9894d74dcdd"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dcdd"},"timestamp":"2025-06-11T13:07:22.028Z","url":"/Departments?id=6822ad0ffdcbc9894d74dcdd"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE MATEMÁTICA"},"timestamp":"2025-06-11T13:07:22.433Z","url":"/Producao?departamento=DEPARTAMENTO+DE+MATEM%C3%81TICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE MATEMÁTICA"},"timestamp":"2025-06-11T13:07:22.566Z","url":"/Producao?departamento=DEPARTAMENTO+DE+MATEM%C3%81TICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T13:09:00.311Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:00.315Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:00.321Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:00.322Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:00.323Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T13:09:00.326Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:04.992Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:04.994Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:08.472Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:09:10.012Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:58:08.736Z","url":"/Lattes/rawjson"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T13:58:08.950Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA","groupBy":"null"},"timestamp":"2025-06-11T14:00:49.371Z","url":"/Producao?departamento=DEPARTAMENTO%20DE%20F%C3%8DSICA&groupBy=null"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T14:00:49.856Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T14:00:55.172Z","url":"/Producao?departamento=DEPARTAMENTO%20DE%20F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T14:01:04.492Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T14:21:23.695Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T14:21:29.028Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T14:21:29.031Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T14:21:29.039Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T14:21:29.040Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T14:21:29.400Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T14:21:29.623Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:57:05.485Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:57:05.490Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:57:19.683Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:57:19.686Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:57:19.689Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:57:19.692Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:58:22.193Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:58:22.194Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:58:22.202Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:58:22.207Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T15:58:23.392Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T15:58:24.192Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:59:15.826Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:59:15.829Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T15:59:16.393Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:59:20.855Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:59:20.860Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:59:20.863Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T15:59:20.868Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T15:59:21.604Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T15:59:21.608Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:04:07.785Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:04:07.789Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:04:08.204Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:04:18.231Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:04:18.234Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:04:18.240Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:04:18.243Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:04:18.941Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:04:18.962Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:27:16.884Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:27:16.889Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:27:17.284Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:27:22.983Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:27:22.987Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:27:22.993Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:27:23.007Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:27:25.966Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:27:26.001Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:28:41.148Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:28:41.153Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:28:41.654Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:28:47.530Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:28:47.535Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:28:47.553Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:28:47.556Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:28:47.912Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:28:48.065Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:32:26.963Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:32:26.968Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:32:27.515Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:32:32.679Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:32:32.687Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:32:32.723Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:32:32.728Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:32:33.073Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:32:33.200Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:33:48.244Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:33:48.248Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:33:48.671Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:34:48.361Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:34:48.365Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:34:48.385Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:34:48.393Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:34:48.911Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:34:48.986Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:45:40.427Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:45:40.432Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:45:41.369Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:45:54.403Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:45:54.410Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:45:54.879Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:46:05.509Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:46:05.515Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:46:06.002Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:46:21.322Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:46:21.328Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:46:21.332Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:46:21.336Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:46:21.687Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:46:21.804Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:53:36.910Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:53:36.916Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:53:37.957Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:53:43.008Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:53:43.011Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:53:43.037Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:53:43.043Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:53:50.810Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:53:50.908Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:58:18.673Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:58:18.678Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:58:19.073Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:58:25.186Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:58:25.190Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:58:25.194Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T16:58:25.198Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:58:25.546Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T16:58:25.662Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:03:20.598Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:03:20.602Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:03:20.993Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:16:36.118Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:16:36.123Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:16:37.101Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:16:46.086Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:16:46.089Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:16:46.096Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:16:46.124Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:16:49.035Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:16:49.039Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:18:47.622Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:18:47.626Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:18:48.016Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:18:56.266Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:18:56.269Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:18:56.272Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:18:56.276Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:19:07.914Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:19:08.035Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:20:55.874Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:20:55.878Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:20:56.262Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:03.310Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:03.314Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:17.797Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:17.811Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:17.939Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:18.045Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:21:18.316Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:21:18.450Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:53.567Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:21:53.574Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:21:53.956Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:29:20.747Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:29:20.758Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:29:21.720Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:29:22.286Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:35:31.805Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:35:31.807Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:35:31.809Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:35:31.811Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:35:32.289Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:35:33.151Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:36:52.748Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:36:52.750Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:36:52.753Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:36:52.755Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:36:53.133Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:36:53.260Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:39:11.475Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:39:11.481Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:39:11.861Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:39:21.323Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:39:21.325Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:39:21.327Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:39:21.328Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:39:24.476Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:39:24.494Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:41:00.766Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:41:00.771Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:41:01.181Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:41:43.293Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:41:43.295Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:41:43.297Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:41:43.298Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:41:43.663Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:41:43.778Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:50:54.983Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:50:54.988Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:50:55.495Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:51:00.562Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:51:00.565Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:51:00.566Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:51:00.568Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:51:04.575Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:51:04.577Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:53:26.051Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:53:26.057Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:53:26.457Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA","groupBy":"null"},"timestamp":"2025-06-11T17:54:20.090Z","url":"/Producao?departamento=DEPARTAMENTO%20DE%20F%C3%8DSICA&groupBy=null"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T17:54:20.495Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:55:50.778Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:55:50.780Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:55:50.783Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T17:55:50.785Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:55:51.299Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T17:55:51.440Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:00:35.078Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:00:35.083Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:00:36.151Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:00:39.144Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:00:39.147Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:00:39.149Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:00:39.151Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:00:44.681Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:00:44.684Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:04.977Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:04.982Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:02:05.338Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:22.418Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:22.425Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:02:22.845Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:38.643Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:38.646Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:38.648Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:02:38.650Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:02:39.003Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:02:39.153Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:46:34.403Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:46:34.409Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:46:34.770Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:46:39.771Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:46:39.774Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:46:39.777Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T18:46:39.779Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:46:43.300Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:46:43.304Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T18:53:04.139Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:04.142Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T18:53:04.146Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:04.148Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:04.153Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:04.158Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:05.436Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:05.436Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:05.837Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:53:06.537Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T18:55:47.740Z","url":"/Producao?departamento=DEPARTAMENTO%20DE%20F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T18:56:01.017Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"null"},"timestamp":"2025-06-11T19:00:58.646Z","url":"/Producao?groupBy=null"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:00:58.999Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:01:14.879Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:01:21.815Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:15:44.084Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:44.089Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:44.090Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:44.105Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:44.107Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:15:44.109Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:45.601Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:54.520Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:56.302Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:15:56.304Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:16:22.969Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:22.973Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:22.974Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:22.978Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:16:25.092Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:16:26.559Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:26.562Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:26.565Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:26.566Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:26.573Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:16:26.574Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:29.715Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:36.384Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:36.812Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:39.812Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:42.572Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:16:49.584Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:50.319Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:52.341Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:16:52.431Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:17:04.445Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:24:22.954Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T19:24:27.572Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T19:24:27.576Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T19:24:27.578Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-11T19:24:27.580Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T19:24:27.970Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-11T19:24:28.343Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:48.848Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:35:54.591Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:54.594Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:54.597Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:54.598Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:54.603Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:35:54.605Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:55.473Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:35:58.459Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:36:04.882Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:36:08.107Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:36:09.256Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:36:10.429Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-11T19:38:35.196Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:38:35.200Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:38:35.202Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:38:35.208Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:38:35.209Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:38:35.210Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-11T19:38:52.174Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:04:16.899Z","url":"/Artigos/filtraDuplicados"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:04:21.782Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:04:21.953Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:06:07.797Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:06:09.330Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:07:43.506Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:07:45.650Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:11:50.701Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:50.720Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:50.726Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:50.758Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:11:50.760Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:50.762Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:53.976Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:57.690Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:58.534Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:11:59.461Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:12:01.895Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:12:04.940Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:17:16.031Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:17:16.040Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:17:16.051Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:17:16.052Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:17:16.054Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:17:16.067Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:19:10.925Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:10.928Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:10.938Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:10.940Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:10.947Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:10.949Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:19:12.590Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:13.243Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:13.536Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:14.237Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:15.323Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:19:17.418Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"null"},"timestamp":"2025-06-13T11:24:51.587Z","url":"/Producao?groupBy=null"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:24:52.971Z","url":"/favicon.ico"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:25:39.530Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:39.536Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:39.544Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:39.545Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:39.558Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:39.559Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"groupBy":"ano"},"timestamp":"2025-06-13T11:25:44.541Z","url":"/Producao?groupBy=ano"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:46.632Z","url":"/Lattes/"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:47.637Z","url":"/Researchers"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:48.380Z","url":"/Artigos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:48.811Z","url":"/Livros"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:25:50.542Z","url":"/Trabalhos"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{},"timestamp":"2025-06-13T11:43:02.342Z","url":"/Departments"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:43:11.372Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:43:11.382Z","url":"/Producao?departamento=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:43:11.389Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:43:11.393Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:43:11.395Z","url":"/Producao?departamento=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:43:11.399Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:59:25.248Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:59:25.252Z","url":"/Producao?departamento=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:59:25.255Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:59:25.259Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:59:25.263Z","url":"/Producao?departamento=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T11:59:25.264Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T12:01:36.510Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T12:01:36.514Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T12:01:36.517Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"id":"6822ad0ffdcbc9894d74dce3"},"timestamp":"2025-06-13T12:01:36.521Z","url":"/Departments?id=6822ad0ffdcbc9894d74dce3"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-13T12:01:36.838Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}
+{"body":{},"ip":"127.0.0.1","level":"info","message":"Request","method":"GET","params":{},"query":{"departamento":"DEPARTAMENTO DE FÍSICA"},"timestamp":"2025-06-13T12:01:37.023Z","url":"/Producao?departamento=DEPARTAMENTO+DE+F%C3%8DSICA"}

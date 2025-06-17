@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Autor = require('./Autor');
-const PalavrasChave = require('./PalavrasChave');
+const {AutorSchema} = require('./Autor');
+const {PalavrasChaveSchema} = require('./PalavrasChave');
 
 const CapituloSchema = new Schema({
     TIPO: String,
@@ -15,11 +15,11 @@ const CapituloSchema = new Schema({
     TITULO_DO_CAPITULO_DO_LIVRO_INGLES: String,
     TITULO_DO_LIVRO: String,
     NUMERO_DE_VOLUMES: String,
-    NUMERO_DE_PAGINAS: String,
+    NUMERO_DE_PAGINAS: String,  
     ISBN: String,
-    AUTORES: [Autor.schema],
-    PALAVRAS_CHAVE: PalavrasChave.schema
+    AUTORES: [AutorSchema],
+    PALAVRAS_CHAVE: PalavrasChaveSchema
 });
 
 const Capitulo = mongoose.model('Capitulo', CapituloSchema);
-module.exports = Capitulo;
+module.exports = {Capitulo, CapituloSchema};

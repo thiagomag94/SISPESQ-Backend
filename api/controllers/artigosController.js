@@ -238,6 +238,9 @@ const getArtigosPorDepartamentoouCentro = async (req, res) => {
 const buscarPorPalavrasChave = async (req, res) => {
     try {
         const palavraChave = req.query.palavraChave;
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 20;
+        const skip = (page - 1) * limit;
         
         if (!palavraChave) {
             return res.status(400).json({
@@ -251,7 +254,27 @@ const buscarPorPalavrasChave = async (req, res) => {
         // Criar regex para busca parcial e case-insensitive
         const regex = new RegExp(normalizedKeyword, 'i');
 
-        // Buscar artigos onde qualquer palavra-chave contenha a palavra-chave buscada
+        // Primeiro contar o total de resultados
+        const totalPipeline = [
+            {
+                $match: {
+                    $or: [
+                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_1': regex },
+                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_2': regex },
+                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_3': regex },
+                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_4': regex },
+                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_5': regex },
+                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_6': regex }
+                    ]
+                }
+            },
+            { $count: "total" }
+        ];
+
+        const totalResult = await Artigos.aggregate(totalPipeline);
+        const total = totalResult.length > 0 ? totalResult[0].total : 0;
+
+        // Pipeline principal com paginação
         const pipeline = [
             {
                 $match: {
@@ -285,7 +308,9 @@ const buscarPorPalavrasChave = async (req, res) => {
             },
             {
                 $sort: { score: -1 }
-            }
+            },
+            { $skip: skip },
+            { $limit: limit }
         ];
 
         const resultados = await Artigos.aggregate(pipeline);
@@ -306,9 +331,27 @@ const buscarPorPalavrasChave = async (req, res) => {
         // Converter objeto para array
         const autoresArray = Object.values(autores);
 
+        // Adicionar cache local
+        const cacheKey = `palavras-chave:${normalizedKeyword}:${page}:${limit}`;
+        try {
+            await redis.setex(cacheKey, 3600, JSON.stringify({
+                total,
+                data: autoresArray
+            }));
+        } catch (cacheErr) {
+            console.warn('Cache Redis não disponível:', cacheErr);
+        }
+
         res.status(200).json({
-            total: autoresArray.length,
-            data: autoresArray
+            total,
+            data: autoresArray,
+            pagination: {
+                page,
+                limit,
+                total,
+                totalPages: Math.ceil(total / limit),
+                hasMore: page < Math.ceil(total / limit)
+            }
         });
     } catch (err) {
         console.error('Erro ao buscar por palavras-chave:', err);

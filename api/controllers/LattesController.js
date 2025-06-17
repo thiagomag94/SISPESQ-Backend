@@ -5,6 +5,7 @@ const xml2js = require('xml2js');
 const jschardet = require('jschardet'); // Usando jschardet para detectar codificação
 const iconv = require('iconv-lite'); // Importando o iconv-lite para conversão de codificação
 const { lattesdb } = require('../models/Lattes');
+const axios = require('axios');
 
 const emptyCurriculo = {
     CURRICULO_VITAE: {
@@ -829,50 +830,74 @@ const extrairTodosCurriculos= async(req, res) =>{
 }
     
 
-
 const getInternalId = async (req, res) => {
-  const id_lattes = req.query.id_lattes;
-
+    const { id_lattes } = req.query;
   
-
-
-  if (!id_lattes) {
-    return res.status(400).json({ error: 'Faltando o parâmetro id_lattes' });
-  }
-
+    if (!id_lattes || !/^\d{16}$/.test(id_lattes)) {
+      return res.status(400).json({ error: 'ID Lattes inválido ou ausente.' });
+    }
   
-  try {
-
-    const result = await lattesdb.findOne({ "CURRICULO_VITAE.ID_Lattes": id_lattes });
-
-    if (result) {
-        const url = `http://lattes.cnpq.br/${id_lattes}`;
-        console.log(`Buscando ID interno para: ${url}`);
-        const response = await fetch(url, { redirect: 'follow' });
-        const finalUrl = response.url;
-
-        // Extrai o parâmetro 'id' da URL final
-        const idMatch = finalUrl.match(/[?&]id=([^&]+)/);
-
-        if (idMatch && idMatch[1]) {
-            console.log(`ID interno encontrado: ${idMatch[1]}`);
-        return res.json({ internalId: idMatch[1] });
-        } else {
-        return res.status(404).json({ error: 'ID interno não encontrado na URL final' });
-        }
-      }else{
-        return res.status(404).json({ error: 'Currículo não encontrado para o ID Lattes fornecido' });
+    try {
+      const result = await lattesdb.findOne({ "CURRICULO_VITAE.ID_Lattes": id_lattes });
+      if (!result) {
+        return res.status(404).json({ error: 'Currículo não encontrado na base de dados local' });
       }
-    
-  } catch (error) {
-    console.error(`Erro ao buscar ID interno para ${id_lattes}:`, error);
-    return res.status(500).json({ error: error.message });
-  }
-};
-
-
-
-
+  
+      let currentUrl = `https://lattes.cnpq.br/${id_lattes}`;
+      const MAX_REDIRECTS = 5;
+  
+      for (let i = 0; i < MAX_REDIRECTS; i++) {
+        const urlObj = new URL(currentUrl);
+        const idParam = urlObj.searchParams.get('id');
+  
+        // 1. CONDIÇÃO DE SUCESSO CORRIGIDA E ESPECÍFICA
+        // Verifica se a página é a de visualização E se o ID contém letras (não é só numérico)
+        if (urlObj.pathname.includes('/visualizacv.do') && idParam && /[a-zA-Z]/.test(idParam)) {
+          console.log(`[SUCESSO REAL] - Encontrada URL final e ID alfanumérico: ${idParam}`);
+          return res.json({ internalId: idParam });
+        }
+  
+        console.log(`[REQUISIÇÃO ${i + 1}] - Acessando: ${currentUrl}`);
+  
+        try {
+          await axios.get(currentUrl, {
+            maxRedirects: 0,
+            timeout: 8000,
+            headers: { 'User-Agent': 'Mozilla/5.0' }
+          });
+          return res.status(500).json({ error: 'O fluxo de redirecionamento do Lattes foi interrompido inesperadamente.' });
+  
+        } catch (error) {
+          if (error.response && [301, 302].includes(error.response.status)) {
+            const newLocation = error.response.headers.location;
+            currentUrl = new URL(newLocation, currentUrl).href;
+  
+            // 2. FORÇANDO HTTPS PARA EVITAR ERRO DE CONEXÃO
+            // Se o redirect nos mandar para http, nós corrigimos para https
+            if (currentUrl.startsWith('http://')) {
+              currentUrl = currentUrl.replace('http://', 'https://');
+              console.log(`[INFO] - URL corrigida para HTTPS: ${currentUrl}`);
+            }
+            
+          } else {
+            throw error; // Lança outros erros (rede, etc.) para o catch principal
+          }
+        }
+      }
+  
+      return res.status(404).json({ error: 'Não foi possível encontrar o ID interno após seguir todos os redirecionamentos.' });
+  
+    } catch (error) {
+      console.error(`ERRO FINAL no processo para ${id_lattes}:`, error);
+      if (error.code === 'ECONNREFUSED') {
+        return res.status(503).json({ error: `Conexão recusada pelo servidor: ${error.config?.url}` });
+      }
+      if (error.code === 'ENOTFOUND' || error.code === 'ETIMEDOUT') {
+        return res.status(503).json({ error: 'Serviço do CNPq indisponível ou falha de conexão.' });
+      }
+      return res.status(500).json({ error: 'Ocorreu um erro interno no servidor.' });
+    }
+  };
 module.exports = {
     createLattes, getLattesbyId, getLattes, extrairTodosCurriculos, getInternalId
 };

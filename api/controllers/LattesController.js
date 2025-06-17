@@ -855,6 +855,7 @@ const getInternalId = async (req, res) => {
         const idMatch = finalUrl.match(/[?&]id=([^&]+)/);
 
         if (idMatch && idMatch[1]) {
+            console.log(`ID interno encontrado: ${idMatch[1]}`);
         return res.json({ internalId: idMatch[1] });
         } else {
         return res.status(404).json({ error: 'ID interno não encontrado na URL final' });
@@ -864,6 +865,7 @@ const getInternalId = async (req, res) => {
       }
     
   } catch (error) {
+    console.error(`Erro ao buscar ID interno para ${id_lattes}:`, error);
     return res.status(500).json({ error: error.message });
   }
 };

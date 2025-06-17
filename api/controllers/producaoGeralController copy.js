@@ -87,8 +87,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'artigo',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$artigo.ANO_DO_ARTIGO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$artigo.ANO_DO_ARTIGO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$artigo.ANO_DO_ARTIGO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$artigo.ANO_DO_ARTIGO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -109,8 +109,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'livro',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$livro.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$livro.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$livro.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$livro.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -131,8 +131,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'capitulo',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$capitulo.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$capitulo.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$capitulo.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$capitulo.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -145,8 +145,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'trabalho',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$trabalho.ANO_DO_TRABALHO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$trabalho.ANO_DO_TRABALHO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$trabalho.ANO_DO_TRABALHO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$trabalho.ANO_DO_TRABALHO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -159,8 +159,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'texto',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$texto.ANO_DO_TEXTO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$texto.ANO_DO_TEXTO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$texto.ANO_DO_TEXTO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$texto.ANO_DO_TEXTO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -173,8 +173,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'software',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$software.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$software.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$software.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$software.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -187,8 +187,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'patente',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$patente.DATA_DE_DEPOSITO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$patente.DATA_DE_DEPOSITO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -202,8 +202,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                         as: 'orientacao',
                                         cond: {
                                             $and: [
-                                                { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                                { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                                { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                                { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                             ]
                                         }
                                     }
@@ -216,8 +216,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                         as: 'orientacao',
                                         cond: {
                                             $and: [
-                                                { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                                { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                                { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                                { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                             ]
                                         }
                                     }
@@ -230,8 +230,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                         as: 'orientacao',
                                         cond: {
                                             $and: [
-                                                { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                                { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                                { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                                { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                             ]
                                         }
                                     }
@@ -246,8 +246,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                         as: 'orientacao',
                                         cond: {
                                             $and: [
-                                                { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                                { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                                { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                                { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                             ]
                                         }
                                     }
@@ -260,8 +260,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                         as: 'orientacao',
                                         cond: {
                                             $and: [
-                                                { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                                { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                                { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                                { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                             ]
                                         }
                                     }
@@ -274,8 +274,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                         as: 'orientacao',
                                         cond: {
                                             $and: [
-                                                { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                                { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                                { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                                { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                             ]
                                         }
                                     }
@@ -290,8 +290,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'artigo',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$artigo.ANO_DO_ARTIGO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$artigo.ANO_DO_ARTIGO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$artigo.ANO_DO_ARTIGO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$artigo.ANO_DO_ARTIGO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -310,8 +310,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'livro',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$livro.ANO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$livro.ANO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$livro.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$livro.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -330,8 +330,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'capitulo',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$capitulo.ANO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$capitulo.ANO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$capitulo.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$capitulo.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -342,8 +342,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'trabalho',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$trabalho.ANO_DO_TRABALHO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$trabalho.ANO_DO_TRABALHO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$trabalho.ANO_DO_TRABALHO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$trabalho.ANO_DO_TRABALHO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -354,8 +354,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'texto',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$texto.ANO_DO_TEXTO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$texto.ANO_DO_TEXTO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$texto.ANO_DO_TEXTO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$texto.ANO_DO_TEXTO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -366,8 +366,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'software',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$software.ANO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$software.ANO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$software.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$software.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -378,8 +378,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                 as: 'patente',
                                 cond: {
                                     $and: [
-                                        { $gte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.inicio' ] },
-                                        { $lte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.fim' ] }
+                                        { $gte: [{ $year: '$$patente.DATA_DE_DEPOSITO' }, { $year: '$periodo_atividade.inicio' }] },
+                                        { $lte: [{ $year: '$$patente.DATA_DE_DEPOSITO' }, { $year: '$periodo_atividade.fim' }] }
                                     ]
                                 }
                             }
@@ -391,8 +391,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'orientacao',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -403,8 +403,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'orientacao',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -415,8 +415,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'orientacao',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -429,8 +429,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'orientacao',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -441,8 +441,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'orientacao',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }
@@ -453,8 +453,8 @@ const ProducaoGeralcreate = async (req, res) => {
                                     as: 'orientacao',
                                     cond: {
                                         $and: [
-                                            { $gte: ['$$orientacao.ANO', '$periodo_atividade.inicio' ] },
-                                            { $lte: ['$$orientacao.ANO', '$periodo_atividade.fim' ] }
+                                            { $gte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.inicio' }] },
+                                            { $lte: [{ $year: '$$orientacao.ANO' }, { $year: '$periodo_atividade.fim' }] }
                                         ]
                                     }
                                 }

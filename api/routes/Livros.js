@@ -8,7 +8,8 @@ app.use(express.json())
 const livrosController = require('../controllers/livrosController') 
 
 
-router.get('/', livrosController.getTodosLivrosUFPE)
-
+router.get('/create', livrosController.createTodosLivros)
+router.get('/', livrosController.getAllLivros)
+router.get('/deleteAll', livrosController.deleteAllLivros)
 
 module.exports = router

@@ -116,11 +116,24 @@ const filterArtigosDuplicados = async (artigos) => {
 
 const createTodosArtigos = async (req, res) => {
     try {
-        // Cria índices se não existirem
-        await mongoose.connection.db.collection('producao_geral').createIndexes([
+        // Primeiro remover todos os índices existentes
+        const collection = mongoose.connection.db.collection('producao_geral');
+        const indexes = await collection.indexes();
+        
+        // Remover índices existentes (exceto o _id)
+        for (const index of indexes) {
+            if (index.name !== '_id_') {
+                await collection.dropIndex(index.name);
+            }
+        }
+
+        // Criar índices necessários
+        await collection.createIndexes([
             { key: { "producoes.artigos.DOI": 1 } },
             { key: { "producoes.artigos.TITULO_DO_ARTIGO": 1 } },
-            { key: { "producoes.artigos.ANO_DO_ARTIGO": 1 } }
+            { key: { "producoes.artigos.ANO_DO_ARTIGO": 1 } },
+            { key: { "producoes.artigos.PALAVRAS_CHAVE": "text" } }
+           
         ]);
 
         const pipeline = [
@@ -136,7 +149,20 @@ const createTodosArtigos = async (req, res) => {
                 TITULO_DO_ARTIGO: "$producoes.artigos.TITULO_DO_ARTIGO",
                 ANO_DO_ARTIGO: "$producoes.artigos.ANO_DO_ARTIGO",
                 AUTORES: "$producoes.artigos.AUTORES",
-                PALAVRAS_CHAVE: "$producoes.artigos.PALAVRAS_CHAVE"
+                PALAVRAS_CHAVE: { // Transformar o objeto em um array
+                    $filter: {
+                        input: [
+                            "$producoes.artigos.PALAVRAS_CHAVE.PALAVRA_CHAVE_1",
+                            "$producoes.artigos.PALAVRAS_CHAVE.PALAVRA_CHAVE_2",
+                            "$producoes.artigos.PALAVRAS_CHAVE.PALAVRA_CHAVE_3",
+                            "$producoes.artigos.PALAVRAS_CHAVE.PALAVRA_CHAVE_4",
+                            "$producoes.artigos.PALAVRAS_CHAVE.PALAVRA_CHAVE_5",
+                            "$producoes.artigos.PALAVRAS_CHAVE.PALAVRA_CHAVE_6"
+                        ],
+                        as: "item",
+                        cond: { $ne: [ "$$item", null ] } // Remove valores nulos
+                    }
+                }
             } }
         ];
 
@@ -146,6 +172,7 @@ const createTodosArtigos = async (req, res) => {
             .batchSize(1000);
 
         for await (const doc of cursor) {
+            doc.PALAVRAS_CHAVE = doc.PALAVRAS_CHAVE.map(kw => normalize(kw));
             resultados.push(doc);
         }
 
@@ -157,6 +184,7 @@ const createTodosArtigos = async (req, res) => {
        
         // Limpa a coleção existente
         await Artigos.deleteMany({});
+      
         // Salva os artigos únicos
         await Artigos.insertMany(artigosUnicos);
         
@@ -239,85 +267,80 @@ const buscarPorPalavrasChave = async (req, res) => {
     try {
         const palavraChave = req.query.palavraChave;
         const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 20;
+        const limit = parseInt(req.query.limit) || 50;
         const skip = (page - 1) * limit;
-        
+
         if (!palavraChave) {
             return res.status(400).json({
                 error: 'Palavra-chave é obrigatória'
             });
         }
 
-        // Normalizar a palavra-chave de entrada
-        const normalizedKeyword = normalize(palavraChave);
+        // A normalização aqui não é mais estritamente necessária se o índice de texto
+        // for configurado para o idioma correto (português), pois ele lida com acentos e case.
+        // Manter a normalização no input não prejudica.
+        const termoDeBusca = normalize(palavraChave);
+        
+        // Chave do cache pode ser simplificada
+        const cacheKey = `palavras-chave:${termoDeBusca}:${page}:${limit}`;
+        try {
+            const cachedData = await redis.get(cacheKey);
+            if (cachedData) {
+                return res.status(200).json(JSON.parse(cachedData));
+            }
+        } catch (cacheErr) {
+            console.warn('Cache Redis não disponível:', cacheErr);
+        }
 
-        // Criar regex para busca parcial e case-insensitive
-        const regex = new RegExp(normalizedKeyword, 'i');
-
-        // Primeiro contar o total de resultados
-        const totalPipeline = [
-            {
-                $match: {
-                    $or: [
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_1': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_2': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_3': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_4': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_5': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_6': regex }
-                    ]
-                }
-            },
-            { $count: "total" }
-        ];
-
-        const totalResult = await Artigos.aggregate(totalPipeline);
-        const total = totalResult.length > 0 ? totalResult[0].total : 0;
-
-        // Pipeline principal com paginação
+        // O pipeline de agregação agora usa $text e $meta para relevância
         const pipeline = [
+            // Estágio 1: Match - A busca principal com o índice de texto
             {
                 $match: {
-                    $or: [
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_1': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_2': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_3': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_4': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_5': regex },
-                        { 'PALAVRAS_CHAVE.PALAVRA_CHAVE_6': regex }
-                    ]
+                    $text: {
+                        $search: termoDeBusca,
+                        $language: 'pt' // Especificar o idioma para melhor stemming
+                    }
                 }
             },
+            
+            // Estágio 2: Project - Adicionar o score de relevância e projetar os campos
             {
                 $project: {
                     _id: 0,
                     ID_LATTES_AUTOR: 1,
                     TITULO_DO_ARTIGO: 1,
                     PALAVRAS_CHAVE: 1,
-                    score: {
-                        $add: [
-                            { $cond: [{ $regexMatch: { input: "$PALAVRAS_CHAVE.PALAVRA_CHAVE_1", regex: regex } }, 1, 0] },
-                            { $cond: [{ $regexMatch: { input: "$PALAVRAS_CHAVE.PALAVRA_CHAVE_2", regex: regex } }, 1, 0] },
-                            { $cond: [{ $regexMatch: { input: "$PALAVRAS_CHAVE.PALAVRA_CHAVE_3", regex: regex } }, 1, 0] },
-                            { $cond: [{ $regexMatch: { input: "$PALAVRAS_CHAVE.PALAVRA_CHAVE_4", regex: regex } }, 1, 0] },
-                            { $cond: [{ $regexMatch: { input: "$PALAVRAS_CHAVE.PALAVRA_CHAVE_5", regex: regex } }, 1, 0] },
-                            { $cond: [{ $regexMatch: { input: "$PALAVRAS_CHAVE.PALAVRA_CHAVE_6", regex: regex } }, 1, 0] }
-                        ]
-                    }
+                    score: { $meta: "textScore" } // Adiciona o score de relevância
                 }
             },
+
+            // Estágio 3: Sort - Ordenar pelos mais relevantes primeiro
             {
                 $sort: { score: -1 }
             },
-            { $skip: skip },
-            { $limit: limit }
+
+            // Estágio 4: Facet - Para fazer a contagem total e a paginação em uma única query
+            {
+                $facet: {
+                    metadata: [{ $count: "total" }],
+                    data: [{ $skip: skip }, { $limit: limit }]
+                }
+            }
         ];
 
-        const resultados = await Artigos.aggregate(pipeline);
+        const result = await Artigos.aggregate(pipeline);
+        
+        const total = result[0].metadata.length > 0 ? result[0].metadata[0].total : 0;
+        const artigosPaginados = result[0].data;
 
-        // Agrupar por ID_LATTES_AUTOR
+        if (total === 0) {
+            return res.status(404).json({ error: 'Nenhum artigo encontrado para esta palavra-chave.' });
+        }
+
+        // O agrupamento por autor pode ser feito aqui, no lado da aplicação, como antes.
         const autores = {};
-        resultados.forEach(artigo => {
+        artigosPaginados.forEach(artigo => {
             const autorId = artigo.ID_LATTES_AUTOR;
             if (!autores[autorId]) {
                 autores[autorId] = {
@@ -328,31 +351,29 @@ const buscarPorPalavrasChave = async (req, res) => {
             autores[autorId].artigos.push(artigo);
         });
 
-        // Converter objeto para array
         const autoresArray = Object.values(autores);
+        const totalPages = Math.ceil(total / limit);
 
-        // Adicionar cache local
-        const cacheKey = `palavras-chave:${normalizedKeyword}:${page}:${limit}`;
-        try {
-            await redis.setex(cacheKey, 3600, JSON.stringify({
-                total,
-                data: autoresArray
-            }));
-        } catch (cacheErr) {
-            console.warn('Cache Redis não disponível:', cacheErr);
-        }
-
-        res.status(200).json({
+        const response = {
             total,
             data: autoresArray,
             pagination: {
                 page,
                 limit,
-                total,
-                totalPages: Math.ceil(total / limit),
-                hasMore: page < Math.ceil(total / limit)
+                totalPages,
+                hasMore: page < totalPages
             }
-        });
+        };
+
+        // Salvar no cache
+        try {
+            await redis.setex(cacheKey, 3600, JSON.stringify(response));
+        } catch (cacheErr) {
+            console.warn('Cache Redis não disponível:', cacheErr);
+        }
+
+        res.status(200).json(response);
+
     } catch (err) {
         console.error('Erro ao buscar por palavras-chave:', err);
         res.status(500).json({ 
@@ -361,7 +382,6 @@ const buscarPorPalavrasChave = async (req, res) => {
         });
     }
 };
-
 module.exports = {
     createTodosArtigos,
     getTodosArtigosUFPE,

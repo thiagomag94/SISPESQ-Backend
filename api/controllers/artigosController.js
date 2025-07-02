@@ -18,8 +18,31 @@ const normalize = (text) => {
 const getTodosArtigosUFPE = async (req, res) => {
     
     try {
+        let query = {}
+        // Verifica se há filtros na query
+        if (req.query.departamento) {
+            query.DEPARTAMENTO = req.query.departamento;
+        }
+
+        if (req.query.centro) {
+            query.CENTRO = req.query.centro;
+        }
+      
+        if(req.query.dataInicio){
+            let filtroData = {};
+            const dataInicio = new Date(req.query.dataInicio);
+            dataInicio.setHours(0, 0, 0, 0);
+            filtroData.$gte = dataInicio; // Maior ou igual a data de início
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO_DO_ARTIGO = filtroData;
+              }
+            
+            
+        }
+
+        console.log('Query de busca de artigos:', query);
         // Primeiro contar todos os documentos
-        const totalDocs = await Artigos.countDocuments({});
+        const totalDocs = await Artigos.countDocuments(query);
         
         // Obter parâmetros de paginação da query
         const page = parseInt(req.query.page) || 1;
@@ -27,7 +50,7 @@ const getTodosArtigosUFPE = async (req, res) => {
         const skip = (page - 1) * limit;
 
         // Buscar os documentos paginados
-        const artigos = await Artigos.find({})
+        const artigos = await Artigos.find(query)
             .skip(skip)
             .limit(limit)
             .sort({ ANO_DO_ARTIGO: -1 });
@@ -335,7 +358,17 @@ const buscarPorPalavrasChave = async (req, res) => {
         const artigosPaginados = result[0].data;
 
         if (total === 0) {
-            return res.status(404).json({ error: 'Nenhum artigo encontrado para esta palavra-chave.' });
+             return res.status(200).json({
+                message: 'Nenhum artigo encontrado para a palavra-chave fornecida',
+                total: 0,
+                data: [],
+                pagination: {
+                    page,
+                    limit,
+                    totalPages: 0,
+                    hasMore: false
+                }
+            });
         }
 
         // O agrupamento por autor pode ser feito aqui, no lado da aplicação, como antes.

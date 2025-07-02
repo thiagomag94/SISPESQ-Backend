@@ -192,8 +192,19 @@ const getAllLivros = async (req, res) => {
             query['ISBN'] = { $regex: new RegExp(normalizedIsbn, 'i') };
         }
 
-        // Get all unique documents from Livro collection matching the query
-        const livrosUnicos = await Livro.find(query);
+        if(req.query.dataInicio){
+            let filtroData = {};
+            const dataInicio = new Date(req.query.dataInicio);
+            dataInicio.setHours(0, 0, 0, 0);
+            filtroData.$gte = dataInicio; // Maior ou igual a data de início
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO = filtroData;
+              }
+            
+            
+        }
+
+        const totalDocs = await Livro.countDocuments(query);
         
         // Get all duplicates from the duplicates collection matching the query
         const duplicatesCollection = mongoose.connection.db.collection('livros_duplicados');
@@ -205,9 +216,15 @@ const getAllLivros = async (req, res) => {
         const skip = (page - 1) * limit;
 
         // Apply pagination to unique documents
-        const paginatedLivros = livrosUnicos.slice(skip, skip + limit);
-
-        if (paginatedLivros.length === 0) {
+        //const paginatedLivros = livrosUnicos.slice(skip, skip + limit);
+        
+        // Get all unique documents from Livro collection matching the query
+        const livrosUnicos = await Livro.find(query)
+            .skip(skip)
+            .limit(limit)
+            .sort({ ANO: -1 }) // Sort by year in descending order
+           
+        if (!livrosUnicos || livrosUnicos.length === 0) {
             return res.status(404).json({ 
                 error: 'Nenhum documento encontrado',
                 total: livrosUnicos.length,
@@ -216,17 +233,17 @@ const getAllLivros = async (req, res) => {
             });
         }
 
-        const totalPages = Math.ceil(livrosUnicos.length / limit);
+        const totalPages = Math.ceil(totalDocs / limit);
 
         res.status(200).json({
-            total: livrosUnicos.length,
+            total: totalDocs,
             duplicatesCount: livrosDuplicados.length,
             duplicates: livrosDuplicados,
-            data: paginatedLivros,
+            data: livrosUnicos,
             pagination: {
                 page,
                 limit,
-                totalDocs: livrosUnicos.length,
+                totalDocs,
                 totalPages,
                 hasMore: page < totalPages
             }

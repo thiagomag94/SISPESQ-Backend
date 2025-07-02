@@ -69,31 +69,51 @@ const filterCapitulosDuplicados = async (capitulos) => {
 // Get all chapters with pagination
 const getTodosCapitulosUFPE = async (req, res) => {
     try {
+        let query = {}
+       
+
+        if(req.query.dataInicio){
+            let filtroData = {};
+            const dataInicio = new Date(req.query.dataInicio);
+            dataInicio.setHours(0, 0, 0, 0);
+            filtroData.$gte = dataInicio; // Maior ou igual a data de início
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO = filtroData;
+              }
+            
+            
+        }
+        
+
+        // Get total documents count
+        const totalDocs = await Capitulo.countDocuments(query);
+       
+        // Pagination parameters
         const page = parseInt(req.query.page) || 1;
         const limit = parseInt(req.query.limit) || 10;
         const skip = (page - 1) * limit;
 
-        // Get total documents count
-        const totalDocs = await Capitulo.countDocuments({});
-        if (totalDocs === 0) {
+        // Get chapters with pagination
+        const capitulos = await Capitulo.find(query)
+            .skip(skip)
+            .limit(limit)
+            .sort({ ANO: -1 });
+
+        if (!capitulos || capitulos.length === 0) {
             return res.status(404).json({ 
                 error: 'Nenhum capítulo encontrado',
                 total: totalDocs
             });
         }
 
-        // Get chapters with pagination
-        const capitulos = await Capitulo.find({})
-            .skip(skip)
-            .limit(limit)
-            .sort({ ANO: -1 });
-
+        // Calculate pagination info
+        const totalPages = Math.ceil(totalDocs / limit);
         // Get duplicates
         const duplicatesCollection = mongoose.connection.db.collection('capitulos_duplicados');
         const duplicates = await duplicatesCollection.find({}).toArray();
 
-        // Calculate pagination info
-        const totalPages = Math.ceil(totalDocs / limit);
+       
+     
 
         res.status(200).json({
             total: totalDocs,

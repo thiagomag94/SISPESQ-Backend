@@ -128,8 +128,22 @@ const deleteAllTrabalhosEmEventos = async (req, res) => {
 
 const getAllTrabalhosEmEventos = async (req, res) => {
     try {
+        let query = {}
+        // Verifica se há filtros na query
+
+        if(req.query.dataInicio){
+            let filtroData = {};
+            const dataInicio = new Date(req.query.dataInicio);
+            dataInicio.setHours(0, 0, 0, 0);
+            filtroData.$gte = dataInicio; // Maior ou igual a data de início
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO_DO_TRABALHO = filtroData;
+              }
+            
+            
+        }
         // Primeiro contar todos os documentos
-        const totalDocs = await TrabalhoEvento.countDocuments({});
+        const totalDocs = await TrabalhoEvento.countDocuments(query);
         
         // Obter parâmetros de paginação da query
         const page = parseInt(req.query.page) || 1;

@@ -243,7 +243,146 @@ const LattesSchema = new Schema({
 
                 },
             ],
+            OUTRAS_PRODUCOES_BIBLIOGRAFICAS: [
+                {
+                    NATUREZA: String,
+                    TITULO: String,
+                    ANO: Date,
+                    IDIOMA: String,
+                    MEIO_DE_DIVULGACAO: String,
+                    HOME_PAGE_DO_TRABALHO: String,
+                    DOI: String,
+                    PAIS_DE_PUBLICACAO: String,
+                    TITULO_INGLES: String,
+                    EDITORA: String,
+                    CIDADE_EDITORA: String,
+                    NUMERO_DE_PAGINAS: String,
+                    ISSN_ISBN: String,
+                    AUTORES: [
+                        {
+                            NOME_COMPLETO_DO_AUTOR: String,
+                            ORDEM_DE_AUTORIA: String,
+                            ID_Lattes: String,
+                        },
+                    ],
+                    PALAVRAS_CHAVE:{
+                        PALAVRA_CHAVE_1: String,
+                        PALAVRA_CHAVE_2: String,
+                        PALAVRA_CHAVE_3: String,
+                        PALAVRA_CHAVE_4: String,
+                        PALAVRA_CHAVE_5: String,
+                        PALAVRA_CHAVE_6: String,
+                    },
+                },
+            ],
+            PARTITURAS_MUSICAIS: [
+                {
+                    NATUREZA: String,
+                    TITULO: String,
+                    ANO: Date,
+                    PAIS_DE_PUBLICACAO: String,
+                    IDIOMA: String,
+                    MEIO_DE_DIVULGACAO: String,
+                    HOME_PAGE_DO_TRABALHO: String,
+                    DOI: String,
+                    TITULO_INGLES: String,
+                    EDITORA: String,
+                    CIDADE_EDITORA: String,
+                    NUMERO_DE_PAGINAS: String,
+                    NUMERO_DO_CATALOGO: String,
+                    AUTORES: [
+                        {
+                            NOME_COMPLETO_DO_AUTOR: String,
+                            ORDEM_DE_AUTORIA: String,
+                            ID_Lattes: String,
+                        },
+                    ],
+                    PALAVRAS_CHAVE:{
+                        PALAVRA_CHAVE_1: String,
+                        PALAVRA_CHAVE_2: String,
+                        PALAVRA_CHAVE_3: String,           
+                        PALAVRA_CHAVE_4: String,
+                        PALAVRA_CHAVE_5: String,
+                        PALAVRA_CHAVE_6: String,
+                    },
+                },
+            ],
         },
+        PRODUCAO_ARTISTICA_CULTURAL:{
+            ARTES_CENICAS:[
+                {
+                    NATUREZA: String,
+                    TITULO: String,
+                    TITULO_INGLES: String,
+                    ANO: Date,
+                    PAIS: String,
+                    IDIOMA: String,
+                    MEIO_DE_DIVULGACAO: String,
+                    HOME_PAGE: String,
+                    TIPO_DE_EVENTO: String,
+                    DATA_ESTREIA: String,
+                    DATA_ENCERRAMENTO: String,
+                    LOCAL_DE_ESTREIA: String,
+                    DURACAO: String,
+                    INSTITUICAO_PROMOTORA_DO_EVENTO: String,
+                    CIDADE_DO_EVENTO: String,
+                    AUTORES: [
+                        {
+                            NOME_COMPLETO_DO_AUTOR: String,
+                            ORDEM_DE_AUTORIA: String,
+                            ID_Lattes: String,
+                        },
+                    ],
+                    PALAVRAS_CHAVE:{
+                        PALAVRA_CHAVE_1: String,
+                        PALAVRA_CHAVE_2: String,
+                        PALAVRA_CHAVE_3: String,
+                        PALAVRA_CHAVE_4: String,
+                        PALAVRA_CHAVE_5: String,
+                        PALAVRA_CHAVE_6: String,
+                    },
+
+                },
+               
+            ],
+            MUSICA:[
+                { 
+                    NATUREZA: String,
+                    TITULO: String,
+                    TITULO_INGLES: String,
+                    ANO: Date,
+                    PAIS: String,
+                    IDIOMA: String,
+                    MEIO_DE_DIVULGACAO: String,
+                    HOME_PAGE: String,
+                    TIPO_DE_EVENTO: String,
+                    DATA_ESTREIA: String,
+                    DATA_ENCERRAMENTO: String,
+                    LOCAL_DE_ESTREIA: String,
+                    DURACAO: String,
+                    INSTITUICAO_PROMOTORA_DO_EVENTO: String,
+                    CIDADE_DO_EVENTO: String,
+                    LOCAL_DO_EVENTO: String,
+                    AUTORES: [
+                        {
+                            NOME_COMPLETO_DO_AUTOR: String,
+                            ORDEM_DE_AUTORIA: String,
+                            ID_Lattes: String,
+                        },
+                    ],
+                    PALAVRAS_CHAVE:{
+                        PALAVRA_CHAVE_1: String,
+                        PALAVRA_CHAVE_2: String,
+                        PALAVRA_CHAVE_3: String,
+                        PALAVRA_CHAVE_4: String,
+                        PALAVRA_CHAVE_5: String,
+                        PALAVRA_CHAVE_6: String,
+                    },
+                },
+            ],
+
+        },
+        
         PRODUCAO_TECNICA: {
             SOFTWARE: [
                 {   TITULO_DO_SOFTWARE: String,

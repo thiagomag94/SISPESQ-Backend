@@ -73,11 +73,14 @@ const emptyCurriculo = {
             ],
             TRABALHOS_EM_EVENTOS:[],
             TEXTO_EM_JORNAL_OU_REVISTA:[],
+            PARTITURAS_MUSICAIS: [],
+            OUTRAS_PRODUCOES_BIBLIOGRAFICAS: [],
         },
         PRODUCAO_TECNICA: {
             SOFTWARE: [],
             PATENTE: [],
         },
+
         ORIENTACOES_CONCLUIDAS: {
             ORIENTACOES_CONCLUIDAS_PARA_DOUTORADO: [],
             ORIENTACOES_CONCLUIDAS_PARA_MESTRADO: [],
@@ -88,6 +91,10 @@ const emptyCurriculo = {
             ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO: [],
             ORIENTACOES_EM_ANDAMENTO_PARA_POS_DOUTORADO: [],
         },
+        PRODUCAO_ARTISTICA_CULTURAL:{
+            ARTES_CENICAS: [],
+            MUSICA: [],
+        }
     },
 };
 
@@ -431,7 +438,260 @@ const createLattes = async (req, res) => {
                     
                 }
 
-            
+                if(cvData['PRODUCAO-BIBLIOGRAFICA'] && cvData['PRODUCAO-BIBLIOGRAFICA'][0]['DEMAIS-TIPOS-DE-PRODUCAO-BIBLIOGRAFICA']){
+                    const outra_producao_bibliografica = cvData['PRODUCAO-BIBLIOGRAFICA'][0]['DEMAIS-TIPOS-DE-PRODUCAO-BIBLIOGRAFICA'][0]?.['OUTRA-PRODUCAO-BIBLIOGRAFICA'] || [];
+                    const partitura_musical = cvData['PRODUCAO-BIBLIOGRAFICA'][0]['DEMAIS-TIPOS-DE-PRODUCAO-BIBLIOGRAFICA'][0]?.['PARTITURA-MUSICAL'] || [];
+                    for (let producao of outra_producao_bibliografica) {
+                        const dadosBasicos = producao['DADOS-BASICOS-DE-OUTRA-PRODUCAO']?.[0]?.['$'] || {};
+                        const detalhamento = producao['DETALHAMENTO-DE-OUTRA-PRODUCAO']?.[0]?.['$'] || {};
+
+                        curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.push({
+                            NATUREZA: dadosBasicos['NATUREZA'] || "",
+                            TITULO: dadosBasicos['TITULO'] || "",
+                            ANO: dadosBasicos['ANO'] || "",
+                            IDIOMA: dadosBasicos['IDIOMA'] || "",
+                            MEIO_DE_DIVULGACAO: dadosBasicos['MEIO-DE-DIVULGACAO'] || "",
+                            HOME_PAGE_DO_TRABALHO: dadosBasicos['HOME-PAGE-DO-TRABALHO'] || "",
+                            DOI: dadosBasicos['DOI'] || "",
+                            PAIS_DE_PUBLICACAO: dadosBasicos['PAIS-DE-PUBLICACAO'] || "",
+                            TITULO_INGLES: dadosBasicos['TITULO-INGLES'] || "",
+                            EDITORA: detalhamento['EDITORA'] || "",
+                            NUMERO_DE_PAGINAS: detalhamento['NUMERO-DE-PAGINAS'] || "",
+                            CIDADE_EDITORA: detalhamento['CIDADE-DA-EDITORA'] || "",
+
+                            AUTORES: [],
+                            PALAVRAS_CHAVE: {
+                                PALAVRA_CHAVE_1: "",
+                                PALAVRA_CHAVE_2: "",  
+                                PALAVRA_CHAVE_3: "",
+                                PALAVRA_CHAVE_4: "",    
+                                PALAVRA_CHAVE_5: "",
+                                PALAVRA_CHAVE_6: ""
+                            },
+                        });
+
+                        // Preencher autores
+                        if (producao['AUTORES']) {
+                            for (let autor of producao['AUTORES']) {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).AUTORES.push({
+                                    NOME_COMPLETO_DO_AUTOR: autor['$']?.['NOME-COMPLETO-DO-AUTOR'] || "",
+                                    ORDEM_DE_AUTORIA: autor['$']?.['ORDEM-DE-AUTORIA'] || "",
+                                    ID_Lattes: autor['$']?.['NRO-ID-CNPQ'] || "",
+                                });
+                            }
+                        }
+
+                        // Preencher palavras-chave
+                        if (producao['PALAVRAS-CHAVE'] && producao['PALAVRAS-CHAVE'][0]) {
+                            const palavrasChave = producao['PALAVRAS-CHAVE'][0]['$'] || {};
+                            const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).PALAVRAS_CHAVE;
+                            palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                        }
+                        // Ajustar ANO da produção bibliográfica para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).ANO &&
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS.at(-1).ANO = null;
+                        }
+                    }
+
+                    for (let partitura of partitura_musical) {
+                        const dadosBasicos = partitura['DADOS-BASICOS-DA-PARTITURA']?.[0]?.['$'] || {};
+                        const detalhamento = partitura['DETALHAMENTO-DA-PARTITURA']?.[0]?.['$'] || {};
+                        curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.push({
+                            NATUREZA: dadosBasicos['NATUREZA'] || "",
+                            TITULO: dadosBasicos['TITULO'] || "",
+                            ANO: dadosBasicos['ANO'] || "",
+                            IDIOMA: dadosBasicos['IDIOMA'] || "",
+                            MEIO_DE_DIVULGACAO: dadosBasicos['MEIO-DE-DIVULGACAO'] || "",
+                            HOME_PAGE_DO_TRABALHO: dadosBasicos['HOME-PAGE-DO-TRABALHO'] || "",
+                            DOI: dadosBasicos['DOI'] || "",
+                            PAIS_DE_PUBLICACAO: dadosBasicos['PAIS-DE-PUBLICACAO'] || "",
+                            TITULO_INGLES: dadosBasicos['TITULO-INGLES'] || "",
+                            EDITORA: detalhamento['EDITORA'] || "",
+                            NUMERO_DE_PAGINAS: detalhamento['NUMERO-DE-PAGINAS'] || "",
+                            CIDADE_EDITORA: detalhamento['CIDADE-DA-EDITORA'] || "",
+                            NUMERO_DE_PAGINAS: detalhamento['NUMERO-DE-PAGINAS'] || "",
+                            NUMERO_DO_CATALOGO: detalhamento['NUMERO-DO-CATALOGO'] || "",
+                            AUTORES: [],
+                            PALAVRAS_CHAVE: {
+                                PALAVRA_CHAVE_1: "",
+                                PALAVRA_CHAVE_2: "",
+                                PALAVRA_CHAVE_3: "",
+                                PALAVRA_CHAVE_4: "",
+                                PALAVRA_CHAVE_5: "",
+                                PALAVRA_CHAVE_6: ""
+                            },
+                        });
+                        // Preencher autores
+                        if (partitura['AUTORES']) {
+                            for (let autor of partitura['AUTORES']) {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).AUTORES.push({
+                                    NOME_COMPLETO_DO_AUTOR: autor['$']?.['NOME-COMPLETO-DO-AUTOR'] || "",
+                                    ORDEM_DE_AUTORIA: autor['$']?.['ORDEM-DE-AUTORIA'] || "",
+                                    ID_Lattes: autor['$']?.['NRO-ID-CNPQ'] || "",
+                                });
+                            }
+
+                        }
+                        // Preencher palavras-chave
+                        if (partitura['PALAVRAS-CHAVE'] && partitura['PALAVRAS-CHAVE'][0]) {
+                            const palavrasChave = partitura['PALAVRAS-CHAVE'][0]['$'] || {};
+                            const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).PALAVRAS_CHAVE;
+                            palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                        }
+                        // Ajustar ANO da partitura para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).ANO &&
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS.at(-1).ANO = null;
+                        }
+                    }
+                }
+
+                if(cvData['OUTRA-PRODUCAO'] && cvData['OUTRA-PRODUCAO'][0]['PRODUCAO-ARTISTICA-CULTURAL']) {
+                    const musica = cvData['OUTRA-PRODUCAO'][0]['PRODUCAO-ARTISTICA-CULTURAL'][0]?.['MUSICA'] || [];
+                    const artes_cenicas = cvData['OUTRA-PRODUCAO'][0]['PRODUCAO-ARTISTICA-CULTURAL'][0]?.['ARTES-CENICAS'] || [];
+
+                    for (let producao of musica) {
+                        const dadosBasicos = producao['DADOS-BASICOS-DA-MUSICA']?.[0]?.['$'] || {};
+                        const detalhamento = producao['DETALHAMENTO-DA-MUSICA']?.[0]?.['$'] || {};
+                        curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.push({
+                            NATUREZA: dadosBasicos['NATUREZA'] || "",
+                            TITULO: dadosBasicos['TITULO'] || "",
+                            ANO: dadosBasicos['ANO'] || "",
+                            IDIOMA: dadosBasicos['IDIOMA'] || "",
+                            MEIO_DE_DIVULGACAO: dadosBasicos['MEIO-DE-DIVULGACAO'] || "",
+                            HOME_PAGE: dadosBasicos['HOME-PAGE'] || "",
+                            PAIS: dadosBasicos['PAIS'] || "",
+                            TITULO_INGLES: dadosBasicos['TITULO-INGLES'] || "",
+                            TIPO_DE_EVENTO: detalhamento['TIPO-DE-EVENTO'] || "",
+                            DATA_ESTREIA: detalhamento['DATA-ESTREIA'] || "",
+                            LOCAL_ESTREIA: detalhamento['LOCAL-ESTREIA'] || "",
+                            DURACAO: detalhamento['DURACAO'] || "",
+                            DATA_ENCERRAMENTO: detalhamento['DATA-ENCERRAMENTO'] || "",
+                            INSTITUICAO_PROMOTORA_DO_EVENTO: detalhamento['INSTITUICAO-PROMOTORA-DO-EVENTO'] || "",
+                            CIDADE_DO_EVENTO: detalhamento['CIDADE-DO-EVENTO'] || "",
+                            LOCAL_DO_EVENTO: detalhamento['LOCAL-DO-EVENTO'] || "",
+                            AUTORES: [],
+                            PALAVRAS_CHAVE: {
+                                PALAVRA_CHAVE_1: "",
+                                PALAVRA_CHAVE_2: "",
+                                PALAVRA_CHAVE_3: "",
+                                PALAVRA_CHAVE_4: "",
+                                PALAVRA_CHAVE_5: "",
+                                PALAVRA_CHAVE_6: ""
+                            },
+                        });
+                        // Preencher autores
+                        if (producao['AUTORES']) { 
+                            for (let autor of producao['AUTORES']) {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).AUTORES.push({
+                                    NOME_COMPLETO_DO_AUTOR: autor['$']?.['NOME-COMPLETO-DO-AUTOR'] || "",
+                                    ORDEM_DE_AUTORIA: autor['$']?.['ORDEM-DE-AUTORIA'] || "",
+                                    ID_Lattes: autor['$']?.['NRO-ID-CNPQ'] || "",
+                                });
+                            }
+                        }
+                        // Preencher palavras-chave
+                        if (producao['PALAVRAS-CHAVE'] && producao['PALAVRAS-CHAVE'][0]) {
+                            const palavrasChave = producao['PALAVRAS-CHAVE'][0]['$'] || {};
+                            const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).PALAVRAS_CHAVE;
+
+                            palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                        }
+                        // Ajustar ANO da música para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).ANO &&
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA.at(-1).ANO = null;
+                        }
+                    }
+                    for (let producao of artes_cenicas) {
+                        const dadosBasicos = producao['DADOS-BASICOS-DE-ARTES-CENICAS']?.[0]?.['$'] || {};
+                        const detalhamento = producao['DETALHAMENTO-DE-ARTES-CENICAS']?.[0]?.['$'] || {};
+                        curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.push({
+                            NATUREZA: dadosBasicos['NATUREZA'] || "",
+                            TITULO: dadosBasicos['TITULO'] || "",
+                            TITULO_INGLES: dadosBasicos['TITULO-INGLES'] || "",
+                            ANO: dadosBasicos['ANO'] || "",
+                            IDIOMA: dadosBasicos['IDIOMA'] || "",
+                            MEIO_DE_DIVULGACAO: dadosBasicos['MEIO-DE-DIVULGACAO'] || "",
+                            HOME_PAGE: dadosBasicos['HOME-PAGE'] || "",
+                            PAIS: dadosBasicos['PAIS'] || "",
+                            TIPO_DE_EVENTO: detalhamento['TIPO-DE-EVENTO'] || "",
+                            DATA_ESTREIA: detalhamento['DATA-ESTREIA'] || "",
+                            LOCAL_ESTREIA: detalhamento['LOCAL-ESTREIA'] || "",
+                            DURACAO: detalhamento['DURACAO'] || "",
+                            DATA_ENCERRAMENTO: detalhamento['DATA-ENCERRAMENTO'] || "",
+                            INSTITUICAO_PROMOTORA_DO_EVENTO: detalhamento['INSTITUICAO-PROMOTORA-DO-EVENTO'] || "",
+                            CIDADE_DO_EVENTO: detalhamento['CIDADE-DO-EVENTO'] || "",
+                            LOCAL_DE_ESTREIA: detalhamento['LOCAL-DE-ESTREIA'] || "",
+                            AUTORES: [],
+                            PALAVRAS_CHAVE: {
+                                PALAVRA_CHAVE_1: "",
+                                PALAVRA_CHAVE_2: "",
+                                PALAVRA_CHAVE_3: "",
+                                PALAVRA_CHAVE_4: "",
+                                PALAVRA_CHAVE_5: "",
+                                PALAVRA_CHAVE_6: ""
+                            },
+                        });
+                        // Preencher autores
+                        if (producao['AUTORES']) {
+                            for (let autor of producao['AUTORES']) {
+                                curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).AUTORES.push({
+                                    NOME_COMPLETO_DO_AUTOR: autor['$']?.['NOME-COMPLETO-DO-AUTOR'] || "",
+                                    ORDEM_DE_AUTORIA: autor['$']?.['ORDEM-DE-AUTORIA'] || "",
+                                    ID_Lattes: autor['$']?.['NRO-ID-CNPQ'] || "",
+                                });
+                            }
+                        }
+                        // Preencher palavras-chave
+                        if (producao['PALAVRAS-CHAVE'] && producao['PALAVRAS-CHAVE'][0]) {
+                            const palavrasChave = producao['PALAVRAS-CHAVE'][0]['$'] || {};
+                            const palavrasChaveObj = curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).PALAVRAS_CHAVE;
+                            palavrasChaveObj.PALAVRA_CHAVE_1 = palavrasChave['PALAVRA-CHAVE-1'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_2 = palavrasChave['PALAVRA-CHAVE-2'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_3 = palavrasChave['PALAVRA-CHAVE-3'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_4 = palavrasChave['PALAVRA-CHAVE-4'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_5 = palavrasChave['PALAVRA-CHAVE-5'] || "";
+                            palavrasChaveObj.PALAVRA_CHAVE_6 = palavrasChave['PALAVRA-CHAVE-6'] || "";
+                        }
+                        // Ajustar ANO das artes cênicas para Date (31/12/ANO)
+                        if (curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).ANO &&
+                            /^\d{4}$/.test(curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).ANO)) {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).ANO = 
+                                new Date(`${curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).ANO}-12-31T00:00:00.000Z`);
+                        } else {
+                            curriculo.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS.at(-1).ANO = null;
+                        }
+                    }
+                }
+                           
+
+
             
                 if (cvData['OUTRA-PRODUCAO'] && cvData['OUTRA-PRODUCAO'][0]['ORIENTACOES-CONCLUIDAS']) {
                     console.log('ENTROU NO IF OUTRAS PRODUCOES')
@@ -508,9 +768,9 @@ const createLattes = async (req, res) => {
                         }
                     }
                 }
+
                 if (cvData['DADOS-COMPLEMENTARES'] && cvData['DADOS-COMPLEMENTARES'][0]['ORIENTACOES-EM-ANDAMENTO']) {
                     const orientacoes = cvData['DADOS-COMPLEMENTARES'][0]['ORIENTACOES-EM-ANDAMENTO'] || [];
-                    
                     const orientacoes_mestrado = orientacoes[0]?.['ORIENTACAO-EM-ANDAMENTO-DE-MESTRADO'] || [];
                     const orientacoes_doutorado = orientacoes[0]?.['ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO'] || [];
                     const orientacoes_pos_doutorado = orientacoes[0]?.['ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO'] || [];
@@ -537,6 +797,7 @@ const createLattes = async (req, res) => {
                             curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_MESTRADO.at(-1).ANO = null;
                         }
                     }
+
                     for (let orientacao of orientacoes_doutorado) {
                         const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO']?.[0]?.['$'] || {};
                         const detalhamento = orientacao['DETALHAMENTO-DA-ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO']?.[0]?.['$'] || {};
@@ -559,6 +820,7 @@ const createLattes = async (req, res) => {
                             curriculo.CURRICULO_VITAE.ORIENTACOES_EM_ANDAMENTO.ORIENTACOES_EM_ANDAMENTO_PARA_DOUTORADO.at(-1).ANO = null;
                         }
                     }
+
                     for (let orientacao of orientacoes_pos_doutorado) {
                         const dadosBasicos = orientacao['DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO']?.[0]?.['$'] || {};
                         const detalhamento = orientacao['DETALHAMENTO-DA-ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO']?.[0]?.['$'] || {};

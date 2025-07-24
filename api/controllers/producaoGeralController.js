@@ -166,6 +166,36 @@ const ProducaoGeralcreate = async (req, res) => {
                                 }
                             }
                         },
+                        outras_producoes_bibliograficas: {
+                            $size: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS', []] },
+                                    as: 'outras_producoes_bibliograficas',
+                                    cond: {
+                                        $and: [
+                                            { $gte: ['$$outras_producoes_bibliograficas.ANO', '$periodo_atividade.inicio' ] },
+                                            { $lte: ['$$outras_producoes_bibliograficas.ANO', '$periodo_atividade.fim' ] }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+
+                        partituras_musicais:{
+                            $size: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS', []] },
+                                    as: 'partitura',
+                                    cond: {
+                                        $and: [
+                                            { $gte: ['$$partitura.ANO', '$periodo_atividade.inicio' ] },
+                                            { $lte: ['$$partitura.ANO', '$periodo_atividade.fim' ] }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                     
                         softwares: {
                             $size: {
                                 $filter: {
@@ -190,6 +220,36 @@ const ProducaoGeralcreate = async (req, res) => {
                                             { $gte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.inicio' ] },
                                             { $lte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.fim' ] }
                                         ]
+                                    }
+                                }
+                            }
+                        },
+                        producao_artistica_cultural:{
+                            artes_cenicas: {
+                                $size: {
+                                    $filter: {
+                                        input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS', []] },
+                                        as: 'artes_cenicas',
+                                        cond: {
+                                            $and: [
+                                                { $gte: ['$$artes_cenicas.ANO', '$periodo_atividade.inicio' ] },
+                                                { $lte: ['$$artes_cenicas.ANO', '$periodo_atividade.fim' ] }
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            musicas:{
+                                $size: {
+                                    $filter: {
+                                        input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA', []] },
+                                        as: 'musica',
+                                        cond: {
+                                            $and: [
+                                                { $gte: ['$$musica.ANO', '$periodo_atividade.inicio' ] },
+                                                { $lte: ['$$musica.ANO', '$periodo_atividade.fim' ] }
+                                            ]
+                                        }
                                     }
                                 }
                             }
@@ -360,6 +420,30 @@ const ProducaoGeralcreate = async (req, res) => {
                                 }
                             }
                         },
+                        outras_producoes_bibliograficas: {
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.OUTRAS_PRODUCOES_BIBLIOGRAFICAS', []] },
+                                as: 'outras_producoes_bibliograficas', 
+                                cond: {
+                                    $and: [
+                                        { $gte: ['$$outras_producoes_bibliograficas.ANO', '$periodo_atividade.inicio' ] },
+                                        { $lte: ['$$outras_producoes_bibliograficas.ANO', '$periodo_atividade.fim' ] }
+                                    ]
+                                }
+                            }
+                        },
+                        partituras_musicais:{
+                            $filter: {
+                                input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_BIBLIOGRAFICA.PARTITURAS_MUSICAIS', []] },
+                                as: 'partitura',
+                                cond: {
+                                    $and: [
+                                        { $gte: ['$$partitura.ANO', '$periodo_atividade.inicio' ] },
+                                        { $lte: ['$$partitura.ANO', '$periodo_atividade.fim' ] }
+                                    ]
+                                }
+                            }
+                        },
                         softwares: {
                             $filter: {
                                 input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_TECNICA.SOFTWARE', []] },
@@ -381,6 +465,32 @@ const ProducaoGeralcreate = async (req, res) => {
                                         { $gte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.inicio' ] },
                                         { $lte: ['$$patente.DATA_DE_DEPOSITO', '$periodo_atividade.fim' ] }
                                     ]
+                                }
+                            }
+                        },
+                        producao_artistica_cultural:{
+                            artes_cenicas: {
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.ARTES_CENICAS', []] },
+                                    as: 'artes_cenicas',
+                                    cond: {
+                                        $and: [
+                                            { $gte: ['$$artes_cenicas.ANO', '$periodo_atividade.inicio' ] },
+                                            { $lte: ['$$artes_cenicas.ANO', '$periodo_atividade.fim' ] }
+                                        ]
+                                    }
+                                }
+                            },
+                            musicas:{
+                                $filter: {
+                                    input: { $ifNull: ['$lattesData.CURRICULO_VITAE.PRODUCAO_ARTISTICA_CULTURAL.MUSICA', []] },
+                                    as: 'musica',
+                                    cond: {
+                                        $and: [
+                                            { $gte: ['$$musica.ANO', '$periodo_atividade.inicio' ] },
+                                            { $lte: ['$$musica.ANO', '$periodo_atividade.fim' ] }
+                                        ]
+                                    }
                                 }
                             }
                         },
@@ -558,6 +668,10 @@ const getProducaoGeral = async (req, res) => {
             groupStage.capitulos = { $sum: '$contagem.capitulos' };
             groupStage.trabalhos_eventos = { $sum: '$contagem.trabalhos_eventos' };
             groupStage.textos_jornais = { $sum: '$contagem.textos_jornais' };
+            groupStage.outras_producoes_bibliograficas = { $sum: '$contagem.outras_producoes_bibliograficas' };
+            groupStage.partituras_musicais = { $sum: '$contagem.partituras_musicais' };
+            groupStage.musicas = { $sum: '$contagem.producao_artistica_cultural.musicas' };
+            groupStage.artes_cenicas = { $sum: '$contagem.producao_artistica_cultural.artes_cenicas' };
             groupStage.softwares = { $sum: '$contagem.softwares' };
             groupStage.patentes = { $sum: '$contagem.patentes' };
             groupStage.orientacoes_concluidas_doutorado = { $sum: '$contagem.orientacoes_concluidas.doutorado' };
@@ -571,7 +685,7 @@ const getProducaoGeral = async (req, res) => {
             // Total de produções bibliográficas (artigos + trabalhos_eventos + capitulos + livros)
             groupStage.total_producao_bibliografica = {
                 $sum: {
-                    $add: ['$contagem.artigos', '$contagem.trabalhos_eventos', '$contagem.capitulos', '$contagem.livros']
+                    $add: ['$contagem.artigos', '$contagem.trabalhos_eventos', '$contagem.capitulos', '$contagem.livros', '$contagem.outras_producoes_bibliograficas', '$contagem.partituras_musicais']
                 }
             };
 
@@ -579,6 +693,12 @@ const getProducaoGeral = async (req, res) => {
             groupStage.total_producao_tecnica = {
                 $sum: {
                     $add: ['$contagem.patentes', '$contagem.softwares']
+                }
+            };
+
+            groupStage.total_producao_artistica_cultural = {
+                $sum: {
+                    $add: ['$contagem.producao_artistica_cultural.artes_cenicas', '$contagem.producao_artistica_cultural.musicas']
                 }
             };
 

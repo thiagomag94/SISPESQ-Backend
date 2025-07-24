@@ -26,6 +26,7 @@ const RouterArtigos = require('./routes/Artigos')
 const RouterLivros = require('./routes/Livros')
 const RouterTrabalhos = require('./routes/Trabalhos')
 const RouterCapitulos = require('./routes/Capitulos')
+const RouterOutrasProducoesBibliograficas = require('./routes/OutrasProducoesBibliograficas')
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { metricsMiddleware } = require('./middleware/metrics');
 
@@ -88,6 +89,7 @@ app.use('/Producao/', RouterProducao);
 app.use('/Livros', RouterLivros)
 app.use('/Trabalhos', RouterTrabalhos)
 app.use('/Capitulos', RouterCapitulos)
+app.use('/OutrasProducoesBibliograficas', RouterOutrasProducoesBibliograficas);
 // Public routes
 app.get('/updateDb', researcherController.updateDatabase);
 app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)

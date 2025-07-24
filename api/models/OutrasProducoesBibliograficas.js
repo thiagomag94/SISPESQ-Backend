@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const {AutorSchema} = require('./Autor');
 const { PalavrasChaveSchema } = require('./PalavrasChave');
 
-const OutrasProducoesBibliograficas = new Schema({
+const OutrasProducoesBibliograficasSchema = new Schema({
         NATUREZA: String,
         TITULO: String,
         ANO: Date,
@@ -18,5 +18,8 @@ const OutrasProducoesBibliograficas = new Schema({
         NUMERO_DE_PAGINAS: String,
         ISSN_ISBN: String,
         AUTORES: [AutorSchema],
-        PALAVRAS_CHAVE:PalavrasChaveSchema,
-    })
+        PALAVRAS_CHAVE:[String],
+})
+
+const OutrasProducoesBibliograficas = mongoose.model('OutrasProducoesBibliograficas', OutrasProducoesBibliograficasSchema);
+module.exports = OutrasProducoesBibliograficas;

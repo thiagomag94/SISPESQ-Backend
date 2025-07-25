@@ -18,7 +18,7 @@ const PartiturasSchema = new Schema({
         NUMERO_DE_PAGINAS: String,
         NUMERO_DO_CATALOGO: String,
         AUTORES: [AutorSchema],
-        PALAVRAS_CHAVE:PalavrasChaveSchema,
+        PALAVRAS_CHAVE:[String],
 })
 
 const Partituras = mongoose.model('Partituras', PartiturasSchema);

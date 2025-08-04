@@ -5,6 +5,8 @@ const { PalavrasChaveSchema } = require('./PalavrasChave');
 
 const OutrasProducoesBibliograficasSchema = new Schema({
         NATUREZA: String,
+        DEPARTAMENTO: String,
+        CENTRO: String,
         TITULO: String,
         ANO: Date,
         IDIOMA: String,

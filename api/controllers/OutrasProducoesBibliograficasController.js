@@ -93,7 +93,11 @@ const createTodasOutrasProducoesBibliograficas = async (req, res) => {
                 DEPARTAMENTO: "$departamento",
                 CENTRO: "$centro",
                 DOI: "$producoes.outras_producoes_bibliograficas.DOI",
+
                 TITULO: "$producoes.outras_producoes_bibliograficas.TITULO",
+                NATUREZA: "$producoes.outras_producoes_bibliograficas.NATUREZA",
+                MEIO_DE_DIVULGACAO: "$producoes.outras_producoes_bibliograficas.MEIO_DE_DIVULGACAO",
+                PAIS_DE_PUBLICACAO: "$producoes.outras_producoes_bibliograficas.PAIS_DE_PUBLICACAO",
                 ANO: "$producoes.outras_producoes_bibliograficas.ANO",
                 AUTORES: "$producoes.outras_producoes_bibliograficas.AUTORES",
                 PALAVRAS_CHAVE: { // Transformar o objeto em um array
@@ -180,17 +184,34 @@ const getTodasOutrasProducoesBibliograficas = async (req, res) => {
             query.CENTRO = req.query.centro;
         }
     
-        if(req.query.dataInicio){
+        if(req.query.dataInicio || req.query.dataMenor){
             let filtroData = {};
-            const dataInicio = new Date(req.query.dataInicio);
-            dataInicio.setHours(0, 0, 0, 0);
-            filtroData.$gte = dataInicio; // Maior ou igual a data de início
-            if (Object.keys(filtroData).length > 0) {
+
+            if(req.query.dataInicio){
+                const dataInicio = new Date(req.query.dataInicio)
+                dataInicio.setHours(0, 0, 0, 0);
+                filtroData.$gte = dataInicio; // Maior ou igual a data de início
+            }
+            if(req.query.dataMenor){
+                const dataMenor = new Date(req.query.dataMenor)
+                dataMenor.setHours(0, 0, 0, 0);
+                filtroData.$lte = dataMenor; // Menor ou igual a data igual
+            }
+             if (Object.keys(filtroData).length > 0) {
                 query.ANO = filtroData;
             }
-            
-            
+        
         }
+            
+        
+
+           
+            
+            
+        
+
+       
+           
 
         console.log('Query de busca de outras producoes bibliograficas:', query);
 

@@ -20,7 +20,7 @@ const ArtesCenicasSchema= new Schema({
         INSTITUICAO_PROMOTORA_DO_EVENTO: String,
         CIDADE_DO_EVENTO: String,
         AUTORES: [AutorSchema],
-        PALAVRAS_CHAVE:PalavrasChaveSchema,
+        PALAVRAS_CHAVE:[String],
 })
 
 

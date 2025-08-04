@@ -21,7 +21,7 @@ const MusicasSchema = new Schema({
         CIDADE_DO_EVENTO: String,
         LOCAL_DO_EVENTO: String,
         AUTORES: [AutorSchema],
-        PALAVRAS_CHAVE:PalavrasChaveSchema,
+        PALAVRAS_CHAVE: [String],
 })
 
 const Musicas = mongoose.model('Musicas', MusicasSchema);

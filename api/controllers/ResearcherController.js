@@ -87,127 +87,126 @@ const updateDatabase = async (req, res) => {
 
 const getResearchers = async (req, res) => {
   try {
+    // A função de conversão de data permanece a mesma
     function converterParaISO(dataDDMMYYYY) {
       if (!dataDDMMYYYY) return null;
       const [dia, mes, ano] = dataDDMMYYYY.split('/');
       return new Date(`${ano}-${mes}-${dia}`);
     }
 
+    // Extrai os parâmetros, incluindo o novo 'groupBy'
+    const { 
+      id, id_lattes, professor, centro, departamento, titulacao, 
+      admissaomaiorque, admissaomenorque, admissaoiguala, 
+      dedicacao, situacao_funcional, 
+      exclusaomaiorque, exclusaomenorque, exclusaoiguala,
+      groupBy // Novo parâmetro para o agrupamento
+    } = req.query;
 
-    // Extrai os parâmetros de busca e filtro da query string
-    const { id, id_lattes, professor, centro, departamento, titulacao, admissaomaiorque, admissaomenorque, dedicacao, admissaoiguala,  situacao_funcional, exclusaomaiorque, exclusaomenorque, exclusaoiguala } = req.query;
-
-  
-    console.log(admissaomenorque)
-    console.log(typeof admissaomenorque, admissaomenorque)
-    console.log(typeof admissaoiguala, admissaoiguala)
-    // Construindo a consulta
+    // Construindo a query de filtro (etapa $match)
+    // Esta parte do seu código permanece exatamente a mesma
     let query = {};
 
-    // Filtro por professor (busca pelo nome)
-    if (id) {
-      query._id = id
-    }
-    if(id_lattes) {
-      query.ID_Lattes = id_lattes;
-    }
+    if (id) query._id = id;
+    if (id_lattes) query.ID_Lattes = id_lattes;
     if (professor) {
-      const palavras = professor.trim().split(' ').filter(Boolean); // Divide o nome em palavras
-     
-
-      const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i')); // Cria um regex para cada palavra
-      
-      // Se houver múltiplas palavras, usa `$and` para que todas sejam encontradas no nome
+      const palavras = professor.trim().split(' ').filter(Boolean);
+      const regexPalavras = palavras.map(palavra => new RegExp(palavra, 'i'));
       if (regexPalavras.length > 1) {
         query.$and = regexPalavras.map(regex => ({ PESQUISADOR: regex }));
       } else {
-        query.PESQUISADOR = regexPalavras[0]; // Apenas uma palavra, busca diretamente
+        query.PESQUISADOR = regexPalavras[0];
       }
     }
-
-    // Filtro por centro (SIG_CENTRO), se informado
-    if (centro) {
-      query.SIGLA_CENTRO = centro;
-    }
-
-    // Filtro por departamento (URG_LOTACAO), se informado
-    if (departamento) {
-     
-      query.UORG_LOTACAO = departamento;
-    }
-
-    if(titulacao) query.TITULACAO = titulacao
-
-    if(dedicacao) query.REGIME_DE_TRABALHO = dedicacao
+    if (centro) query.SIGLA_CENTRO = centro;
+    if (departamento) query.UORG_LOTACAO = departamento;
+    if (titulacao) query.TITULACAO = titulacao;
+    if (dedicacao) query.REGIME_DE_TRABALHO = dedicacao;
 
     if (admissaomaiorque || admissaomenorque || admissaoiguala) {
       const filtroData = {};
-    
-    if (admissaoiguala) {
-      const dataInicio = new Date(admissaoiguala);
-      dataInicio.setHours(0, 0, 0, 0);
-  
-      const dataFim = new Date(admissaoiguala);
-      dataFim.setHours(23, 59, 59, 999);
-  
-      filtroData.$gte = dataInicio;
-      filtroData.$lte = dataFim;
-    } else {
-      if (admissaomaiorque) {
-        filtroData.$gte = new Date(admissaomaiorque);
+      if (admissaoiguala) {
+        const dataInicio = new Date(admissaoiguala);
+        dataInicio.setHours(0, 0, 0, 0);
+        const dataFim = new Date(admissaoiguala);
+        dataFim.setHours(23, 59, 59, 999);
+        filtroData.$gte = dataInicio;
+        filtroData.$lte = dataFim;
+      } else {
+        if (admissaomaiorque) filtroData.$gte = new Date(admissaomaiorque);
+        if (admissaomenorque) filtroData.$lte = new Date(admissaomenorque);
       }
-      if (admissaomenorque) {
-        filtroData.$lte = new Date(admissaomenorque);
-      }
-    }
-    
-    if (Object.keys(filtroData).length > 0) {
+      if (Object.keys(filtroData).length > 0) {
         query.DATA_INGRESSO_UFPE = filtroData;
       }
     }
     
-    
     if (exclusaomaiorque || exclusaomenorque || exclusaoiguala) {
-      const filtroDataExclusao = {};
-      if (exclusaoiguala) {
-        const dataInicioExclusao = new Date(exclusaoiguala);
-        dataInicioExclusao.setHours(0, 0, 0, 0);
-        const dataFimExclusao = new Date(exclusaoiguala);
-        dataFimExclusao.setHours(23, 59, 59, 999);
-
-        filtroDataExclusao.$gte = dataInicioExclusao;
-        filtroDataExclusao.$lte = dataFimExclusao;
-      } else {
-        if (exclusaomaiorque) {
-          filtroDataExclusao.$gte = new Date(exclusaomaiorque);
+        const filtroDataExclusao = {};
+        if (exclusaoiguala) {
+            const dataInicioExclusao = new Date(exclusaoiguala);
+            dataInicioExclusao.setHours(0, 0, 0, 0);
+            const dataFimExclusao = new Date(exclusaoiguala);
+            dataFimExclusao.setHours(23, 59, 59, 999);
+            filtroDataExclusao.$gte = dataInicioExclusao;
+            filtroDataExclusao.$lte = dataFimExclusao;
+        } else {
+            if (exclusaomaiorque) filtroDataExclusao.$gte = new Date(exclusaomaiorque);
+            if (exclusaomenorque) filtroDataExclusao.$lte = new Date(exclusaomenorque);
         }
-        if (exclusaomenorque) {
-          filtroDataExclusao.$lte = new Date(exclusaomenorque);
+        if (Object.keys(filtroDataExclusao).length > 0) {
+            query.DATA_EXCLUSAO_UFPE = filtroDataExclusao;
         }
-      }
-      if (Object.keys(filtroDataExclusao).length > 0) {
-        query.DATA_EXCLUSAO_UFPE = filtroDataExclusao;
-      }
     }
 
-    if(situacao_funcional) {
-      query.SITUACAO_FUNCIONAL = situacao_funcional;
-    }
+    if(situacao_funcional) query.SITUACAO_FUNCIONAL = situacao_funcional;
       
+    console.log("Query de filtro ($match):", query);
 
-    // Exibe a query final para depuração
-    console.log("Query:", query);
-    // Consultando os dados no banco de dados
-   
-    const resultado_query = await Researcherdb.find(query);
-  
-    
+    // ##### LÓGICA DE AGRUPAMENTO #####
+    if (groupBy) {
+      // Mapeamento seguro dos campos permitidos para agrupamento
+      const allowedGroupByFields = {
+        centro: '$SIGLA_CENTRO',
+        departamento: '$UORG_LOTACAO',
+        titulacao: '$TITULACAO',
+        dedicacao: '$REGIME_DE_TRABALHO',
+        situacao: '$SITUACAO_FUNCIONAL'
+      };
 
-    // Retornando os resultados
-    res.status(200).json({ professores: resultado_query, total_professores: resultado_query.length });
+      const groupField = allowedGroupByFields[groupBy.toLowerCase()];
+
+      if (!groupField) {
+        return res.status(400).json({ error: "Parâmetro 'groupBy' inválido." });
+      }
+
+      // Monta a pipeline de agregação
+      const pipeline = [
+        // 1. Etapa de filtro: seleciona os documentos relevantes
+        { $match: query },
+
+        // 2. Etapa de agrupamento: agrupa pelo campo especificado
+        {
+          $group: {
+            _id: groupField, // O campo pelo qual agrupar
+            total_professores: { $sum: 1 } // Conta quantos documentos existem em cada grupo
+          }
+        },
+
+        // 3. (Opcional) Etapa de ordenação: ordena os grupos pelo total
+        { $sort: { total_professores: -1 } } // -1 para ordem decrescente
+      ];
+      
+      const resultado_agrupado = await Researcherdb.aggregate(pipeline);
+      res.status(200).json({ grupos: resultado_agrupado });
+
+    } else {
+      // Comportamento original: apenas busca sem agrupar
+      const resultado_query = await Researcherdb.find(query);
+      res.status(200).json({ professores: resultado_query, total_professores: resultado_query.length });
+    }
 
   } catch (error) {
-    //console.error("Erro na consulta:", error);
     res.status(500).json({ error: "Erro interno no servidor", details: error.message });
   }
 };

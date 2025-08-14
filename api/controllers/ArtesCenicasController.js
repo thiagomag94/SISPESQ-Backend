@@ -161,7 +161,7 @@ const getTodasArtesUFPE = async (req, res) => {
             dataInicio.setHours(0, 0, 0, 0);
             filtroData.$gte = dataInicio; // Maior ou igual a data de início
             if (Object.keys(filtroData).length > 0) {
-                query.ANO_DO_ARTIGO = filtroData;
+                query.ANO = filtroData;
               }
             
             

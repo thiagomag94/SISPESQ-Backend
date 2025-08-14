@@ -17,13 +17,11 @@ const filterTrabalhosEventosDuplicados = async (trabalhos) => {
         const promises = batch.map(async (trabalho) => {
             const doiValido = trabalho.DOI && trabalho.DOI.trim().length > 0;
 
-            const nomeautores = trabalho.AUTORES
-                ?.map((autor) => { return normalize(autor.NOME_COMPLETO_DO_AUTOR); })
-                .sort();
+           
 
             const key = doiValido
-                ? `doi-${normalize(trabalho.DOI)}-title-${normalize(trabalho.TITULO_DO_TRABALHO)}-ano-realizacao-${normalize(trabalho.ANO_DE_REALIZACAO)}`
-                : `title-${normalize(trabalho.TITULO_DO_TRABALHO)}-year-${trabalho.ANO_DO_TRABALHO?.toString()}-evento-${normalize(trabalho.NOME_DO_EVENTO)}-ano-realizacao-${normalize(trabalho.ANO_DE_REALIZACAO)}-cidade-${normalize(trabalho.CIDADE_DO_EVENTO)}-autores-${nomeautores.join(",")}`;
+                ? `doi-${normalize(trabalho.DOI)}`
+                : `title-${normalize(trabalho.TITULO_DO_TRABALHO)}-year-${trabalho.ANO_DO_TRABALHO?.toString()}-evento-${normalize(trabalho.NOME_DO_EVENTO)}-ano-realizacao-${normalize(trabalho.ANO_DE_REALIZACAO)}-cidade-${normalize(trabalho.CIDADE_DO_EVENTO)}`;
 
             if (seen.has(key)) {
                 //const original = seen.get(key);

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const redis = require('../redis');
 const Artigos = require('../models/Artigo');
+const ExcelJS = require('exceljs');
 
 // Função para normalizar texto
 const normalize = (text) => {
@@ -35,53 +36,108 @@ const getTodosArtigosUFPE = async (req, res) => {
             filtroData.$gte = dataInicio; // Maior ou igual a data de início
             if (Object.keys(filtroData).length > 0) {
                 query.ANO_DO_ARTIGO = filtroData;
-              }
-            
+              } 
             
         }
+
+        if(req.query.issn!==undefined){
+            query.ISSN = req.query.issn;
+        }
+
+        if(req.query.periodico){
+            query.TITULO_DO_PERIODICO_OU_REVISTA = req.query.periodico;
+        }
+
+        const groupBy = req.query.groupBy || null; // Pega o parâmetro groupBy, se existir
 
         console.log('Query de busca de artigos:', query);
-        // Primeiro contar todos os documentos
-        const totalDocs = await Artigos.countDocuments(query);
-        
-        // Obter parâmetros de paginação da query
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 10;
-        const skip = (page - 1) * limit;
 
-        // Buscar os documentos paginados
-        const artigos = await Artigos.find(query)
-            .skip(skip)
-            .limit(limit)
-            .sort({ ANO_DO_ARTIGO: -1 });
+        if(groupBy){
+            const allowedGroupByFields = {
+                issn: '$ISSN',
+                periodico: '$TITULO_DO_PERIODICO_OU_REVISTA',
+            }
+            // Verifica se o groupBy é válido
+            const groupField = allowedGroupByFields[groupBy.toLowerCase()];
+            
+            if (!groupField) {
+                return res.status(400).json({ error: "Parâmetro 'groupBy' inválido." });
+            }
 
-        if (!artigos || artigos.length === 0) {
-            return res.status(404).json({ 
-                error: 'Nenhum documento encontrado',
-                total: totalDocs
+             // Monta a pipeline de agregação
+            const pipeline = [
+                // 1. Etapa de filtro: seleciona os documentos relevantes
+                { $match: query },
+
+                // 2. Etapa de agrupamento: agrupa pelo campo especificado
+                {
+                    $group: {
+                        _id: groupField, // O campo pelo qual agrupar
+                        total_publicacoes: { $sum: 1 } // Conta quantos documentos existem em cada grupo
+                    }
+                },
+
+                // 3. (Opcional) Etapa de ordenação: ordena os grupos pelo total
+                { $sort: { total_publicacoes: -1 } } // -1 para ordem decrescente
+            ];
+            // Executa a agregação
+            const resultado_agrupado = await Artigos.aggregate(pipeline);
+
+            if (!resultado_agrupado || resultado_agrupado.length === 0) {
+                return res.status(404).json({ 
+                    error: 'Nenhum documento encontrado',
+                    total: 0
+                });
+            }
+            // Retorna o resultado da agregação
+            return res.status(200).json({
+                total: resultado_agrupado.reduce((acc, curr) => acc + curr.total_publicacoes, 0),
+                grupos: resultado_agrupado
+            });
+
+        }else{
+            // Primeiro contar todos os documentos
+            const totalDocs = await Artigos.countDocuments(query);
+            
+            // Obter parâmetros de paginação da query
+            const page = parseInt(req.query.page) || 1;
+            const limit = parseInt(req.query.limit) || 30;
+            const skip = (page - 1) * limit;
+
+            // Buscar os documentos paginados
+            const artigos = await Artigos.find(query)
+                .skip(skip)
+                .limit(limit)
+                .sort({ ANO_DO_ARTIGO: -1 });
+
+            if (!artigos || artigos.length === 0) {
+                return res.status(404).json({ 
+                    error: 'Nenhum documento encontrado',
+                    total: totalDocs
+                });
+            }
+
+            // Calcular número total de páginas
+            const totalPages = Math.ceil(totalDocs / limit);
+
+            const duplicatesCollection = mongoose.connection.db.collection('artigos_duplicados');
+            const duplicates = await duplicatesCollection.find({}).toArray();
+            const arrayDuplicados = duplicates;
+
+            res.status(200).json({
+                total: totalDocs, // Total geral de documentos
+                duplicatesCount: arrayDuplicados.length,
+                duplicates: arrayDuplicados,    
+                data: artigos,
+                pagination: {
+                    page,
+                    limit,
+                    totalDocs,
+                    totalPages,
+                    hasMore: page < totalPages
+                }
             });
         }
-
-        // Calcular número total de páginas
-        const totalPages = Math.ceil(totalDocs / limit);
-
-        const duplicatesCollection = mongoose.connection.db.collection('artigos_duplicados');
-        const duplicates = await duplicatesCollection.find({}).toArray();
-        const arrayDuplicados = duplicates;
-
-        res.status(200).json({
-            total: totalDocs, // Total geral de documentos
-            duplicatesCount: arrayDuplicados.length,
-            duplicates: arrayDuplicados,    
-            data: artigos,
-            pagination: {
-                page,
-                limit,
-                totalDocs,
-                totalPages,
-                hasMore: page < totalPages
-            }
-        });
     } catch (err) {
         console.error('Erro ao buscar artigos:', err);
         res.status(500).json({ 
@@ -100,13 +156,34 @@ const filterArtigosDuplicados = async (artigos) => {
     const normalize = (text = "") =>
         text.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
+    // --- ETAPA 1: Criar o Mapa de Enriquecimento ---
+    const titleYearToDoiMap = new Map();
+    for (const artigo of artigos) {
+        // Se o artigo tem um DOI, mapeamos seu título-ano para esse DOI.
+        if (artigo.DOI && artigo.DOI.trim().length > 0) {
+            const titleYearKey = `title-${normalize(artigo.TITULO_DO_ARTIGO)}-year-${artigo.ANO_DO_ARTIGO?.toString()}`;
+            // Só adiciona se já não houver um DOI para essa chave, para evitar sobrescrever
+            if (!titleYearToDoiMap.has(titleYearKey)) {
+                titleYearToDoiMap.set(titleYearKey, artigo.DOI);
+            }
+        }
+    }
+
+    // --- ETAPA 2: Processar e Filtrar com o Mapa de Enriquecimento ---
     const processBatch = async (batch) => {
         const promises = batch.map(async (artigo) => {
-            const doiValido = artigo.DOI && artigo.DOI.trim().length > 0;
+            const doiOriginal = artigo.DOI && artigo.DOI.trim().length > 0 ? artigo.DOI : null;
+            
+            // Verifica se existe um DOI enriquecido para este título-ano
+            const titleYearKeyForLookup = `title-${normalize(artigo.TITULO_DO_ARTIGO)}-year-${artigo.ANO_DO_ARTIGO?.toString()}`;
+            const doiEnriquecido = titleYearToDoiMap.get(titleYearKeyForLookup);
 
-            const key = doiValido
-                ? `doi-${normalize(artigo.DOI)}`
-                : `title-${normalize(artigo.TITULO_DO_ARTIGO)}-year-${artigo.ANO_DO_ARTIGO?.toString()}`;
+            // A identificação final é o DOI enriquecido, se existir, senão o DOI original, senão o fallback para título-ano
+            const finalIdentifier = doiEnriquecido || doiOriginal;
+
+            const key = finalIdentifier
+                ? `doi-${normalize(finalIdentifier)}`
+                : titleYearKeyForLookup; // Reutiliza a chave título-ano se nenhum DOI for encontrado
 
             if (seen.has(key)) {
                 return { artigo, isDuplicate: true };
@@ -115,7 +192,7 @@ const filterArtigosDuplicados = async (artigos) => {
                 return { artigo, isDuplicate: false };
             }
         });
-
+        
         const results = await Promise.all(promises);
         return results;
     };
@@ -132,6 +209,7 @@ const filterArtigosDuplicados = async (artigos) => {
             }
         });
     }
+    
     arrayDuplicados = artigosDuplicados;
 
     return { artigosUnicos, artigosDuplicados };
@@ -150,7 +228,7 @@ const createTodosArtigos = async (req, res) => {
             }
         }
 
-        // Criar índices necessários
+        //Criar índices necessários
         await collection.createIndexes([
             { key: { "producoes.artigos.DOI": 1 } },
             { key: { "producoes.artigos.TITULO_DO_ARTIGO": 1 } },
@@ -171,6 +249,8 @@ const createTodosArtigos = async (req, res) => {
                 DOI: "$producoes.artigos.DOI",
                 TITULO_DO_ARTIGO: "$producoes.artigos.TITULO_DO_ARTIGO",
                 ANO_DO_ARTIGO: "$producoes.artigos.ANO_DO_ARTIGO",
+                TITULO_DO_PERIODICO_OU_REVISTA: "$producoes.artigos.TITULO_DO_PERIODICO_OU_REVISTA",
+                ISSN: "$producoes.artigos.ISSN",
                 AUTORES: "$producoes.artigos.AUTORES",
                 PALAVRAS_CHAVE: { // Transformar o objeto em um array
                     $filter: {
@@ -415,10 +495,92 @@ const buscarPorPalavrasChave = async (req, res) => {
         });
     }
 };
+
+const exportExcelArtigos = async (req, res) => {
+    try {
+        query={}
+        if(req.query.issn){
+            query.ISSN = req.query.issn;
+        }
+        if(req.query.periodico){
+            query.TITULO_DO_PERIODICO_OU_REVISTA = req.query.periodico;
+        }
+        const artigos = await Artigos.find(query).sort({ ANO_DO_ARTIGO: -1 });
+        
+        if (!artigos || artigos.length === 0) {
+            return res.status(404).json({ 
+                error: 'Nenhum artigo encontrado para exportação' 
+            });
+        }
+         // 2. Crie a planilha do Excel em memória
+        const workbook = new ExcelJS.Workbook();
+        workbook.creator = 'Sua Aplicação';
+        workbook.created = new Date();
+        
+        const worksheet = workbook.addWorksheet('Artigos');
+
+        // 3. Defina as colunas (cabeçalhos) da planilha
+        worksheet.columns = [
+        { header: 'Título do Artigo', key: 'titulo', width: 50 },
+        { header: 'Autores', key: 'autores', width: 40 },
+        { header: 'Periódico/Revista', key: 'periodico', width: 30 },
+        { header: 'Ano', key: 'ano', width: 10 },
+        { header: 'ISSN', key: 'issn', width: 15 },
+        { header: 'DOI', key: 'doi', width: 25 },
+        { header: 'Departamento', key: 'departamento', width: 20 },
+        { header: 'Centro', key: 'centro', width: 15 },
+        { header: 'ID Lattes do Autor Principal', key: 'id_lattes', width: 25 },
+        ];
+
+        // 4. Adicione os dados (linhas) na planilha
+        artigos.forEach(artigo => {
+        worksheet.addRow({
+            titulo: artigo.TITULO_DO_ARTIGO,
+            // O campo AUTORES é um array. Vamos juntar os nomes em uma única string.
+            autores: artigo.AUTORES.map(autor => autor.NOME_COMPLETO_DO_AUTOR).join('; '),
+            periodico: artigo.TITULO_DO_PERIODICO_OU_REVISTA,
+            // Extraindo apenas o ano da data
+            ano: new Date(artigo.ANO_DO_ARTIGO).getFullYear(),
+            issn: artigo.ISSN,
+            doi: artigo.DOI,
+            departamento: artigo.DEPARTAMENTO,
+            centro: artigo.CENTRO,
+            id_lattes: artigo.ID_LATTES_AUTOR
+        });
+        });
+
+        // 5. Configure os Headers da Resposta para forçar o download
+        const dataAtual = new Date().toISOString().slice(0, 10); // Formato YYYY-MM-DD
+        res.setHeader(
+        'Content-Type',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        );
+        res.setHeader(
+        'Content-Disposition',
+        `attachment; filename="export_artigos_${dataAtual}.xlsx"`
+        );
+
+        // 6. Envie o arquivo para o cliente
+        await workbook.xlsx.write(res);
+        res.end();
+       
+        res.status(200).json({
+            message: 'Exportação de artigos concluída com sucesso',
+            data: artigos
+        });
+    } catch (err) {
+        console.error('Erro ao exportar artigos:', err);
+        res.status(500).json({ 
+            error: "Erro ao exportar artigos", 
+            details: err.message 
+        });
+    }
+};
 module.exports = {
     createTodosArtigos,
     getTodosArtigosUFPE,
     deleteAllArtigos,
     getArtigosPorDepartamentoouCentro,
-    buscarPorPalavrasChave
+    buscarPorPalavrasChave,
+    exportExcelArtigos
 };

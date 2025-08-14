@@ -10,5 +10,5 @@ router.get('/', artigosController.getTodosArtigosUFPE);
 router.get('/deleteAll', artigosController.deleteAllArtigos);
 router.get('/getByDepartamentoouCentro', artigosController.getArtigosPorDepartamentoouCentro);
 router.get('/buscarPorPalavrasChave', artigosController.buscarPorPalavrasChave);
-
+router.get('/exportExcel', artigosController.exportExcelArtigos);
 module.exports = router;

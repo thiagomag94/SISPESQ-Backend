@@ -15,6 +15,7 @@ const path = require('path');
 const corsMiddleware = require('./middleware/cors');
 const publicRoutesController = require('./controllers/publicRoutesController');
 const researcherController = require('./controllers/ResearcherController')
+const periodicosController = require('./controllers/periodicosController');
 const LattesController = require('./controllers/LattesController')
 const upload = require('./controllers/UploadController')
 const { uploadMiddleware, checkUploadDirs, uploadFile } = require('./controllers/UploadController');
@@ -30,6 +31,7 @@ const RouterOutrasProducoesBibliograficas = require('./routes/OutrasProducoesBib
 const RouterPartituras = require('./routes/Partituras');
 const RouterArtesCenicas = require('./routes/ArtesCenicas');
 const RoutesMusicas = require('./routes/Musicas');
+const RouterPeriodicos = require('./routes/Periodicos');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { metricsMiddleware } = require('./middleware/metrics');
 
@@ -96,8 +98,11 @@ app.use('/OutrasProducoesBibliograficas', RouterOutrasProducoesBibliograficas);
 app.use('/Partituras', RouterPartituras);
 app.use('/ArtesCenicas', RouterArtesCenicas);
 app.use('/Musicas', RoutesMusicas);
+app.use('/Periodicos', RouterPeriodicos);
+
 // Public routes
-app.get('/updateDb', researcherController.updateDatabase);
+app.get('/updateDb/researchers', researcherController.updateDatabase);
+app.get('/updateDb/periodicos', periodicosController.updateDatabase);
 app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)
 app.get('/', publicRoutesController.getIndex);
 app.get('/teste', publicRoutesController.getUpload);

@@ -3,7 +3,7 @@ const app = express();
 const router = express.Router();
 app.use(express.json());
 
-const issnsController = require('../controllers/relacaoIssnController');
+const issnsController = require('../controllers/RelacaoIssnController');
 
 
 router.get('/', issnsController.getTodosIssns);

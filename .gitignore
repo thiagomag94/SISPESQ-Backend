@@ -10,4 +10,5 @@ build/
 out/
 coverage/
 tmp/
-logs/
+logs/combined.log
+logs/error.log

@@ -1,6 +1,9 @@
 body{
-    background-color: black;
-    color:black
+    margin-left: 4rem;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black
+    
     
 }
 
@@ -8,9 +11,29 @@ body{
     width:100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    background-color: black;
+    align-items: start;
+    color:white
+}
+
+.subtitle{
+    color: white;
+    font-size: 1em;
+    text-align: left
+}
+
+p{
+    color: white;
+    font-size: 0.95em;
+    text-align: left;
+    padding-right: 8rem;
+    line-height: 2cap;
+}
+.title{
+    color: white;
+    font-size: 2em;
+    text-align: left
 }
 
 input {

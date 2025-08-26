@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const config  = require('./config'); // Caminho relativo para o arquivo config.js
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const swaggerJsdoc = require('swagger-jsdoc');
 const fs = require('fs');
 const csv = require('csv-parser');
 const path = require('path');
@@ -17,6 +18,7 @@ const publicRoutesController = require('./controllers/publicRoutesController');
 const researcherController = require('./controllers/ResearcherController')
 const periodicosController = require('./controllers/periodicosController');
 const LattesController = require('./controllers/LattesController')
+const issnController = require('./controllers/relacaoIssnController')
 const upload = require('./controllers/UploadController')
 const { uploadMiddleware, checkUploadDirs, uploadFile } = require('./controllers/UploadController');
 const RouterPatentes = require('./routes/Patentes')
@@ -32,6 +34,7 @@ const RouterPartituras = require('./routes/Partituras');
 const RouterArtesCenicas = require('./routes/ArtesCenicas');
 const RoutesMusicas = require('./routes/Musicas');
 const RouterPeriodicos = require('./routes/Periodicos');
+const RouterIssns = require('./routes/Issns');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 const { metricsMiddleware } = require('./middleware/metrics');
 
@@ -59,8 +62,34 @@ app.use('/health', require('./routes/health'));
 // Adicione depois das rotas
 app.use(errorLogger);
 
+// No seu arquivo principal (ex: api/server.js)
+
+
+// Constrói o caminho absoluto para sua pasta de rotas
+// __dirname é uma variável do Node.js que dá o caminho da pasta do arquivo atual
+const routesPath = path.join(__dirname, './routes/*.js');
+
+// LOG DE DEPURAÇÃO: Isso vai nos mostrar o caminho exato no seu terminal
+console.log(`[Swagger] Tentando ler arquivos de rota em: ${routesPath}`);
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'API de Produção Científica',
+      version: '1.0.0',
+      description: 'Uma API para consultar dados de artigos, pesquisadores e Qualis.',
+    },
+    servers: [ { url: 'http://localhost:3000' } ], // Ajuste a porta
+  },
+  // Usaremos o caminho absoluto que acabamos de criar
+  apis: [routesPath],
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
 // Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Static files
 app.use(express.static('public'));
@@ -99,11 +128,13 @@ app.use('/Partituras', RouterPartituras);
 app.use('/ArtesCenicas', RouterArtesCenicas);
 app.use('/Musicas', RoutesMusicas);
 app.use('/Periodicos', RouterPeriodicos);
+app.use('/RelacaoIssn', RouterIssns);
 
 // Public routes
 app.get('/updateDb/researchers', researcherController.updateDatabase);
 app.get('/updateDb/periodicos', periodicosController.updateDatabase);
 app.post('/updatedb/researchers', checkUploadDirs, uploadMiddleware, researcherController.updateDatabaseTeste)
+app.get('/updateDb/RelacaoIssn', issnController.updateDatabase);
 app.get('/', publicRoutesController.getIndex);
 app.get('/teste', publicRoutesController.getUpload);
 

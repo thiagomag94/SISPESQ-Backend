@@ -496,6 +496,92 @@ const buscarPorPalavrasChave = async (req, res) => {
     }
 };
 
+
+const artigosComQualis = async (req, res) => {
+    try {
+        console.log("\n--- INICIANDO REQUISIÇÃO COMPLETA ---");
+        const { departamento, ano, qualis, groupBy, dataInicio, dataFim } = req.query;
+
+        // 1. Construção de Filtros
+        const filtrosIniciais = {};
+        if (departamento) filtrosIniciais.DEPARTAMENTO = departamento;
+        if (ano) {
+            const dataBusca = new Date(`${ano}-12-31`);
+            //dataBusca.setHours(0,0,0,0);
+            filtrosIniciais.ANO_DO_ARTIGO = { $eq: dataBusca };
+        } else if (dataInicio && dataFim) {
+            filtrosIniciais.ANO_DO_ARTIGO = { $gte: new Date(dataInicio), $lte: new Date(dataFim) };
+        }
+        console.log("1. Filtros Iniciais:", JSON.stringify(filtrosIniciais));
+
+        // 2. Construção da Pipeline Base
+        let basePipeline = [
+            { $match: filtrosIniciais },
+            { $lookup: { from: 'periodicos', localField: 'ISSN', foreignField: 'ISSN', as: 'qualisDireto' } },
+            { $lookup: { from: 'relacaoissn', localField: 'ISSN', foreignField: 'EISSN', as: 'relacaoIssn' } },
+            { $unwind: { path: '$relacaoIssn', preserveNullAndEmptyArrays: true } },
+            { $lookup: { from: 'periodicos', localField: 'relacaoIssn.ISSN', foreignField: 'ISSN', as: 'qualisIndireto' } },
+            { $project: {
+                _id: 1, DEPARTAMENTO: 1, CENTRO: 1, ANO_DO_ARTIGO: 1, TITULO_DO_ARTIGO: 1,
+                QUALIS: { $ifNull: [ { $arrayElemAt: ['$qualisDireto.QUALIS', 0] }, { $arrayElemAt: ['$qualisIndireto.QUALIS', 0] }, 'NÃO ENCONTRADO' ] }
+            }},
+        ];
+        console.log("2. Pipeline base construída.");
+
+        if (qualis) {
+            const listaQualis = qualis.split(',').map(q => q.trim().toUpperCase());
+            basePipeline.push({ $match: { QUALIS: { $in: listaQualis } } });
+            console.log("3. Filtro de Qualis adicionado:", listaQualis);
+        }
+
+        // 4. Bifurcação da Lógica
+        if (groupBy) {
+            console.log("4. Modo: ESTATÍSTICAS (groupBy)", groupBy);
+            let groupField;
+            switch (groupBy.toLowerCase()) {
+                case 'departamento': groupField = '$DEPARTAMENTO'; break;
+                case 'centro': groupField = '$CENTRO'; break;
+                case 'qualis': groupField = '$QUALIS'; break;
+                default: return res.status(400).json({ error: "Parâmetro 'groupBy' inválido." });
+            }
+
+            const statsPipeline = [
+                ...basePipeline,
+                { $group: { _id: groupField, totalArtigos: { $sum: 1 } } },
+                { $sort: { totalArtigos: -1 } },
+                { $project: { grupo: '$_id', totalArtigos: 1, _id: 0 } }
+            ];
+
+            console.log("5. Executando pipeline de estatísticas...");
+            const resultados = await Artigos.aggregate(statsPipeline);
+            console.log("6. Pipeline de estatísticas finalizada. Enviando resposta.");
+            return res.status(200).json({ estatisticas: resultados });
+        } else {
+            console.log("4. Modo: LISTA PAGINADA");
+            const page = parseInt(req.query.page, 10) || 1;
+            const limit = parseInt(req.query.limit, 10) || 10;
+            const skip = (page - 1) * limit;
+
+            const listPipeline = [ ...basePipeline, {
+                $facet: { metadata: [{ $count: 'totalDocs' }], data: [{ $skip: skip }, { $limit: limit }] }
+            }];
+
+            console.log("5. Executando pipeline de lista paginada...");
+            const resultadoAgregacao = await Artigos.aggregate(listPipeline);
+            console.log("6. Pipeline de lista finalizada. Enviando resposta.");
+            
+            const data = resultadoAgregacao[0]?.data || [];
+            const totalDocs = resultadoAgregacao[0]?.metadata[0]?.totalDocs || 0;
+            const totalPages = Math.ceil(totalDocs / limit);
+    
+            return res.status(200).json({ docs: data, totalDocs, limit, currentPage: page, totalPages, hasNextPage: page < totalPages, hasPrevPage: page > 1 });
+        }
+    } catch (error) {
+        console.error("ERRO FATAL NA AGREGAÇÃO:", error);
+        res.status(500).json({ error: "Erro interno no servidor", details: error.message });
+    }
+}
+
 const exportExcelArtigos = async (req, res) => {
     try {
         query={}
@@ -582,5 +668,6 @@ module.exports = {
     deleteAllArtigos,
     getArtigosPorDepartamentoouCentro,
     buscarPorPalavrasChave,
-    exportExcelArtigos
+    exportExcelArtigos,
+    artigosComQualis
 };

@@ -9,50 +9,55 @@ const { query } = require('winston');
 const updateDatabase = async (req, res) => {
   try {
     const periodicosArray = [];
-    fs.createReadStream('Qualis.csv')
-      .pipe(csv({ 
-        separator: ';', 
-        mapHeaders: ({ header }) => header.trim() // remove espaços nos cabeçalhos
-      }))
-      .on('data', (row) => {
-        // Objeto para armazenar os dados tratados
-        const trimmedData = {};
-        
-        // Aplica trim() em todos os campos string
-        for (const key in row) {
-          if (typeof row[key] === 'string') {
-            trimmedData[key] = row[key].trim();
-          } else {
-            trimmedData[key] = row[key];
+    
+    // Use um Promise para encapsular a leitura do CSV, tornando o fluxo assíncrono mais fácil de gerenciar
+    await new Promise((resolve, reject) => {
+      fs.createReadStream('Qualis.csv')
+        .pipe(csv({ 
+          separator: ';', 
+          mapHeaders: ({ header }) => header.trim()
+        }))
+        .on('data', (row) => {
+          const trimmedData = {};
+          for (const key in row) {
+            if (typeof row[key] === 'string') {
+              trimmedData[key] = row[key].trim();
+            } else {
+              trimmedData[key] = row[key];
+            }
           }
-        }
+          periodicosArray.push(trimmedData);
+        })
+        .on('end', () => {
+          resolve();
+        })
+        .on('error', (error) => {
+          console.error('Erro ao ler o arquivo CSV:', error);
+          reject(new Error("Erro ao processar o arquivo CSV"));
+        });
+    });
 
-        periodicosArray.push(trimmedData);
-      })
-      .on('end', async () => {
-        try {
-          const deletedPeriodicos = await Periodicosdb.deleteMany({});
-
-          if (deletedPeriodicos) {
-            // Inserir os dados tratados
-            const result = await Periodicosdb.insertMany(periodicosArray);
-            res.status(200).json({
-              message: 'Dados atualizados com sucesso',
-              count: result.length
-            });
-          }
-        } catch (err) {
-          console.error('Erro ao inserir dados:', err);
-          res.status(500).send("Erro ao inserir dados no banco");
-        }
-      })
-      .on('error', (error) => {
-        console.error('Erro ao ler o arquivo CSV:', error);
-        res.status(500).send("Erro ao processar o arquivo CSV");
+    // Se a leitura do CSV foi bem-sucedida, continue com as operações do banco de dados
+    try {
+      await Periodicosdb.deleteMany({});
+      const result = await Periodicosdb.insertMany(periodicosArray);
+      
+      res.status(200).json({
+        message: 'Dados atualizados com sucesso',
+        count: result.length
       });
+      
+    } catch (dbError) {
+      console.error('Erro na operação do banco de dados:', dbError);
+      res.status(500).send("Erro ao atualizar o banco de dados");
+    }
+
   } catch (error) {
-    console.error('Erro no processo:', error);
-    res.status(500).send("Internal server error");
+    // Captura erros da leitura do CSV ou qualquer outro erro inicial
+    console.error('Erro geral no processo:', error);
+    if (!res.headersSent) {
+      res.status(500).send(error.message || "Internal server error");
+    }
   }
 };
 

@@ -175,6 +175,7 @@ const deleteAllOutrasProducoesBibliograficas = async (req, res) => {
 const getTodasOutrasProducoesBibliograficas = async (req, res) => {
     try {
         let query={}
+        let filtroData = {};
         //verifica se há filtros na query
         if (req.query.departamento) {
             query.DEPARTAMENTO = req.query.departamento;
@@ -184,35 +185,28 @@ const getTodasOutrasProducoesBibliograficas = async (req, res) => {
             query.CENTRO = req.query.centro;
         }
     
-        if(req.query.dataInicio || req.query.dataMenor){
-            let filtroData = {};
-
-            if(req.query.dataInicio){
-                const dataInicio = new Date(req.query.dataInicio)
-                dataInicio.setHours(0, 0, 0, 0);
-                filtroData.$gte = dataInicio; // Maior ou igual a data de início
-            }
-            if(req.query.dataMenor){
-                const dataMenor = new Date(req.query.dataMenor)
-                dataMenor.setHours(0, 0, 0, 0);
-                filtroData.$lte = dataMenor; // Menor ou igual a data igual
-            }
-             if (Object.keys(filtroData).length > 0) {
+        if(req.query.dataInicio){
+          
+            const dataInicio = new Date(req.query.dataInicio);
+            dataInicio.setHours(0, 0, 0, 0);
+            filtroData.$gte = dataInicio; // Maior ou igual a data de início
+            if (Object.keys(filtroData).length > 0) {
                 query.ANO = filtroData;
             }
-        
+            
+            
         }
-            
-        
 
+        if(req.query.dataFim){
            
-            
-            
+            const dataFim = new Date(req.query.dataFim);
+            dataFim.setHours(23, 59, 59, 999);
+            filtroData.$lte = dataFim; // Menor ou igual a data de fim
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO = filtroData;
+            }
+        }
         
-
-       
-           
-
         console.log('Query de busca de outras producoes bibliograficas:', query);
 
         //primeiro contar todos os documentos

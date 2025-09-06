@@ -20,6 +20,7 @@ const getTodosArtigosUFPE = async (req, res) => {
     
     try {
         let query = {}
+        let filtroData = {};
         // Verifica se há filtros na query
         if (req.query.departamento) {
             query.DEPARTAMENTO = req.query.departamento;
@@ -30,7 +31,7 @@ const getTodosArtigosUFPE = async (req, res) => {
         }
       
         if(req.query.dataInicio){
-            let filtroData = {};
+            
             const dataInicio = new Date(req.query.dataInicio);
             dataInicio.setHours(0, 0, 0, 0);
             filtroData.$gte = dataInicio; // Maior ou igual a data de início
@@ -38,6 +39,16 @@ const getTodosArtigosUFPE = async (req, res) => {
                 query.ANO_DO_ARTIGO = filtroData;
               } 
             
+        }
+
+        if(req.query.dataFim){
+           
+            const dataFim = new Date(req.query.dataFim);
+            dataFim.setHours(23, 59, 59, 999);
+            filtroData.$lte = dataFim; // Menor ou igual a data de fim
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO_DO_ARTIGO = filtroData;
+            }
         }
 
         if(req.query.issn!==undefined){
@@ -496,78 +507,168 @@ const buscarPorPalavrasChave = async (req, res) => {
     }
 };
 
-
 const artigosComQualis = async (req, res) => {
     try {
         console.log("\n--- INICIANDO REQUISIÇÃO COMPLETA ---");
-        const { departamento, ano, qualis, groupBy, dataInicio, dataFim } = req.query;
+        const { departamento, ano, qualis, groupBy, dataInicio, dataFim, id_lattes, categoria_busca } = req.query;
 
-        // 1. Construção de Filtros
-        const filtrosIniciais = {};
-        if (departamento) filtrosIniciais.DEPARTAMENTO = departamento;
+        // 1. Construção de Filtros para a pipeline principal
+        const filtrosPipelinePrincipal = {};
+        if (departamento) filtrosPipelinePrincipal.DEPARTAMENTO = departamento.toUpperCase();
+        if (id_lattes) filtrosPipelinePrincipal.ID_LATTES_AUTOR = id_lattes.toUpperCase();
+       
         if (ano) {
             const dataBusca = new Date(`${ano}-12-31`);
-            //dataBusca.setHours(0,0,0,0);
-            filtrosIniciais.ANO_DO_ARTIGO = { $eq: dataBusca };
+            filtrosPipelinePrincipal.ANO_DO_ARTIGO = { $eq: dataBusca };
         } else if (dataInicio && dataFim) {
-            filtrosIniciais.ANO_DO_ARTIGO = { $gte: new Date(dataInicio), $lte: new Date(dataFim) };
+            filtrosPipelinePrincipal.ANO_DO_ARTIGO = { $gte: new Date(dataInicio), $lte: new Date(dataFim) };
         }
-        console.log("1. Filtros Iniciais:", JSON.stringify(filtrosIniciais));
+        
+        // Filtra os documentos com ISSN nulo ou vazio para a pipeline principal
+        filtrosPipelinePrincipal.ISSN = { $ne: null };
+        filtrosPipelinePrincipal.ISSN = { $ne: "" };
 
-        // 2. Construção da Pipeline Base
-        let basePipeline = [
-            { $match: filtrosIniciais },
+        // 2. Construção da Pipeline Otimizada
+        const pipeline = [
+            { $match: filtrosPipelinePrincipal },
             { $lookup: { from: 'periodicos', localField: 'ISSN', foreignField: 'ISSN', as: 'qualisDireto' } },
-            { $lookup: { from: 'relacaoissn', localField: 'ISSN', foreignField: 'EISSN', as: 'relacaoIssn' } },
-            { $unwind: { path: '$relacaoIssn', preserveNullAndEmptyArrays: true } },
-            { $lookup: { from: 'periodicos', localField: 'relacaoIssn.ISSN', foreignField: 'ISSN', as: 'qualisIndireto' } },
+            { $lookup: { from: 'relacaoissns', localField: 'ISSN', foreignField: 'EISSN', as: 'relacaoIssn' } },
+            { $lookup: { 
+                from: 'periodicos', 
+                localField: 'relacaoIssn.ISSN', 
+                foreignField: 'ISSN', 
+                as: 'qualisIndireto' 
+            }},
             { $project: {
-                _id: 1, DEPARTAMENTO: 1, CENTRO: 1, ANO_DO_ARTIGO: 1, TITULO_DO_ARTIGO: 1,
-                QUALIS: { $ifNull: [ { $arrayElemAt: ['$qualisDireto.QUALIS', 0] }, { $arrayElemAt: ['$qualisIndireto.QUALIS', 0] }, 'NÃO ENCONTRADO' ] }
+                _id: 1, 
+                DEPARTAMENTO: 1, 
+                CENTRO: 1, 
+                ANO_DO_ARTIGO: 1, 
+                TITULO_DO_ARTIGO: 1, 
+                ID_LATTES_AUTOR: 1,
+                QUALIS: {
+                    $cond: {
+                        if: { $gt: [{ $size: '$qualisDireto' }, 0] },
+                        then: { $arrayElemAt: ['$qualisDireto.QUALIS', 0] },
+                        else: {
+                            $cond: {
+                                if: { $gt: [{ $size: '$qualisIndireto' }, 0] },
+                                then: { $arrayElemAt: ['$qualisIndireto.QUALIS', 0] },
+                                else: 'NAO ENCONTRADO'
+                            }
+                        }
+                    }
+                },
+                ISSN_ORIGINAL: '$ISSN',
+                TITULO_DO_PERIODICO_OU_REVISTA: 1,
+                CATEGORIA_BUSCA: {
+                    $cond: {
+                        if: {
+                             $and: [
+                                { $gt: [{ $size: { $ifNull: ['$qualisDireto', []] } }, 0] },
+                                { $gt: [{ $size: { $ifNull: ['$qualisIndireto', []] } }, 0] }
+                             ]
+                        },
+                        then: 'BUSCA DIRETA E INDIRETA',
+                        else: {
+                            $cond: {
+                                if: { $gt: [{ $size: { $ifNull: ['$qualisDireto', []] } }, 0] },
+                                then: 'BUSCA DIRETA',
+                                else: {
+                                    $cond: {
+                                        if: { $gt: [{ $size: { $ifNull: ['$qualisIndireto', []] } }, 0] },
+                                        then: 'BUSCA INDIRETA',
+                                        else: 'COM ISSN MAS NAO ENCONTRADO EM PERIODICOs'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                //detalhar a busca indireta se for o caso mostrando os issns encontrados encontrados no fim da busca indireta
+                BUSCA_INDIRETA_DETALHES: {
+                    $cond: {
+                        if: { $gt: [{ $size: '$relacaoIssn' }, 0] },
+                        then: { $arrayElemAt: ['$relacaoIssn.ISSN', 0] },
+                        else: null
+                    }
+                }
+
             }},
         ];
-        console.log("2. Pipeline base construída.");
+        console.log("2. Pipeline principal construída.");
 
+        // Adiciona o filtro de Qualis no pipeline
         if (qualis) {
             const listaQualis = qualis.split(',').map(q => q.trim().toUpperCase());
-            basePipeline.push({ $match: { QUALIS: { $in: listaQualis } } });
+            pipeline.push({ $match: { QUALIS: { $in: listaQualis } } });
             console.log("3. Filtro de Qualis adicionado:", listaQualis);
         }
 
-        // 4. Bifurcação da Lógica
+         if (categoria_busca) {
+            pipeline.push({ $match: { CATEGORIA_BUSCA: categoria_busca.toUpperCase() } });
+            console.log("3. Filtro de Categoria de Busca adicionado:", categoria_busca.toUpperCase());
+        }
+
+        // 3. Bifurcação da Lógica: Estatísticas vs. Lista
         if (groupBy) {
             console.log("4. Modo: ESTATÍSTICAS (groupBy)", groupBy);
             let groupField;
             switch (groupBy.toLowerCase()) {
                 case 'departamento': groupField = '$DEPARTAMENTO'; break;
                 case 'centro': groupField = '$CENTRO'; break;
+                case 'categoria_busca': groupField = '$CATEGORIA_BUSCA'; break;
                 case 'qualis': groupField = '$QUALIS'; break;
                 default: return res.status(400).json({ error: "Parâmetro 'groupBy' inválido." });
             }
 
-            const statsPipeline = [
-                ...basePipeline,
+            // Adiciona a fase de agrupamento
+            pipeline.push(
                 { $group: { _id: groupField, totalArtigos: { $sum: 1 } } },
-                { $sort: { totalArtigos: -1 } },
+                { $sort: { '_id': 1 } },
                 { $project: { grupo: '$_id', totalArtigos: 1, _id: 0 } }
-            ];
+            );
 
             console.log("5. Executando pipeline de estatísticas...");
-            const resultados = await Artigos.aggregate(statsPipeline);
-            console.log("6. Pipeline de estatísticas finalizada. Enviando resposta.");
-            return res.status(200).json({ estatisticas: resultados });
+            const resultadosPipeline = await Artigos.aggregate(pipeline);
+            console.log("6. Pipeline de estatísticas finalizada.");
+
+            // **Adiciona a contagem de artigos sem ISSN**
+            const filtroArtigosSemISSN = {
+                'ISSN': { $in: [null, ""] }
+            };
+            if (departamento) filtroArtigosSemISSN.DEPARTAMENTO = departamento.toUpperCase();
+            if (id_lattes) filtroArtigosSemISSN.ID_LATTES_AUTOR = id_lattes;
+            if (ano) filtroArtigosSemISSN.ANO_DO_ARTIGO = { $eq: new Date(`${ano}-12-31`) };
+            if (categoria_busca) filtroArtigosSemISSN.CATEGORIA_BUSCA = categoria_busca.toUpperCase();
+            else if (dataInicio && dataFim) filtroArtigosSemISSN.ANO_DO_ARTIGO = { $gte: new Date(dataInicio), $lte: new Date(dataFim) };
+
+            const contagemSemISSN = await Artigos.countDocuments(filtroArtigosSemISSN);
+
+            // Combina os resultados
+            const estatisticasCompletas = [
+                ...resultadosPipeline,
+                { grupo: 'ARTIGOS SEM ISSN NO LATTES', totalArtigos: contagemSemISSN }
+            ];
+
+            console.log("7. Contagem de artigos sem ISSN adicionada. Enviando resposta.");
+            return res.status(200).json({ estatisticas: estatisticasCompletas });
+
         } else {
             console.log("4. Modo: LISTA PAGINADA");
             const page = parseInt(req.query.page, 10) || 1;
             const limit = parseInt(req.query.limit, 10) || 10;
             const skip = (page - 1) * limit;
 
-            const listPipeline = [ ...basePipeline, {
-                $facet: { metadata: [{ $count: 'totalDocs' }], data: [{ $skip: skip }, { $limit: limit }] }
-            }];
+            pipeline.push({
+                $facet: {
+                    metadata: [{ $count: 'totalDocs' }], 
+                    data: [{ $skip: skip }, { $limit: limit }] 
+                }
+            });
 
             console.log("5. Executando pipeline de lista paginada...");
-            const resultadoAgregacao = await Artigos.aggregate(listPipeline);
+            const resultadoAgregacao = await Artigos.aggregate(pipeline);
             console.log("6. Pipeline de lista finalizada. Enviando resposta.");
             
             const data = resultadoAgregacao[0]?.data || [];
@@ -581,7 +682,6 @@ const artigosComQualis = async (req, res) => {
         res.status(500).json({ error: "Erro interno no servidor", details: error.message });
     }
 }
-
 const exportExcelArtigos = async (req, res) => {
     try {
         query={}

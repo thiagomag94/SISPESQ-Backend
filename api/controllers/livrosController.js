@@ -179,6 +179,7 @@ const getAllLivros = async (req, res) => {
         
         // Build query based on search parameters
         let query = {};
+        let filtroData = {};
         
         if (titulo) {
             // Normalize title for search
@@ -193,7 +194,7 @@ const getAllLivros = async (req, res) => {
         }
 
         if(req.query.dataInicio){
-            let filtroData = {};
+            
             const dataInicio = new Date(req.query.dataInicio);
             dataInicio.setHours(0, 0, 0, 0);
             filtroData.$gte = dataInicio; // Maior ou igual a data de início
@@ -202,6 +203,16 @@ const getAllLivros = async (req, res) => {
               }
             
             
+        }
+
+        if(req.query.dataFim){
+           
+            const dataFim = new Date(req.query.dataFim);
+            dataFim.setHours(23, 59, 59, 999);
+            filtroData.$lte = dataFim; // Menor ou igual a data de fim
+            if (Object.keys(filtroData).length > 0) {
+                query.ANO = filtroData;
+            }
         }
 
         const totalDocs = await Livro.countDocuments(query);

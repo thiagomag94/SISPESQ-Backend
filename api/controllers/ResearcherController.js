@@ -119,9 +119,9 @@ const getResearchers = async (req, res) => {
       }
     }
     if (centro) query.SIGLA_CENTRO = centro;
-    if (departamento) query.UORG_LOTACAO = departamento;
-    if (titulacao) query.TITULACAO = titulacao;
-    if (dedicacao) query.REGIME_DE_TRABALHO = dedicacao;
+    if (departamento) query.UORG_LOTACAO = departamento.toUpperCase();
+    if (titulacao) query.TITULACAO = titulacao.toUpperCase();
+    if (dedicacao) query.REGIME_DE_TRABALHO = dedicacao.toUpperCase();
 
     if (admissaomaiorque || admissaomenorque || admissaoiguala) {
       const filtroData = {};
@@ -159,7 +159,7 @@ const getResearchers = async (req, res) => {
         }
     }
 
-    if(situacao_funcional) query.SITUACAO_FUNCIONAL = situacao_funcional;
+    if(situacao_funcional) query.SITUACAO_FUNCIONAL = situacao_funcional.toUpperCase();
       
     console.log("Query de filtro ($match):", query);
 

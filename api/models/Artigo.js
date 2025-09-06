@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const {AutorSchema} = require('./Autor');
+const { AutorSchema } = require('./Autor');
 
 const ArtigoSchema = new Schema({
     ID_LATTES_AUTOR: String,
@@ -21,9 +21,14 @@ const ArtigoSchema = new Schema({
     HOME_PAGE_DO_TRABALHO: String
 });
 
+// Índice para o ISSN (para as buscas de qualis)
+ArtigoSchema.index({ ISSN: 1 });
+
+// Índice de texto para as palavras-chave, com a opção de idioma
 ArtigoSchema.index(
-    { PALAVRAS_CHAVE: 'text' }, 
+    { PALAVRAS_CHAVE: 'text' },
     { default_language: 'portuguese' }
 );
+
 const Artigo = mongoose.model('Artigo', ArtigoSchema);
 module.exports = Artigo;

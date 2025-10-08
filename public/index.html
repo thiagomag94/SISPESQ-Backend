@@ -18,19 +18,96 @@
         <h3 class="subtitle">Endpoints</h3>
         <p>A API do SPIA (Sistema de Informações de Pesquisa e Análise) é a interface de backend central para a gestão e consulta de dados acadêmicos da Universidade Federal de Pernambuco (UFPE).
 
-Seu funcionamento principal envolve a coleta, conversão e armazenamento de dados de duas fontes primárias:
+            Seu funcionamento principal envolve a coleta, conversão e armazenamento de dados de duas fontes primárias:
 
-    Arquivos CSV: Contendo a relação de docentes da universidade e seus dados cadastrais.
+            Arquivos CSV: Contendo a relação de docentes da universidade e seus dados cadastrais.
 
-    Currículos Lattes (XML): Extraindo informações detalhadas sobre a produção acadêmica de cada pesquisador.
+            Currículos Lattes (XML): Extraindo informações detalhadas sobre a produção acadêmica de cada pesquisador.
 
-Todos os dados são processados e consolidados em um banco de dados MongoDB. A partir dessa base de dados consolidada, a API expõe uma série de rotas para consultar informações agregadas sobre a produção dos docentes, incluindo produção bibliográfica, técnica, artística, entre outras.
+            Todos os dados são processados e consolidados em um banco de dados MongoDB. A partir dessa base de dados consolidada, a API expõe uma série de rotas para consultar informações agregadas sobre a produção dos docentes, incluindo produção bibliográfica, técnica, artística, entre outras.
 
-O objetivo final é fornecer uma ferramenta poderosa para a geração de relatórios de pesquisa e para a análise estatística, permitindo a aplicação de filtros específicos em cada tipo de produção.
+            O objetivo final é fornecer uma ferramenta poderosa para a geração de relatórios de pesquisa e para a análise estatística, permitindo a aplicação de filtros específicos em cada tipo de produção.
 
-Esta documentação é destinada principalmente aos desenvolvedores frontend do sistema SPIA e também a gestores que necessitem realizar consultas diretas aos dados.</p>
-    
-    </div>
+            Esta documentação é destinada principalmente aos desenvolvedores frontend do sistema SPIA e também a gestores que necessitem realizar consultas diretas aos dados.
+        </p>
+        <h4 class="subtitle">Lista de Endpoints Disponíveis para consulta:</h4>
+        <div class="endpoint-list">
+            <div class="endpoint">
+                <strong>GET /Lattes</strong>
+                <p>Retorna uma lista com todos os currículos Lattes cadastrados.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>query:</strong> <code>limit</code> (opcional) — Limita o número de resultados retornados.</li>
+                        <li><strong>query:</strong> <code>offset</code> (opcional) — Pula um número de resultados.</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="endpoint">
+                <strong>GET /Lattes/id_lattes</strong>
+                <p>Retorna os detalhes de um currículo Lattes específico pelo ID Lattes.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>path:</strong> <code>id_lattes</code> (obrigatório) — O identificador único do currículo Lattes.</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="endpoint">
+                <strong>GET /Producao</strong>
+                <p>Retorna informações da produção acadêmica para cada docente.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>query:</strong> <code>ano</code> (opcional) — Filtra produções por ano.</li>
+                        <li><strong>query:</strong> <code>tipo</code> (opcional) — Filtra por tipo de produção (ex: artigo, livro).</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="endpoint">
+                <strong>GET /Researcher</strong>
+                <p>Retorna uma lista de todos os docentes cadastrados.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>query:</strong> <code>nome</code> (opcional) — Filtra docentes pelo nome.</li>
+                        <li><strong>query:</strong> <code>departamento</code> (opcional) — Filtra por departamento.</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="endpoint">
+                <strong>GET /Artigos</strong>
+                <p>Retorna todos os artigos únicos cadastrados.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>query:</strong> <code>ano</code> (opcional) — Filtra artigos por ano.</li>
+                        <li><strong>query:</strong> <code>autor</code> (opcional) — Filtra por autor.</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="endpoint">
+                <strong>GET /Livros</strong>
+                <p>Retorna todos os livros únicos cadastrados.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>query:</strong> <code>ano</code> (opcional) — Filtra livros por ano.</li>
+                        <li><strong>query:</strong> <code>autor</code> (opcional) — Filtra por autor.</li>
+                    </ul>
+                </details>
+            </div>
+            <div class="endpoint">
+                <strong>GET /Trabalhos</strong>
+                <p>Retorna todos os trabalhos em eventos únicos cadastrados.</p>
+                <details>
+                    <summary>Parâmetros e Queries</summary>
+                    <ul>
+                        <li><strong>query:</strong> <code>ano</code> (opcional) — Filtra trabalhos por ano.</li>
+                        <li><strong>query:</strong> <code>organizador</code> (opcional) — Filtra por organizador.</li>
+                    </ul>
+                </details>
+        </div>
 
     
 </body>

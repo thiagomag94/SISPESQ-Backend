@@ -193,6 +193,74 @@ const filterArtigosDuplicados = async (artigos) => {
     return { artigosUnicos, artigosDuplicados };
 };
 
+const filterArtigosDuplicadosNova = async (artigos) => {
+    const batchSize = 1000;
+    const seen = new Map();
+    const artigosUnicos = [];
+    const artigosDuplicados = [];
+
+    const normalize = (text = "") =>
+        text.trim().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+
+    // --- ETAPA 1: Criar o Mapa de Enriquecimento ---
+    const titleYearToDoiMap = new Map();
+    for (const artigo of artigos) {
+        // Se o artigo tem um DOI, mapeamos seu título-ano para esse DOI.
+        if (artigo.DOI && artigo.DOI.trim().length > 0) {
+            const titleYearKey = `title-${normalize(artigo.TITULO_DO_ARTIGO)}-year-${artigo.ANO_DO_ARTIGO?.toString()}`;
+            // Só adiciona se já não houver um DOI para essa chave, para evitar sobrescrever
+            if (!titleYearToDoiMap.has(titleYearKey)) {
+                titleYearToDoiMap.set(titleYearKey, artigo.DOI);
+            }
+        }
+    }
+
+    // --- ETAPA 2: Processar e Filtrar com o Mapa de Enriquecimento ---
+    const processBatch = async (batch) => {
+        const promises = batch.map(async (artigo) => {
+            const doiOriginal = artigo.DOI && artigo.DOI.trim().length > 0 ? artigo.DOI : null;
+            
+            // Verifica se existe um DOI enriquecido para este título-ano
+            const titleYearKeyForLookup = `title-${normalize(artigo.TITULO_DO_ARTIGO)}-year-${artigo.ANO_DO_ARTIGO?.toString()}`;
+            const doiEnriquecido = titleYearToDoiMap.get(titleYearKeyForLookup);
+
+            // A identificação final é o DOI enriquecido, se existir, senão o DOI original, senão o fallback para título-ano
+            const finalIdentifier = doiEnriquecido || doiOriginal;
+
+            const key = finalIdentifier
+                ? `doi-${normalize(finalIdentifier)}`
+                : titleYearKeyForLookup; // Reutiliza a chave título-ano se nenhum DOI for encontrado
+
+            if (seen.has(key)) {
+                return { artigo, isDuplicate: true };
+            } else {
+                seen.set(key, true);
+                return { artigo, isDuplicate: false };
+            }
+        });
+        
+        const results = await Promise.all(promises);
+        return results;
+    };
+
+    for (let i = 0; i < artigos.length; i += batchSize) {
+        const batch = artigos.slice(i, i + batchSize);
+        const results = await processBatch(batch);
+        
+        results.forEach(result => {
+            if (result.isDuplicate) {
+                artigosDuplicados.push(result.artigo);
+            } else {
+                artigosUnicos.push(result.artigo);
+            }
+        });
+    }
+    
+    arrayDuplicados = artigosDuplicados;
+
+    return { artigosUnicos, artigosDuplicados };
+};
+
 const createTodosArtigos = async (req, res) => {
     try {
         // Primeiro remover todos os índices existentes

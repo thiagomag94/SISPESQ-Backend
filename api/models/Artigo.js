@@ -3,12 +3,12 @@ const { Schema } = mongoose;
 const { AutorSchema } = require('./Autor');
 
 const ArtigoSchema = new Schema({
-    ID_LATTES_AUTOR: String,
-    DEPARTAMENTO: String,
-    CENTRO: String,
-    TITULO_DO_ARTIGO: String,
-    TITULO_DO_ARTIGO_INGLES: String,
-    ANO_DO_ARTIGO: Date,
+    ID_LATTES_AUTOR: { type: String, index: true },
+    DEPARTAMENTO: { type: String, index: true },
+    CENTRO: { type: String, index: true },
+    TITULO_DO_ARTIGO: { type: String, index: true },
+    TITULO_DO_ARTIGO_INGLES: { type: String, index: true },
+    ANO_DO_ARTIGO: { type: Date, index: true },
     AUTORES: [AutorSchema],
     TITULO_DO_PERIODICO_OU_REVISTA: String,
     VOLUME: String,

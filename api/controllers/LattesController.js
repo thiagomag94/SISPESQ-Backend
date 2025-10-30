@@ -1028,10 +1028,12 @@ const getLattes = async (req, res) => {
 const getLattesbyId = async(req, res)=>{
     const id_lattes = req.params.id
     console.log(id_lattes);
+
     
+
     try{
+
         const resultQuery = await lattesdb.find({ "CURRICULO_VITAE.ID_Lattes": id_lattes })
-      
         
         res.status(200).json({lattes:resultQuery[0]}) 
     }catch(err){

@@ -57,25 +57,36 @@ const ProducaoGeralcreate = async (req, res) => {
                 }
             },
             // Calculamos o período de atividade
-            {
-                $addFields: {
+           {$addFields: {
                     periodo_atividade: {
-                        inicio: { $ifNull: ['$DATA_INGRESSO_UFPE', new Date(0)] },
+                        inicio: {
+                            // Normaliza a data de ingresso para 31/12 do ano de ingresso, se quiser
+                            $ifNull: ['$DATA_INGRESSO_UFPE', new Date(0)]
+                        },
                         fim: {
-                            $cond: {
-                                if: { $eq: ['$SITUACAO_FUNCIONAL', 'APOSENTADO'] },
-                                then: {
-                                    $ifNull: [
-                                        { $dateAdd: { startDate: '$DATA_EXCLUSAO_UFPE', unit: 'year', amount: 10 } },
-                                        new Date()
-                                    ]
+                            $let: {
+                                vars: {
+                                    fimBase: {
+                                        $cond: {
+                                            if: { $eq: ['$SITUACAO_FUNCIONAL', 'APOSENTADO'] },
+                                            then: { $dateAdd: { startDate: '$DATA_EXCLUSAO_UFPE', unit: 'year', amount: 10 } },
+                                            else: { $ifNull: ['$DATA_EXCLUSAO_UFPE', new Date()] }
+                                        }
+                                    }
                                 },
-                                else: { $ifNull: ['$DATA_EXCLUSAO_UFPE', new Date()] }
+                                in: {
+                                    $dateFromParts: {
+                                        year: { $year: '$$fimBase' },
+                                        month: 12,
+                                        day: 31
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            },
+                },
+           },
+
             // Calculamos as contagens e coletamos as produções
             {
                 $addFields: {
@@ -631,7 +642,7 @@ const ProducaoGeralcreate = async (req, res) => {
 
 const getProducaoGeral = async (req, res) => {
     try {
-        const { centro, departamento, situacao_funcional, groupBy } = req.query;
+        const { centro, departamento, situacao_funcional, regime_de_trabalho, id_lattes, groupBy, anoartigo_gte, anoartigo_lte, anoartigo_eq} = req.query;
         console.log('Consultando produção geral com filtros:', { centro, departamento, situacao_funcional, groupBy });
         // Acessar a collection criada pelo $out
         const producaoGeralCollection = mongoose.connection.collection('producao_geral');
@@ -644,9 +655,178 @@ const getProducaoGeral = async (req, res) => {
         if (centro) matchStage.centro = centro;
         if (departamento) matchStage.departamento = departamento;
         if (situacao_funcional) matchStage.situacao_funcional = situacao_funcional;
+        if (id_lattes) matchStage.id_lattes = id_lattes;
+        if (regime_de_trabalho) matchStage.regime_de_trabalho = regime_de_trabalho;
+      
 
         if (Object.keys(matchStage).length > 0) {
             pipeline.push({ $match: matchStage });
+        }
+
+        // --- ETAPA 2: NOVOS FILTROS QUANTITATIVOS ---
+      
+        // Precisamos filtrar *dentro* do array 'producoes.artigos'
+        
+        if (anoartigo_gte || anoartigo_lte || anoartigo_eq) {
+            
+            const filtroAno = {};
+            
+            // Assumindo que o campo de ano dentro do array é um objeto Date
+            // Se for um número (ex: 2020), troque 'new Date()' por 'parseInt()'
+            if (anoartigo_gte) {
+                // Se o campo for data (ex: "2020-01-01"), use new Date()
+                filtroAno.$gte = new Date(anoartigo_gte); 
+            }
+            if (anoartigo_lte) {
+                filtroAno.$lte = new Date(anoartigo_lte);
+            }
+
+            if (anoartigo_eq) {
+                filtroAno.$eq = new Date(anoartigo_eq);
+            }
+
+            // 1. Filtra o array 'producoes.artigos'
+            pipeline.push({
+                $addFields: {
+                    "producoes.artigos": { // Reescreve o array 'producoes.artigos'
+                        $filter: {
+                            input: { $ifNull: ["$producoes.artigos", []] }, // Pega o array (ou um array vazio se for nulo)
+                            as: "artigo",
+                            cond: { 
+                                $and: [
+                                    // !!! ATENÇÃO: Confirme o nome do campo de ano aqui !!!
+                                    // (Ex: $$artigo.ANO_DO_ARTIGO, $$artigo.ano, etc.)
+                                    { $gte: [ "$$artigo.ANO_DO_ARTIGO", filtroAno.$gte || new Date("1000-01-01") ] },
+                                    { $lte: [ "$$artigo.ANO_DO_ARTIGO", filtroAno.$lte || new Date("9999-12-31") ] },
+                                    ...(filtroAno.$eq ? [ { $eq: [ "$$artigo.ANO_DO_ARTIGO", filtroAno.$eq ] } ] : [] )
+                                ]
+                            }
+                        }
+                    }
+                    // (Você pode replicar este bloco para 'producoes.livros' se tiver 'anolivro_gte', etc.)
+                }
+            });
+
+            // 2. Recalcula a 'contagem.artigos' para bater com o array que acabamos de filtrar
+            pipeline.push({
+                $addFields: {
+                    "contagem.artigos": { $size: { $ifNull: ["$producoes.artigos", []] } }
+                    // (Recalcule 'contagem.livros' se você o filtrou também)
+                }
+            });
+
+    
+            // 3. Remove pesquisadores que ficaram com 0 artigos APÓS o filtro de ano
+            pipeline.push({
+                $match: { "contagem.artigos": { $gt: 0 } }
+            });
+         
+        }
+        
+        // Mapeia os nomes das queries para os campos no banco
+        // (Necessário para o caso "sem groupBy", onde os campos são aninhados)
+        const fieldMap = {
+            'data_ingresso_ufpe': 'periodo_atividade.inicio',
+            'data_exclusao_ufpe': 'periodo_atividade.fim',
+            'artigos': 'contagem.artigos',
+            'livros': 'contagem.livros',
+            'capitulos': 'contagem.capitulos',
+            'trabalhos_eventos': 'contagem.trabalhos_eventos',
+            'textos_jornais': 'contagem.textos_jornais',
+            'outras_producoes_bibliograficas': 'contagem.outras_producoes_bibliograficas',
+            'partituras_musicais': 'contagem.partituras_musicais',
+            'musicas': 'contagem.producao_artistica_cultural.musicas',
+            'artes_cenicas': 'contagem.producao_artistica_cultural.artes_cenicas',
+            'softwares': 'contagem.softwares',
+            'patentes': 'contagem.patentes',
+            'orientacoes_concluidas_doutorado': 'contagem.orientacoes_concluidas.doutorado',
+            'orientacoes_concluidas_mestrado': 'contagem.orientacoes_concluidas.mestrado',
+            'orientacoes_concluidas_pos_doutorado': 'contagem.orientacoes_concluidas.pos_doutorado',
+            'orientacoes_andamento_doutorado': 'contagem.orientacoes_andamento.doutorado',
+            'orientacoes_andamento_mestrado': 'contagem.orientacoes_andamento.mestrado',
+            'orientacoes_andamento_pos_doutorado': 'contagem.orientacoes_andamento.pos_doutorado',
+            // Campos que SÓ existem no groupBy
+            'total_pesquisadores': 'total_pesquisadores',
+            'total_producao_bibliografica': 'total_producao_bibliografica',
+            'total_producao_tecnica': 'total_producao_tecnica',
+            'total_producao_artistica_cultural': 'total_producao_artistica_cultural',
+            'total_orientacoes_concluidas': 'total_orientacoes_concluidas',
+            'total_orientacoes_andamento': 'total_orientacoes_andamento',
+            'total_orientacoes': 'total_orientacoes',
+        };
+
+        const quantitativeMatchStage = {};
+        
+        for (const key in req.query) {
+            // Coloque esta lógica ANTES de tentar "splitar" a chave
+            if (key === "data_ingresso_ufpe_isnull") {
+                if (!quantitativeMatchStage['periodo_atividade.inicio']) {
+                     quantitativeMatchStage['periodo_atividade.inicio'] = {};
+                }
+        quantitativeMatchStage['periodo_atividade.inicio']['$eq'] = null;
+        continue; // Pula para a próxima chave
+    }
+    if (key === "data_ingresso_ufpe_notnull") {
+         if (!quantitativeMatchStage['periodo_atividade.inicio']) {
+             quantitativeMatchStage['periodo_atividade.inicio'] = {};
+        }
+        quantitativeMatchStage['periodo_atividade.inicio']['$ne'] = null;
+        continue; // Pula para a próxima chave
+    }
+    if (key === "data_exclusao_ufpe_isnull") {
+         if (!quantitativeMatchStage['periodo_atividade.fim']) {
+             quantitativeMatchStage['periodo_atividade.fim'] = {};
+        }
+        quantitativeMatchStage['periodo_atividade.fim']['$eq'] = null;
+        continue; // Pula para a próxima chave
+    }
+    if (key === "data_exclusao_ufpe_notnull") {
+         if (!quantitativeMatchStage['periodo_atividade.fim']) {
+             quantitativeMatchStage['periodo_atividade.fim'] = {};
+        }
+        quantitativeMatchStage['periodo_atividade.fim']['$ne'] = null;
+        continue; // Pula para a próxima chave
+    }
+            const parts = key.split('_'); // Ex: "artigos_gt" -> ["artigos", "gt"]
+            if (parts.length < 2) continue; // Ignora filtros normais (centro, groupBy, etc.)
+
+            const op = parts.pop(); // "gt"
+            const field = parts.join('_'); // "artigos" ou "total_orientacoes"
+            
+            const mongoOp = {
+                'gt': '$gt', 'gte': '$gte', 'lt': '$lt', 'lte': '$lte', 'eq': '$eq', 'ne': '$ne'
+            }[op];
+            
+            if (!mongoOp || !fieldMap.hasOwnProperty(field)) continue; // Operador ou campo inválido
+            
+            // --- INÍCIO DA CORREÇÃO ---
+            const isDateField = (field === 'data_ingresso_ufpe' || field === 'data_exclusao_ufpe');
+            let value;
+
+           
+
+            if (isDateField) {
+                // Tenta converter a string da query (ex: "2020-01-01") para um timestamp
+                value = new Date(req.query[key]); 
+            
+            } else {
+                // Mantém a lógica original para campos numéricos (artigos, livros, etc.)
+                value = parseInt(req.query[key], 10);
+            }
+            if (isNaN(value)) continue; // Valor não numérico
+
+            // Define o caminho correto para o campo (aninhado ou não)
+            let fieldPath = groupBy ? field : fieldMap[field];
+
+            // Ignora filtros de "total" se não estivermos agrupando
+            if (!groupBy && field.startsWith('total_')) {
+                continue;
+            }
+
+            if (!quantitativeMatchStage[fieldPath]) {
+                quantitativeMatchStage[fieldPath] = {};
+            }
+            quantitativeMatchStage[fieldPath][mongoOp] = value;
         }
 
         // Adicionar agrupamento se especificado
@@ -740,8 +920,18 @@ const getProducaoGeral = async (req, res) => {
 
             pipeline.push({ $group: groupStage });
 
+            // --- ETAPA 4: ADICIONA O FILTRO QUANTITATIVO (DEPOIS DO GROUP) ---
+            if (Object.keys(quantitativeMatchStage).length > 0) {
+                pipeline.push({ $match: quantitativeMatchStage });
+            }
+
             // Ordenar resultados pelo _id
             pipeline.push({ $sort: { _id: 1 } });
+        }else {
+            // --- ETAPA 4 (Alternativa): ADICIONA O FILTRO QUANTITATIVO (SEM GROUP) ---
+            if (Object.keys(quantitativeMatchStage).length > 0) {
+                pipeline.push({ $match: quantitativeMatchStage });
+            }
         }
 
         const results = await producaoGeralCollection.aggregate(pipeline).toArray();

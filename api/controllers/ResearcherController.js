@@ -98,8 +98,8 @@ const getResearchers = async (req, res) => {
     const { 
       id, id_lattes, professor, centro, departamento, titulacao, 
       admissaomaiorque, admissaomenorque, admissaoiguala, 
-      dedicacao, situacao_funcional, 
-      exclusaomaiorque, exclusaomenorque, exclusaoiguala,
+      dedicacao, situacao_funcional, dedicacao_ne,
+      exclusaomaiorque, exclusaomenorque, exclusaoiguala, semexclusao,
       groupBy // Novo parâmetro para o agrupamento
     } = req.query;
 
@@ -121,8 +121,12 @@ const getResearchers = async (req, res) => {
     if (centro) query.SIGLA_CENTRO = centro;
     if (departamento) query.UORG_LOTACAO = departamento.toUpperCase();
     if (titulacao) query.TITULACAO = titulacao.toUpperCase();
-    if (dedicacao) query.REGIME_DE_TRABALHO = dedicacao.toUpperCase();
-
+    let filtroDedicacao = {}
+    if (dedicacao) filtroDedicacao.REGIME_DE_TRABALHO = { $eq: dedicacao };
+    if (dedicacao_ne) filtroDedicacao.REGIME_DE_TRABALHO = { $ne: dedicacao_ne };
+    if (Object.keys(filtroDedicacao).length > 0) {
+      query = { ...query, ...filtroDedicacao };
+    }
     if (admissaomaiorque || admissaomenorque || admissaoiguala) {
       const filtroData = {};
       if (admissaoiguala) {
@@ -153,6 +157,7 @@ const getResearchers = async (req, res) => {
         } else {
             if (exclusaomaiorque) filtroDataExclusao.$gte = new Date(exclusaomaiorque);
             if (exclusaomenorque) filtroDataExclusao.$lte = new Date(exclusaomenorque);
+            
         }
         if (Object.keys(filtroDataExclusao).length > 0) {
             query.DATA_EXCLUSAO_UFPE = filtroDataExclusao;
@@ -160,7 +165,8 @@ const getResearchers = async (req, res) => {
     }
 
     if(situacao_funcional) query.SITUACAO_FUNCIONAL = situacao_funcional.toUpperCase();
-      
+    if(semexclusao) query.DATA_EXCLUSAO_UFPE = { $eq: null }; // Para filtrar registros sem data de exclusão
+
     console.log("Query de filtro ($match):", query);
 
     // ##### LÓGICA DE AGRUPAMENTO #####
@@ -171,7 +177,8 @@ const getResearchers = async (req, res) => {
         departamento: '$UORG_LOTACAO',
         titulacao: '$TITULACAO',
         dedicacao: '$REGIME_DE_TRABALHO',
-        situacao: '$SITUACAO_FUNCIONAL'
+        situacao: '$SITUACAO_FUNCIONAL',
+        id_lattes: '$ID_Lattes'
       };
 
       const groupField = allowedGroupByFields[groupBy.toLowerCase()];
